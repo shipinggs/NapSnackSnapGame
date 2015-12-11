@@ -1,6 +1,6 @@
 module gamethreecomparator (
-    input romanswer[2], 
-    input playerinput[2], 
+    input romanswer[5], 
+    input playerinput[5], 
     output equal
   ) {
 

@@ -11,7 +11,7 @@
      TOP = 0
      UP = 1
 */
-module leddisplaycounter_68 (
+module leddisplaycounter_72 (
     input clk,
     input rst,
     input start,

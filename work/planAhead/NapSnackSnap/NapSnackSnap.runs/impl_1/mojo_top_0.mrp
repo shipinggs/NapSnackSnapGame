@@ -8,23 +8,23 @@ Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Fri Dec 11 12:40:08 2015
+Mapped Date    : Fri Dec 11 20:03:56 2015
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    0
 Slice Logic Utilization:
-  Number of Slice Registers:                   608 out of  11,440    5%
-    Number used as Flip Flops:                 608
+  Number of Slice Registers:                   656 out of  11,440    5%
+    Number used as Flip Flops:                 656
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                      1,326 out of   5,720   23%
-    Number used as logic:                    1,301 out of   5,720   22%
-      Number using O6 output only:             800
-      Number using O5 output only:             256
-      Number using O5 and O6:                  245
+  Number of Slice LUTs:                      1,644 out of   5,720   28%
+    Number used as logic:                    1,614 out of   5,720   28%
+      Number using O6 output only:           1,062
+      Number using O5 output only:             281
+      Number using O5 and O6:                  271
       Number used as ROM:                        0
     Number used as Memory:                       8 out of   1,440    1%
       Number used as Dual Port RAM:              0
@@ -33,21 +33,21 @@ Slice Logic Utilization:
         Number using O6 output only:             4
         Number using O5 output only:             0
         Number using O5 and O6:                  4
-    Number used exclusively as route-thrus:     17
+    Number used exclusively as route-thrus:     22
       Number with same-slice register load:      1
-      Number with same-slice carry load:        16
+      Number with same-slice carry load:        21
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   436 out of   1,430   30%
-  Number of MUXCYs used:                       624 out of   2,860   21%
-  Number of LUT Flip Flop pairs used:        1,328
-    Number with an unused Flip Flop:           755 out of   1,328   56%
-    Number with an unused LUT:                   2 out of   1,328    1%
-    Number of fully used LUT-FF pairs:         571 out of   1,328   42%
-    Number of unique control sets:              29
+  Number of occupied Slices:                   525 out of   1,430   36%
+  Number of MUXCYs used:                       664 out of   2,860   23%
+  Number of LUT Flip Flop pairs used:        1,648
+    Number with an unused Flip Flop:         1,012 out of   1,648   61%
+    Number with an unused LUT:                   4 out of   1,648    1%
+    Number of fully used LUT-FF pairs:         632 out of   1,648   38%
+    Number of unique control sets:              36
     Number of slice register sites lost
-      to control set restrictions:              92 out of  11,440    1%
+      to control set restrictions:             116 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -84,11 +84,11 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                4.22
+Average Fanout of Non-Clock Nets:                4.35
 
-Peak Memory Usage:  436 MB
-Total REAL time to MAP completion:  30 secs 
-Total CPU time to MAP completion (all processors):   30 secs 
+Peak Memory Usage:  441 MB
+Total REAL time to MAP completion:  49 secs 
+Total CPU time to MAP completion (all processors):   49 secs 
 
 Table of Contents
 -----------------
@@ -131,25 +131,10 @@ INFO:Pack:1650 - Map created a placed design.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   1 block(s) removed
-  81 block(s) optimized away
-   1 signal(s) removed
+  90 block(s) optimized away
 
 Section 5 - Removed Logic
 -------------------------
-
-The trimmed logic report below shows the logic removed from your design due to
-sourceless or loadless signals, and VCC or ground connections.  If the removal
-of a signal or symbol results in the subsequent removal of an additional signal
-or symbol, the message explaining that second removal will be indented.  This
-indentation will be repeated as a chain of related logic is removed.
-
-To quickly locate the original cause for the removal of a chain of logic, look
-above the place where that logic is listed in the trimming report, then locate
-the lines that are least indented (begin at the leftmost edge).
-
-The signal "alu8bit/n0115[3]" is sourceless and has been removed.
-Unused block "alu8bit/Mmult_n0115" (DSP48A1) removed.
 
 Optimized Block(s):
 TYPE 		BLOCK
@@ -210,8 +195,17 @@ GND 		gameonemanager/gameonecountdowntimer/XST_GND
 VCC 		gameonemanager/gameonecountdowntimer/XST_VCC
 GND 		gamethreemanager/countdowntimer2/XST_GND
 VCC 		gamethreemanager/countdowntimer2/XST_VCC
+GND 		gamethreemanager/gamethreeanswerrom/XST_GND
+GND 		gamethreemanager/gamethreeplayerone/scorectr2/XST_GND
+VCC 		gamethreemanager/gamethreeplayerone/scorectr2/XST_VCC
+GND 		gamethreemanager/gamethreeplayerthree/scorectr2/XST_GND
+VCC 		gamethreemanager/gamethreeplayerthree/scorectr2/XST_VCC
+GND 		gamethreemanager/gamethreeplayertwo/scorectr2/XST_GND
+VCC 		gamethreemanager/gamethreeplayertwo/scorectr2/XST_VCC
 GND 		gamethreemanager/inputcountdowntimer2/XST_GND
 VCC 		gamethreemanager/inputcountdowntimer2/XST_VCC
+GND 		gamethreemanager/randomaccessctr/XST_GND
+VCC 		gamethreemanager/randomaccessctr/XST_VCC
 GND 		gametwomanager/countdowntimer/XST_GND
 VCC 		gametwomanager/countdowntimer/XST_VCC
 GND 		gametwomanager/gametwocentralleddisplay/leddisplayctr/XST_GND

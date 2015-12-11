@@ -4,16 +4,18 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module gamethreeanswerrom_66 (
-    input [6:0] address,
-    output reg [7:0] answer
+module gamethreecomparator_69 (
+    input [4:0] romanswer,
+    input [4:0] playerinput,
+    output reg equal
   );
   
   
   
-  localparam PRIMEORNOTDATA2 = 82'h3fffffffffffff0000000;
-  
   always @* begin
-    answer = PRIMEORNOTDATA2[(address)*1+0-:1];
+    equal = 1'h0;
+    if (romanswer == playerinput) begin
+      equal = 1'h1;
+    end
   end
 endmodule

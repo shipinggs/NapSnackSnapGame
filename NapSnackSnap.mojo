@@ -7,6 +7,7 @@
     <src>decimaltosevenseg.luc</src>
     <src>countdowntimer.luc</src>
     <src>gametwoplayer.luc</src>
+    <src>gamethreeinput.luc</src>
     <src top="true">mojo_top.luc</src>
     <src>gamethreeanswerrom.luc</src>
     <src>gamethreemanager.luc</src>

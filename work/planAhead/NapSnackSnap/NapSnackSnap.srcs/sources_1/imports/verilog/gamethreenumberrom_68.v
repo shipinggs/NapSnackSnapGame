@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module gamethreenumberrom_67 (
+module gamethreenumberrom_68 (
     input [6:0] address,
     output reg [7:0] number
   );

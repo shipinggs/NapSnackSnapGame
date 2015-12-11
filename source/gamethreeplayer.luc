@@ -3,21 +3,32 @@ module gamethreeplayer (
     input rst,  // reset
     input start,
     input correct,
+    input nextround,
+    input yes,
+    input no,
+    output playerinput[5],
     output playerscore[8]
   ) {
   
   .clk(clk), .rst(rst) {
     conditionalcounter scorectr2;  // ponescorectr keeps track of player one's score in game two
+    gamethreeinput gamethreeinput;
   }
 
   always {
+    playerinput = gamethreeinput.response;
     scorectr2.start = 0;
     scorectr2.upcounter = 0;
+    gamethreeinput.start = 0;
+    gamethreeinput.yes = yes;
+    gamethreeinput.no = no;
     
     if (start) {          // reset scores to 0
       scorectr2.start = 1;
     }
-    
+    if (nextround) {
+      gamethreeinput.start = 1;
+    }
     if (correct) {                  // if correct, up score
       scorectr2.upcounter = 1;
     }

@@ -11,7 +11,7 @@
      TOP = 0
      UP = 1
 */
-module conditionalcounter_69 (
+module conditionalcounter_66 (
     input clk,
     input rst,
     input upcounter,

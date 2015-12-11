@@ -9,6 +9,10 @@ module gamethreeplayer_63 (
     input rst,
     input start,
     input correct,
+    input nextround,
+    input yes,
+    input no,
+    output reg [4:0] playerinput,
     output reg [7:0] playerscore
   );
   
@@ -17,19 +21,38 @@ module gamethreeplayer_63 (
   wire [8-1:0] M_scorectr2_value;
   reg [1-1:0] M_scorectr2_upcounter;
   reg [1-1:0] M_scorectr2_start;
-  conditionalcounter_69 scorectr2 (
+  conditionalcounter_66 scorectr2 (
     .clk(clk),
     .rst(rst),
     .upcounter(M_scorectr2_upcounter),
     .start(M_scorectr2_start),
     .value(M_scorectr2_value)
   );
+  wire [5-1:0] M_gamethreeinput_response;
+  reg [1-1:0] M_gamethreeinput_start;
+  reg [1-1:0] M_gamethreeinput_yes;
+  reg [1-1:0] M_gamethreeinput_no;
+  gamethreeinput_83 gamethreeinput (
+    .clk(clk),
+    .rst(rst),
+    .start(M_gamethreeinput_start),
+    .yes(M_gamethreeinput_yes),
+    .no(M_gamethreeinput_no),
+    .response(M_gamethreeinput_response)
+  );
   
   always @* begin
+    playerinput = M_gamethreeinput_response;
     M_scorectr2_start = 1'h0;
     M_scorectr2_upcounter = 1'h0;
+    M_gamethreeinput_start = 1'h0;
+    M_gamethreeinput_yes = yes;
+    M_gamethreeinput_no = no;
     if (start) begin
       M_scorectr2_start = 1'h1;
+    end
+    if (nextround) begin
+      M_gamethreeinput_start = 1'h1;
     end
     if (correct) begin
       M_scorectr2_upcounter = 1'h1;

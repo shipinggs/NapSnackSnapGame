@@ -404,11 +404,11 @@ module mojo_top_0 (
       M_gameselectstate_d = NAP_gameselectstate;
       M_gameonemanager_start = 1'h1;
     end
-    if (M_edgameselecttwo_out) begin
+    if (M_edgameselectthree_out) begin
       M_gameselectstate_d = SNACK_gameselectstate;
       M_gametwomanager_start = 1'h1;
     end
-    if (M_edgameselectthree_out) begin
+    if (M_edgameselecttwo_out) begin
       M_gameselectstate_d = SNAP_gameselectstate;
       M_gamethreemanager_start = 1'h1;
     end

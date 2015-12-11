@@ -83,18 +83,6 @@
 <msg type="warning" file="HDLCompiler" num="413" delta="new" >"C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/decimaltosevenseg_31.v" Line 145: Result of <arg fmt="%d" index="1">8</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">4</arg>-bit target.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">aluout</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">playerone</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">playertwo</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
-<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">playerthree</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-</msg>
-
 <msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreemanager_29.v</arg>&quot; line <arg fmt="%s" index="2">39</arg>: Output port &lt;<arg fmt="%s" index="3">value</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">inputcountdowntimer2</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
@@ -107,37 +95,13 @@
 <msg type="info" file="Xst" num="3218" delta="new" >HDL ADVISOR - The RAM &lt;<arg fmt="%s" index="1">Mram_segs</arg>&gt; will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
 </msg>
 
-<msg type="warning" file="Xst" num="1989" delta="new" >Unit &lt;<arg fmt="%s" index="1">gamethreemanager_29</arg>&gt;: instances &lt;<arg fmt="%s" index="2">gamethreeplayerone</arg>&gt;, &lt;<arg fmt="%s" index="3">gamethreeplayertwo</arg>&gt; of unit &lt;<arg fmt="%s" index="4">gamethreeplayer_63</arg>&gt; are equivalent, second instance is removed
-</msg>
-
-<msg type="warning" file="Xst" num="1989" delta="new" >Unit &lt;<arg fmt="%s" index="1">gamethreemanager_29</arg>&gt;: instances &lt;<arg fmt="%s" index="2">gamethreeplayerone</arg>&gt;, &lt;<arg fmt="%s" index="3">gamethreeplayerthree</arg>&gt; of unit &lt;<arg fmt="%s" index="4">gamethreeplayer_63</arg>&gt; are equivalent, second instance is removed
-</msg>
-
 <msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">M_gameselectstate_q_2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">mojo_top_0</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1293" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">gamethreeplayerone/scorectr2/M_ctr_q_0</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">gamethreemanager_29</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">randomaccessctr/M_ctr_q_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">gamethreemanager_29</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">gamethreeplayerone/scorectr2/M_ctr_q_1</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">gamethreemanager_29</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">gamethreeplayerone/scorectr2/M_ctr_q_2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">gamethreemanager_29</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">gamethreeplayerone/scorectr2/M_ctr_q_3</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">gamethreemanager_29</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">gamethreeplayerone/scorectr2/M_ctr_q_4</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">gamethreemanager_29</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">gamethreeplayerone/scorectr2/M_ctr_q_5</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">gamethreemanager_29</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">gamethreeplayerone/scorectr2/M_ctr_q_6</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">gamethreemanager_29</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1896" delta="new" >Due to other FF/Latch trimming, FF/Latch &lt;<arg fmt="%s" index="1">gamethreeplayerone/scorectr2/M_ctr_q_7</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">gamethreemanager_29</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">alu8bit/Mmult_n0115</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt;.
 </msg>
 
 <msg type="info" file="Xst" num="741" delta="new" >HDL ADVISOR - A <arg fmt="%d" index="1">4</arg>-bit shift register was found for signal &lt;<arg fmt="%s" index="2">reset_cond/M_stage_q_3</arg>&gt; and currently occupies <arg fmt="%d" index="3">4</arg> logic cells (<arg fmt="%d" index="4">2</arg> slices). Removing the set/reset logic would take advantage of SRL<arg fmt="%d" index="5">32</arg> (and derived) primitives and reduce this to 1 logic cells (1 slices). Evaluate if the set/reset can be removed for this simple shift register. The majority of simple pipeline structures do not need to be set/reset operationally.

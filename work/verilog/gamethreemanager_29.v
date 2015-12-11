@@ -58,60 +58,135 @@ module gamethreemanager_29 (
     .start(M_roundcounter2_start),
     .value(M_roundcounter2_value)
   );
+  wire [5-1:0] M_gamethreeplayerone_playerinput;
   wire [8-1:0] M_gamethreeplayerone_playerscore;
   reg [1-1:0] M_gamethreeplayerone_start;
   reg [1-1:0] M_gamethreeplayerone_correct;
+  reg [1-1:0] M_gamethreeplayerone_nextround;
+  reg [1-1:0] M_gamethreeplayerone_yes;
+  reg [1-1:0] M_gamethreeplayerone_no;
   gamethreeplayer_63 gamethreeplayerone (
     .clk(clk),
     .rst(rst),
     .start(M_gamethreeplayerone_start),
     .correct(M_gamethreeplayerone_correct),
+    .nextround(M_gamethreeplayerone_nextround),
+    .yes(M_gamethreeplayerone_yes),
+    .no(M_gamethreeplayerone_no),
+    .playerinput(M_gamethreeplayerone_playerinput),
     .playerscore(M_gamethreeplayerone_playerscore)
   );
+  wire [5-1:0] M_gamethreeplayertwo_playerinput;
   wire [8-1:0] M_gamethreeplayertwo_playerscore;
   reg [1-1:0] M_gamethreeplayertwo_start;
   reg [1-1:0] M_gamethreeplayertwo_correct;
+  reg [1-1:0] M_gamethreeplayertwo_nextround;
+  reg [1-1:0] M_gamethreeplayertwo_yes;
+  reg [1-1:0] M_gamethreeplayertwo_no;
   gamethreeplayer_63 gamethreeplayertwo (
     .clk(clk),
     .rst(rst),
     .start(M_gamethreeplayertwo_start),
     .correct(M_gamethreeplayertwo_correct),
+    .nextround(M_gamethreeplayertwo_nextround),
+    .yes(M_gamethreeplayertwo_yes),
+    .no(M_gamethreeplayertwo_no),
+    .playerinput(M_gamethreeplayertwo_playerinput),
     .playerscore(M_gamethreeplayertwo_playerscore)
   );
+  wire [5-1:0] M_gamethreeplayerthree_playerinput;
   wire [8-1:0] M_gamethreeplayerthree_playerscore;
   reg [1-1:0] M_gamethreeplayerthree_start;
   reg [1-1:0] M_gamethreeplayerthree_correct;
+  reg [1-1:0] M_gamethreeplayerthree_nextround;
+  reg [1-1:0] M_gamethreeplayerthree_yes;
+  reg [1-1:0] M_gamethreeplayerthree_no;
   gamethreeplayer_63 gamethreeplayerthree (
     .clk(clk),
     .rst(rst),
     .start(M_gamethreeplayerthree_start),
     .correct(M_gamethreeplayerthree_correct),
+    .nextround(M_gamethreeplayerthree_nextround),
+    .yes(M_gamethreeplayerthree_yes),
+    .no(M_gamethreeplayerthree_no),
+    .playerinput(M_gamethreeplayerthree_playerinput),
     .playerscore(M_gamethreeplayerthree_playerscore)
   );
+  wire [8-1:0] M_randomaccessctr_value;
+  reg [1-1:0] M_randomaccessctr_upcounter;
+  reg [1-1:0] M_randomaccessctr_start;
+  conditionalcounter_66 randomaccessctr (
+    .clk(clk),
+    .rst(rst),
+    .upcounter(M_randomaccessctr_upcounter),
+    .start(M_randomaccessctr_start),
+    .value(M_randomaccessctr_value)
+  );
   
-  wire [8-1:0] M_gamethreeanswerrom_answer;
+  wire [5-1:0] M_gamethreeanswerrom_answer;
   reg [7-1:0] M_gamethreeanswerrom_address;
-  gamethreeanswerrom_66 gamethreeanswerrom (
+  gamethreeanswerrom_67 gamethreeanswerrom (
     .address(M_gamethreeanswerrom_address),
     .answer(M_gamethreeanswerrom_answer)
   );
   
   wire [8-1:0] M_gamethreenumberrom_number;
   reg [7-1:0] M_gamethreenumberrom_address;
-  gamethreenumberrom_67 gamethreenumberrom (
+  gamethreenumberrom_68 gamethreenumberrom (
     .address(M_gamethreenumberrom_address),
     .number(M_gamethreenumberrom_number)
+  );
+  
+  wire [1-1:0] M_gamethreecompareone_equal;
+  reg [5-1:0] M_gamethreecompareone_romanswer;
+  reg [5-1:0] M_gamethreecompareone_playerinput;
+  gamethreecomparator_69 gamethreecompareone (
+    .romanswer(M_gamethreecompareone_romanswer),
+    .playerinput(M_gamethreecompareone_playerinput),
+    .equal(M_gamethreecompareone_equal)
+  );
+  
+  wire [1-1:0] M_gamethreecomparetwo_equal;
+  reg [5-1:0] M_gamethreecomparetwo_romanswer;
+  reg [5-1:0] M_gamethreecomparetwo_playerinput;
+  gamethreecomparator_69 gamethreecomparetwo (
+    .romanswer(M_gamethreecomparetwo_romanswer),
+    .playerinput(M_gamethreecomparetwo_playerinput),
+    .equal(M_gamethreecomparetwo_equal)
+  );
+  
+  wire [1-1:0] M_gamethreecomparethree_equal;
+  reg [5-1:0] M_gamethreecomparethree_romanswer;
+  reg [5-1:0] M_gamethreecomparethree_playerinput;
+  gamethreecomparator_69 gamethreecomparethree (
+    .romanswer(M_gamethreecomparethree_romanswer),
+    .playerinput(M_gamethreecomparethree_playerinput),
+    .equal(M_gamethreecomparethree_equal)
   );
   
   always @* begin
     M_gamethreestate_d = M_gamethreestate_q;
     
-    M_gamethreeanswerrom_address = M_roundcounter2_value;
-    M_gamethreenumberrom_address = M_roundcounter2_value;
-    alufn = 6'h33;
-    alua = M_gamethreeanswerrom_answer;
-    alub = 1'h0;
+    alufn = 6'h35;
+    alub = 8'h07;
+    alua = M_roundcounter2_value;
     primeornot = 1'h0;
+    M_gamethreeplayerone_yes = playerone[0+0-:1];
+    M_gamethreeplayerone_no = playerone[1+0-:1];
+    M_gamethreeplayertwo_yes = playertwo[0+0-:1];
+    M_gamethreeplayertwo_no = playertwo[1+0-:1];
+    M_gamethreeplayerthree_yes = playerthree[0+0-:1];
+    M_gamethreeplayerthree_no = playerthree[1+0-:1];
+    M_randomaccessctr_start = 1'h0;
+    M_randomaccessctr_upcounter = 1'h1;
+    M_gamethreeanswerrom_address = M_randomaccessctr_value[0+6-:7];
+    M_gamethreenumberrom_address = M_randomaccessctr_value[0+6-:7];
+    M_gamethreecompareone_romanswer = M_gamethreeanswerrom_answer;
+    M_gamethreecomparetwo_romanswer = M_gamethreeanswerrom_answer;
+    M_gamethreecomparethree_romanswer = M_gamethreeanswerrom_answer;
+    M_gamethreecompareone_playerinput = M_gamethreeplayerone_playerinput;
+    M_gamethreecomparetwo_playerinput = M_gamethreeplayertwo_playerinput;
+    M_gamethreecomparethree_playerinput = M_gamethreeplayerthree_playerinput;
     M_countdowntimer2_start = 1'h0;
     M_inputcountdowntimer2_start = 1'h0;
     M_roundcounter2_start = 1'h0;
@@ -122,33 +197,60 @@ module gamethreemanager_29 (
     M_gamethreeplayertwo_correct = 1'h0;
     M_gamethreeplayerthree_start = 1'h0;
     M_gamethreeplayerthree_correct = 1'h0;
+    M_gamethreeplayerone_nextround = 1'h0;
+    M_gamethreeplayertwo_nextround = 1'h0;
+    M_gamethreeplayerthree_nextround = 1'h0;
     playeronescore = M_gamethreeplayerone_playerscore;
     playertwoscore = M_gamethreeplayertwo_playerscore;
     playerthreescore = M_gamethreeplayerthree_playerscore;
     if (start) begin
       M_countdowntimer2_start = 1'h1;
       M_roundcounter2_start = 1'h1;
+      M_gamethreeplayerone_start = 1'h1;
+      M_gamethreeplayertwo_start = 1'h1;
+      M_gamethreeplayerthree_start = 1'h1;
       M_gamethreestate_d = STARTCOUNTDOWN_gamethreestate;
     end
     
     case (M_gamethreestate_q)
       STARTCOUNTDOWN_gamethreestate: begin
         primeornot = M_countdowntimer2_value;
+        M_randomaccessctr_upcounter = 1'h0;
         if (M_countdowntimer2_timerdone) begin
           M_gamethreestate_d = USERINPUT_gamethreestate;
           M_inputcountdowntimer2_start = 1'h1;
+          M_gamethreeplayerone_nextround = 1'h1;
+          M_gamethreeplayertwo_nextround = 1'h1;
+          M_gamethreeplayerthree_nextround = 1'h1;
         end
       end
       USERINPUT_gamethreestate: begin
+        M_randomaccessctr_upcounter = 1'h0;
         primeornot = M_gamethreenumberrom_number;
         if (M_inputcountdowntimer2_timerdone) begin
+          M_countdowntimer2_start = 1'h1;
+          M_gamethreestate_d = SHOWSCORE_gamethreestate;
+        end
+        if (M_gamethreecompareone_equal) begin
+          M_gamethreeplayerone_correct = 1'h1;
+          M_countdowntimer2_start = 1'h1;
+          M_gamethreestate_d = SHOWSCORE_gamethreestate;
+        end
+        if (M_gamethreecomparetwo_equal) begin
+          M_gamethreeplayertwo_correct = 1'h1;
+          M_countdowntimer2_start = 1'h1;
+          M_gamethreestate_d = SHOWSCORE_gamethreestate;
+        end
+        if (M_gamethreecomparethree_equal) begin
+          M_gamethreeplayerthree_correct = 1'h1;
           M_countdowntimer2_start = 1'h1;
           M_gamethreestate_d = SHOWSCORE_gamethreestate;
         end
       end
       SHOWSCORE_gamethreestate: begin
         primeornot = 1'h0;
-        if (M_countdowntimer2_timerdone && M_roundcounter2_value < 3'h7) begin
+        M_randomaccessctr_upcounter = 1'h1;
+        if (M_countdowntimer2_timerdone && aluout) begin
           M_countdowntimer2_start = 1'h1;
           M_roundcounter2_upcounter = 1'h1;
           M_gamethreestate_d = STARTCOUNTDOWN_gamethreestate;

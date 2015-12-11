@@ -159,12 +159,12 @@ module mojo_top (
       gameonemanager.start = 1;
     }
     
-    if (edgameselecttwo.out) {                                  // ADD HERE other state select buttons
+    if (edgameselectthree.out) {                                  // ADD HERE other state select buttons
       gameselectstate.d = gameselectstate.SNACK;         // Change current game to SNACK.
       gametwomanager.start = 1;                          // initialize game two. Restart game two's counter
     }
     
-    if (edgameselectthree.out) {                                  // ADD HERE other state select buttons
+    if (edgameselecttwo.out) {                                  // ADD HERE other state select buttons
       gameselectstate.d = gameselectstate.SNAP;         // Change current game to SNACK.
       gamethreemanager.start = 1;                          // initialize game two. Restart game two's counter
     }

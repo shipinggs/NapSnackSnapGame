@@ -1,0 +1,33 @@
+module gamethreeinput #(
+    SIZE = 5 : SIZE > 0, // Width of the output
+    DIV = 0  : DIV >= 0, // number of bits to use as divisor
+    TOP = 0  : TOP >= 0 // max value, 0 = none
+    
+  )(
+    input clk,
+    input rst,
+    input start,
+    input yes,
+    input no,
+    output response[5]
+  ) {
+  
+  .clk(clk), .rst(rst) {
+    dff ctr[5];
+  }
+    
+  always {
+    response = ctr.q[SIZE-1:0]; // set the output
+    
+    if (yes) {
+      ctr.d = ctr.q + 5b1;
+    }
+    if (no) {
+      ctr.d = ctr.q + 5b10000;
+    }
+    
+    if (start) {
+      ctr.d = 5b0;
+    }
+  }
+}

@@ -1,24 +1,23 @@
 module gamethreeanswerrom (
     input address[7],  // ROM address. 3 bit because at most 7 rounds.
-    output answer[8]   // ROM output
+    output answer[5]   // ROM output
   ) {
  
-  const PRIMEORNOTDATA2 = {1,1,1,1,1,1,
-                          1,1,1,1,1,1,
-                          1,1,1,1,1,1,
-                          1,1,1,1,1,1,
-                          1,1,1,1,1,1,
-                          1,1,1,1,1,1,
-                          1,1,1,1,1,1,
-                          1,1,1,1,1,1,
-                          1,1,1,1,1,1,
-                          0,0,0,0,0,0,
-                          0,0,0,0,0,0,
-                          0,0,0,0,0,0,
-                          0,0,0,0,0,0,
-                          0,0,0,0};
-                           
- 
+  const PRIMEORNOTDATA2 = {5b1,5b1,5b1,5b1,5b1,5b1,
+                           5b1,5b1,5b1,5b1,5b1,5b1,
+                           5b1,5b1,5b1,5b1,5b1,5b1,
+                           5b1,5b1,5b1,5b1,5b1,5b1,
+                           5b1,5b1,5b1,5b1,5b1,5b1,
+                           5b1,5b1,5b1,5b1,5b1,5b1,
+                           5b1,5b1,5b1,5b1,5b1,5b1,
+                           5b1,5b1,5b1,5b1,5b1,5b1,
+                           5b1,5b1,5b1,5b1,5b1,5b1,
+                           5b10000,5b10000,5b10000,5b10000,5b10000,5b10000,
+                           5b10000,5b10000,5b10000,5b10000,5b10000,5b10000,
+                           5b10000,5b10000,5b10000,5b10000,5b10000,5b10000,
+                           5b10000,5b10000,5b10000,5b10000,5b10000,5b10000,
+                           5b10000,5b10000,5b10000,5b10000};
+                          
   always {
     answer = PRIMEORNOTDATA2[address];
   }
