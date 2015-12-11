@@ -1,0 +1,142 @@
+module gametwoinput #(
+    SIZE = 30 : SIZE > 0, // Width of the output
+    DIV = 0  : DIV >= 0, // number of bits to use as divisor
+    TOP = 0  : TOP >= 0 // max value, 0 = none
+    
+  )(
+    input clk,
+    input rst,
+    input start,
+    input red,
+    input green,
+    input blue,
+    input pressnumber[4],
+    output response[30]
+  ) {
+  
+  .clk(clk), .rst(rst) {
+    dff ctr[30];
+  }
+    
+  always {
+    response = ctr.q[SIZE-1:0]; // set the output
+    
+    case (pressnumber) {          // at every next press, the pointers should shift left by 1
+    
+      0:
+        if (red) {
+          ctr.d = ctr.q + 30b1;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b10000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b100000000000000000000; // change
+        }
+
+      1:
+        if (red) {
+          ctr.d = ctr.q + 30b10;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b100000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b1000000000000000000000; // change
+        }
+
+      2:
+        if (red) {
+          ctr.d = ctr.q + 30b100;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b1000000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b10000000000000000000000; // change
+        }
+
+      3:
+        if (red) {
+          ctr.d = ctr.q + 30b1000;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b10000000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b100000000000000000000000; // change
+        }
+
+      4: 
+        if (red) {
+          ctr.d = ctr.q + 30b10000;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b100000000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b1000000000000000000000000; // change
+        }
+
+      5:
+        if (red) {
+          ctr.d = ctr.q + 30b100000;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b1000000000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b10000000000000000000000000; // change
+        }
+      
+      6:
+        if (red) {
+          ctr.d = ctr.q + 30b1000000;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b10000000000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b100000000000000000000000000; // change
+        }
+
+      7:
+        if (red) {
+          ctr.d = ctr.q + 30b10000000;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b100000000000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b1000000000000000000000000000; // change
+        }
+
+      8:
+        if (red) {
+          ctr.d = ctr.q + 30b100000000;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b1000000000000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b10000000000000000000000000000; // change
+        }
+
+      9:
+        if (red) {
+          ctr.d = ctr.q + 30b1000000000;
+        }
+        if (green) {
+          ctr.d = ctr.q + 30b10000000000000000000;
+        }
+        if (blue) {
+          ctr.d = ctr.q + 30b100000000000000000000000000000; // change
+        }
+
+    }
+    
+    if (start) {
+      ctr.d = 30b0;
+    }
+  }
+}

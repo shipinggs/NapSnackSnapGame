@@ -1,0 +1,91 @@
+module gamethreemanager (
+    input clk,  // clock
+    input rst,  // reset
+    input start,
+    input aluout[8],
+    output alufn[6],
+    output alua[8],
+    output alub[8],
+    output primeornot[8],      // central sevensegs
+    input playerone[2],
+    input playertwo[2],
+    input playerthree[2],
+    output playeronescore[8],  // playerone sevenseg score
+    output playertwoscore[8],  // playertwo sevenseg score
+    output playerthreescore[8]
+  ) {
+  
+  .clk(clk), .rst(rst) {
+    countdowntimer countdowntimer2 (#SIZE(3), #DIV(25));  // This is for the countdown stage at the start of every round
+    inputcountdowntimer inputcountdowntimer2 (#SIZE(4), #DIV(25));  // This is the timer to show how much time is left to the players
+    fsm gamethreestate = {STARTCOUNTDOWN, USERINPUT, SHOWSCORE};
+    conditionalcounter roundcounter2 (#SIZE(3));
+    
+    gamethreeplayer gamethreeplayerone;  // creating an instance of player one
+    gamethreeplayer gamethreeplayertwo;
+    gamethreeplayer gamethreeplayerthree;    
+    
+  }
+  
+  gamethreeanswerrom gamethreeanswerrom;
+  gamethreenumberrom gamethreenumberrom;
+  
+  always {
+  
+    gamethreeanswerrom.address = roundcounter2.value;
+    gamethreenumberrom.address = roundcounter2.value;
+    
+    alufn = 6b110011;    //CMPLT
+    alub = 8b111;
+    alua = roundcounter2.value;
+    primeornot = 0;
+    
+    countdowntimer2.start = 0;
+    inputcountdowntimer2.start = 0;
+    roundcounter2.start = 0;
+    roundcounter2.upcounter = 0;
+    
+    gamethreeplayerone.start = 0;
+    gamethreeplayerone.correct = 0;
+    gamethreeplayertwo.start = 0;
+    gamethreeplayertwo.correct = 0;
+    gamethreeplayerthree.start = 0;
+    gamethreeplayerthree.correct = 0;
+    
+    playeronescore = gamethreeplayerone.playerscore;
+    playertwoscore = gamethreeplayertwo.playerscore;
+    playerthreescore = gamethreeplayerthree.playerscore;
+    
+    if (start) {                                         // when the game two select button is pressed
+      countdowntimer2.start = 1;                          // restart countdowntimer to begin at 5
+      roundcounter2.start = 1;                            // reset number of rounds played to 0.
+      gamethreestate.d = gamethreestate.STARTCOUNTDOWN;  // ensure start state is countdown state.
+    }
+    
+    case (gamethreestate.q) {
+    
+      gamethreestate.STARTCOUNTDOWN:
+        primeornot = countdowntimer2.value;
+        if (countdowntimer2.timerdone) {                    // when countdowntimer has reached 0
+          gamethreestate.d = gamethreestate.USERINPUT;    // go to next state - show led sequence
+          inputcountdowntimer2.start = 1;
+        }
+        
+      gamethreestate.USERINPUT:
+        primeornot = gamethreenumberrom.number;
+        if (inputcountdowntimer2.timerdone) {
+          countdowntimer2.start = 1;
+          gamethreestate.d = gamethreestate.SHOWSCORE;
+        }  
+                
+      gamethreestate.SHOWSCORE:    // just an arbitrary number so we know which state we're at
+        primeornot = 0;
+        if (countdowntimer2.timerdone && aluout) {       // aluout is the CMPLT result
+          countdowntimer2.start = 1;
+          roundcounter2.upcounter = 1;          // signal that one round has passed.
+          gamethreestate.d = gamethreestate.STARTCOUNTDOWN;
+        }
+         
+    }
+  }
+}

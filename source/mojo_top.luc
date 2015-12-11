@@ -1,0 +1,230 @@
+module mojo_top (
+    input clk,              // 50MHz clock
+    input rst_n,            // reset button (active low)
+    output io_led [3][8],   // LEDs on IO Shield
+    output centralleds[3],
+    input gameselectbuttons[3],
+    input playeronebuttons[3],
+    input playertwobuttons[3],
+    input playerthreebuttons[3],
+    output io_seg [8],
+    output io_sel [4]
+    //output centralsevensegzero[8]  // I believe the names of the I/Os are self-explanatory...
+    //output centralsevensegone[8],
+    //output centralsevensegtwo[8],
+    //output playeronescore[8],
+    //output playertwoscore[8],
+    //output playerthreescore[8],
+    //output playerleds[6]
+  ) {
+  
+  sig rst;                  // reset signal
+  
+  
+  .clk(clk) {
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    reset_conditioner reset_cond;
+    
+    button_conditioner bconeone;        // oneone represents player one button one (RED)
+    button_conditioner bconetwo;        // onetwo represents player one button two (GREEN)
+    button_conditioner bconethree;      // onethree represents player one button three (BLUE)
+    button_conditioner bctwoone;
+    button_conditioner bctwotwo;
+    button_conditioner bctwothree;
+    button_conditioner bcthreeone;
+    button_conditioner bcthreetwo;
+    button_conditioner bcthreethree;
+    button_conditioner bcgameselectone;
+    button_conditioner bcgameselecttwo;
+    button_conditioner bcgameselectthree;
+    
+    edge_detector edoneone (#FALL(0));    // We need all these button_conditioners and edge_detectors to have clean button inputs
+    edge_detector edonetwo (#FALL(0));
+    edge_detector edonethree (#FALL(0));
+    edge_detector edtwoone (#FALL(0));
+    edge_detector edtwotwo (#FALL(0));
+    edge_detector edtwothree (#FALL(0));
+    edge_detector edthreeone (#FALL(0));
+    edge_detector edthreetwo (#FALL(0));
+    edge_detector edthreethree (#FALL(0));
+    edge_detector edgameselectone (#FALL(0));
+    edge_detector edgameselecttwo (#FALL(0));
+    edge_detector edgameselectthree (#FALL(0)); 
+
+  }
+  
+  .clk(clk), .rst(rst) {
+    counter ctr_sevensegdisplay (#SIZE(2), #DIV(16)); // this counter is set up for the sevenseg display solely
+    fsm gameselectstate = {IDLE, NAP, SNACK, SNAP};
+    
+    gameonemanager gameonemanager;    
+    gametwomanager gametwomanager;
+    gamethreemanager gamethreemanager;
+  }
+  
+  alu8bit alu8bit;                        // ALU MODULE
+
+  decimaltosevenseg decimaltosevenseg;
+  sevenseg sevensegzero;
+  sevenseg sevensegone;
+  sevenseg sevensegtwo;
+  
+  always {
+    reset_cond.in = ~rst_n; // input raw inverted reset signal
+    rst = reset_cond.out;   // conditioned reset
+    
+    centralleds = 3b0;
+    
+    alu8bit.alufn = 0;
+    alu8bit.a = 0;
+    alu8bit.b = 0;
+    
+    gameonemanager.aluout = alu8bit.aluout;
+    gametwomanager.aluout = alu8bit.aluout;
+    gamethreemanager.aluout = alu8bit.aluout;
+    
+    gameonemanager.start = 0;
+    gametwomanager.start = 0;
+    gamethreemanager.start = 0;
+    
+    
+    bconeone.in = playeronebuttons[0];                 // This is just a series of connecting button_conditioners 
+    edoneone.in = bconeone.out;                        // to edge_detectors to output signals
+    gametwomanager.playerone[0] = edoneone.out;        // ADD HERE other output signals for other games.
+    gameonemanager.playeronebuttons[0] = edoneone.out;
+    gamethreemanager.playerone[0] = edoneone.out;
+    
+    bconetwo.in = playeronebuttons[1];                // These three buttons ("playeronebuttons") are for player one
+    edonetwo.in = bconetwo.out;
+    gametwomanager.playerone[1] = edonetwo.out;
+    gameonemanager.playeronebuttons[1] = edonetwo.out; 
+    
+    bconethree.in = playeronebuttons[2];
+    edonethree.in = bconethree.out;
+    gametwomanager.playerone[2] = edonethree.out;
+    gameonemanager.playeronebuttons[2] = edonethree.out;
+    gamethreemanager.playerone[1] = edonethree.out;
+    
+    bctwoone.in = playertwobuttons[0];                  // These are for player two
+    edtwoone.in = bctwoone.out;
+    gametwomanager.playertwo[0] = edtwoone.out;
+    gameonemanager.playertwobuttons[0] = edtwoone.out;
+    gamethreemanager.playertwo[0] = edtwoone.out;
+    
+    bctwotwo.in = playertwobuttons[1];                        
+    edtwotwo.in = bctwotwo.out;
+    gametwomanager.playertwo[1] = edtwotwo.out;
+    gameonemanager.playertwobuttons[1] = edtwotwo.out;
+    
+    bctwothree.in = playertwobuttons[2];
+    edtwothree.in = bctwothree.out;
+    gametwomanager.playertwo[2] = edtwothree.out;
+    gameonemanager.playertwobuttons[2] = edtwothree.out;
+    gamethreemanager.playertwo[1] = edtwothree.out;
+    
+    bcthreeone.in = playerthreebuttons[0];               // These are for player three
+    edthreeone.in = bcthreeone.out;
+    gametwomanager.playerthree[0] = edthreeone.out;
+    gameonemanager.playerthreebuttons[0] = edthreeone.out;
+    gamethreemanager.playerthree[0] = edthreeone.out;
+    
+    bcthreetwo.in = playerthreebuttons[1];                       
+    edthreetwo.in = bcthreetwo.out;
+    gametwomanager.playerthree[1] = edthreetwo.out;
+    gameonemanager.playerthreebuttons[1] = edthreetwo.out;
+    
+    bcthreethree.in = playerthreebuttons[2];
+    edthreethree.in = bcthreethree.out;
+    gametwomanager.playerthree[2] = edthreethree.out;
+    gameonemanager.playerthreebuttons[2] = edthreethree.out;
+    gamethreemanager.playerthree[1] = edthreethree.out;
+    
+    bcgameselectone.in = gameselectbuttons[0];          // These are for the game selection buttons
+    edgameselectone.in = bcgameselectone.out;
+    
+    bcgameselecttwo.in = gameselectbuttons[1];
+    edgameselecttwo.in = bcgameselecttwo.out;
+    
+    bcgameselectthree.in = gameselectbuttons[2];
+    edgameselectthree.in = bcgameselectthree.out;
+    
+    decimaltosevenseg.a = 0; // default seven seg is 0000.
+
+    io_led = 3x{{8b0}};    // turn LEDs off by default.
+
+    
+    if (edgameselectone.out) {                                  // this button will be changed to the gameselectbuttons. add BC and ED.
+      gameselectstate.d = gameselectstate.NAP;
+      gameonemanager.start = 1;
+    }
+    
+    if (edgameselecttwo.out) {                                  // ADD HERE other state select buttons
+      gameselectstate.d = gameselectstate.SNACK;         // Change current game to SNACK.
+      gametwomanager.start = 1;                          // initialize game two. Restart game two's counter
+    }
+    
+    if (edgameselectthree.out) {                                  // ADD HERE other state select buttons
+      gameselectstate.d = gameselectstate.SNAP;         // Change current game to SNACK.
+      gamethreemanager.start = 1;                          // initialize game two. Restart game two's counter
+    }
+    
+    case(gameselectstate.q){
+    
+      gameselectstate.NAP:
+        alu8bit.alufn = gameonemanager.alufn;            // SUB operation
+        alu8bit.a = gameonemanager.alua;
+        alu8bit.b = gameonemanager.alub;
+        io_led[0] = gameonemanager.playerleds[1:0];
+        io_led[1] = gameonemanager.playerleds[3:2];
+        io_led[2] = gameonemanager.playerleds[5:4];
+        decimaltosevenseg.a = gameonemanager.centralsevenseg;
+      
+      gameselectstate.SNACK:
+        alu8bit.alufn = gametwomanager.alufn;            // CMPLT operation
+        alu8bit.a = gametwomanager.alua;
+        alu8bit.b = gametwomanager.alub;
+        io_led[0] = gametwomanager.playerthreescore;
+        io_led[1] = gametwomanager.playertwoscore;
+        io_led[2] = gametwomanager.playeronescore;
+        decimaltosevenseg.a = gametwomanager.countdownvalue;
+        centralleds = gametwomanager.leddisplay;
+
+      gameselectstate.SNAP:
+        alu8bit.alufn = gamethreemanager.alufn;
+        alu8bit.a = gamethreemanager.alua;
+        alu8bit.b = gamethreemanager.alub;
+        io_led[0] = gamethreemanager.playerthreescore;
+        io_led[1] = gamethreemanager.playertwoscore;
+        io_led[2] = gamethreemanager.playeronescore;
+        decimaltosevenseg.a = gamethreemanager.primeornot;
+        
+    }
+    
+    
+    sevensegzero.char = decimaltosevenseg.out0; // default few lines to map decimal to sevenseg.
+    sevensegone.char = decimaltosevenseg.out1;
+    sevensegtwo.char = decimaltosevenseg.out2;
+    
+    //centralsevensegzero = ~sevensegzero.segs;  // this is for right-most external central sevenseg 
+    
+
+    case(ctr_sevensegdisplay.value) {
+      0:
+        io_seg = ~sevensegzero.segs;         // Right-most sevenseg
+        io_sel = ~4b1;
+      1: 
+        io_seg = ~sevensegone.segs;          // 2nd-from-right sevenseg
+        io_sel = ~4b10;
+      2:
+        io_seg = ~sevensegtwo.segs;          // 3rd-from-right sevenseg
+        io_sel = ~4b100; 
+
+      default:
+        io_seg = ~8b0;                       // Default is Blank
+        io_sel = ~4b0;
+      }
+    
+
+  }
+}

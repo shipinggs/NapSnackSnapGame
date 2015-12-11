@@ -1,0 +1,60 @@
+module gametwoplayer (
+    input clk,  // clock
+    input rst,  // reset
+    input correct,
+    input start,        // signal to show start of game two
+    input nextround,    // signal to show start at next round
+    input playerbuttons[3],
+    output playerscore[8],
+    output answer[30]
+  ) {
+  
+  .clk(clk), .rst(rst) {
+    conditionalcounter scorectr;  // ponescorectr keeps track of player one's score in game two
+    conditionalcounter answerctr (#SIZE(4)); // poneanswerctr helps keeps track of the sequence of inputs
+    
+    gametwoinput gametwoinput;
+  }
+  
+  always {
+    
+    gametwoinput.red = playerbuttons[0];
+    gametwoinput.green = playerbuttons[1];
+    gametwoinput.blue = playerbuttons[2];
+    gametwoinput.pressnumber = answerctr.value;    // this is necessary for keeping track of which bit to add to.
+    answer = gametwoinput.response;
+    
+    scorectr.start = 0;
+    answerctr.start = 0;
+    gametwoinput.start = 0;
+    scorectr.upcounter = 0;
+    answerctr.upcounter = 0;
+    
+    if (start) {          // reset scores to 0
+      scorectr.start = 1;
+    }
+
+    if (nextround) {      // reset ctr for input to 0 and reset input response at the start of each input round
+      answerctr.start = 1;
+      gametwoinput.start = 1;
+    }
+    
+    if (correct) {                  // if correct, up score
+      scorectr.upcounter = 1;
+    }
+    playerscore = scorectr.value; 
+    
+    if (playerbuttons[0]) {
+      answerctr.upcounter = 1;
+    }
+    
+    if (playerbuttons[1]) {
+      answerctr.upcounter = 1;
+    }
+    
+    if (playerbuttons[2]) {
+      answerctr.upcounter = 1;
+    }
+    
+  }
+}

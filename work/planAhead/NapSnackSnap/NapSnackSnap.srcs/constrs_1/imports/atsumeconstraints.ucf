@@ -1,0 +1,19 @@
+NET "playeronebuttons<0>" LOC = P124 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playeronebuttons<1>" LOC = P123 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playeronebuttons<2>" LOC = P127 | IOSTANDARD = LVTTL | PULLDOWN;
+
+NET "playertwobuttons<0>" LOC = P126 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playertwobuttons<1>" LOC = P131 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playertwobuttons<2>" LOC = P132 | IOSTANDARD = LVTTL | PULLDOWN;
+
+NET "playerthreebuttons<0>" LOC = P134 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playerthreebuttons<1>" LOC = P133 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playerthreebuttons<2>" LOC = P137 | IOSTANDARD = LVTTL | PULLDOWN;
+
+NET "centralleds<0>" LOC = P57 | IOSTANDARD = LVTTL;
+NET "centralleds<1>" LOC = P58 | IOSTANDARD = LVTTL;
+NET "centralleds<2>" LOC = P66 | IOSTANDARD = LVTTL;
+
+NET "gameselectbuttons<0>" LOC = P142 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "gameselectbuttons<1>" LOC = P140 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "gameselectbuttons<2>" LOC = P138 | IOSTANDARD = LVTTL | PULLDOWN;

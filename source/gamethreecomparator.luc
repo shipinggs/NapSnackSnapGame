@@ -1,0 +1,13 @@
+module gamethreecomparator (
+    input romanswer[2], 
+    input playerinput[2], 
+    output equal
+  ) {
+
+  always {
+    equal = 0;
+    if (romanswer == playerinput) {
+      equal = 1;
+    }
+  }
+}

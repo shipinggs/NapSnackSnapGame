@@ -1,0 +1,44 @@
+module gametwocentralleddisplay (
+    input clk,  // clock
+    input rst,  // reset
+    input sequence[30],
+    input start,  // start signal to force led sequence display to restart. Ensures it always starts at the correct first light
+    output leddisplay[3],
+    output displayfinish
+  ) {
+
+  .clk(clk), .rst(rst) {
+    leddisplaycounter leddisplayctr (#SIZE(4), #DIV(25)); // this counter is for displaying the led sequence question.
+  }                                                       // change size accordingly!
+
+  always {
+    displayfinish = 0;
+    leddisplay = 0;
+    leddisplayctr.start = 0;
+    
+    if (start) {                          // force led sequence display to restart.
+      leddisplayctr.start = 1;
+    }
+    
+    case (leddisplayctr.value) {
+    
+      10:
+        displayfinish = 1;  // to signal end of sequence
+        
+      default:
+        if (sequence[leddisplayctr.value]) {      // R pointer
+          leddisplay = 3b100;
+        }
+        else if (sequence[10+leddisplayctr.value]) {   // G pointer. Change the "2" accordingly. 
+          leddisplay = 3b10;
+        }
+        else if (sequence[20+leddisplayctr.value]) { // B pointer. Change the "4" accordingly. 
+          leddisplay = 3b1;
+        } else {
+          displayfinish = 1;    // if all R, G, B, pointers are 0, it means sequence is over.
+        }
+   
+    }
+    
+  }
+}

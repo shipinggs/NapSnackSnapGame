@@ -1,0 +1,26 @@
+module gamethreeplayer (
+    input clk,  // clock
+    input rst,  // reset
+    input start,
+    input correct,
+    output playerscore[8]
+  ) {
+  
+  .clk(clk), .rst(rst) {
+    conditionalcounter scorectr2;  // ponescorectr keeps track of player one's score in game two
+  }
+
+  always {
+    scorectr2.start = 0;
+    scorectr2.upcounter = 0;
+    
+    if (start) {          // reset scores to 0
+      scorectr2.start = 1;
+    }
+    
+    if (correct) {                  // if correct, up score
+      scorectr2.upcounter = 1;
+    }
+    playerscore = scorectr2.value; 
+  }
+}

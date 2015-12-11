@@ -1,0 +1,106 @@
+module alu8bit (
+    input alufn[6],
+    input a[8],
+    input b[8],
+    output aluout[8]
+  ) {
+
+sig xb[8]; //This will only be used for substraction.
+var i;     //This is used to iterate through a[0] to a[7] for the boolean functions.
+  
+  always {
+  
+    case(alufn) {
+      
+      6b000000: //ADD 
+        xb = b;
+        aluout = a + xb;
+       
+      6b000001: //SUB
+        xb = ~b + 1;
+        aluout = a + xb;
+      
+      6b000010: //MULTIPLY
+        aluout = a * b;
+      
+      6b001111: //MODULUS
+        if(a[7] == 0) {
+          aluout = a;
+        }
+        else {
+          aluout = ~(a-1);
+        }
+        
+      6b011000: //AND
+        for (i = 0; i < 8; i++) {
+          if (a[i] == 1 && b[i] == 1) {
+            aluout[i] = 1;
+          } 
+          else {
+            aluout[i] = 0;
+          }
+        }
+        
+      6b011110: //OR
+        for (i = 0; i < 8; i++) {
+          if (a[i] == 1 || b[i] == 1) {
+            aluout[i] = 1;
+          }
+          else {
+            aluout[i] = 0;
+          }
+        }
+       
+      6b010110: //XOR
+        for (i = 0; i < 8; i++) {
+          if ((a[i] == 1 && b[i] == 0) || (a[i] == 0 && b[i] == 1)) {
+            aluout[i] = 1;
+          }
+          else {
+            aluout[i] = 0;
+          }
+        }
+      
+      6b011010: //"A"
+        aluout = a;
+        
+      6b100000: //SHL
+        aluout = a << b;
+        
+      6b100001: //SHR
+        aluout = a >> b;
+      
+      6b100011: //SRA
+        aluout = $signed(a) >>> b;     
+      
+      6b110011: //CMPEQ
+        if (a == b) {
+          aluout = 1;
+        }
+        else {
+          aluout = 0;
+        }
+       
+      6b110101: //CMPLT
+         if (a < b) {
+          aluout = 1;
+        }
+        else {
+          aluout = 0;
+        }
+        
+      6b110111: //CMPLE
+        if (a <= b) {
+          aluout = 1;
+        }
+        else {
+          aluout = 0;
+        }
+          
+      default:
+        aluout = 8b1;
+            
+    }
+    
+  }
+}

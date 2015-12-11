@@ -1,0 +1,52 @@
+module gameonedecreasecounter #(
+    SIZE = 8 : SIZE > 0, // Width of the output
+    DIV = 0  : DIV >= 0, // number of bits to use as divisor
+    BOTTOM = 0  : BOTTOM >= 0, // max value, 0 = none
+    
+    // direction to count, use 1 for up and 0 for down
+    UP = 0 : UP == 1 || UP == 0
+  )(
+    input clk,
+    input rst,
+    input start,
+    input decrease,
+    input decreaseamount[2],
+    input aluout[8],
+    output alub[8],
+    output alufn[6],
+    output gameone_end,
+    output gameone_lose,
+    output remainder[8]
+  ) {
+  
+  .clk(clk), .rst(rst) {
+    dff ctr[8] (#INIT(8b11110)); // initialize at 30.
+  }
+  
+  const MIN_VALUE = c{BOTTOM, DIVx{1}}; // value when maxed out
+  
+  always {
+    alufn=6b000001;
+    alub = 0;
+    gameone_end = 0;
+    gameone_lose = 0;
+    remainder = ctr.q[SIZE+DIV-1-:SIZE]; // set the output
+    
+    if (start) {
+      ctr.d = 8b11110;    // restart counter to 30 when game one select button is pressed
+    }
+    
+    if (!UP) { // when this is a down counter
+      if (decrease) {
+        alub = decreaseamount;
+        ctr.d = aluout; // decrease
+      }
+      if (ctr.q == MIN_VALUE) { // reached zero?
+        gameone_end = 1; // end state signal
+      }
+      if (ctr.q > 8b11110) {
+        gameone_lose = 1; // lose state signal
+      }
+    } 
+  }
+}

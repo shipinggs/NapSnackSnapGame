@@ -1,0 +1,145 @@
+module gametwomanager (
+    input clk,  // clock
+    input rst,  // reset
+    input start,
+    input aluout[8],
+    output alufn[6],
+    output alua[8],
+    output alub[8],
+    input playerone[3],
+    input playertwo[3],
+    input playerthree[3],
+    output countdownvalue[8],    // central sevensegs
+    output leddisplay[3],        // use this to control LED sequence shown. Currently 8 bits to match io_led. 
+    output playeronescore[8],    // playerone sevenseg score
+    output playertwoscore[8],    // playertwo sevenseg score
+    output playerthreescore[8]
+  ) {
+  
+  .clk(clk), .rst(rst) {
+    countdowntimer countdowntimer (#SIZE(3), #DIV(25));  // This is for the countdown stage at the start of every round
+    inputcountdowntimer inputcountdowntimer (#SIZE(4), #DIV(25));  // This is the timer to show how much time is left to the players
+    gametwocentralleddisplay gametwocentralleddisplay;
+    fsm gametwostate = {STARTCOUNTDOWN, SHOWSEQUENCE, USERINPUT, EVALUATE, SHOWSCORE};
+    conditionalcounter roundcounter (#SIZE(3));
+    
+    gametwoplayer gametwoplayerone;  // creating an instance of player one
+    gametwoplayer gametwoplayertwo;
+    gametwoplayer gametwoplayerthree;    
+    
+  }
+  
+  gametwosequencerom gametwosequencerom;
+  
+  gametwocomparator gametwocompareplayerone;  // comparator for player one
+  gametwocomparator gametwocompareplayertwo;  // and so on
+  gametwocomparator gametwocompareplayerthree;
+
+  always {
+ 
+    alufn = 6b110101;                            // CMPLT operation
+    alub = 8b111;                                    // The game has 8 rounds.
+    alua = roundcounter.value;
+    
+    gametwoplayerone.correct = 0;
+    gametwoplayerone.playerbuttons = playerone;  // player one button inputs
+    gametwoplayerone.start = 0;
+    gametwoplayerone.nextround = 0;
+    
+    gametwoplayertwo.correct = 0;
+    gametwoplayertwo.playerbuttons = playertwo;
+    gametwoplayertwo.start = 0;
+    gametwoplayertwo.nextround = 0;
+    
+    gametwoplayerthree.correct = 0;
+    gametwoplayerthree.playerbuttons = playerthree;
+    gametwoplayerthree.start = 0;
+    gametwoplayerthree.nextround = 0;
+    
+    playeronescore = gametwoplayerone.playerscore;        // score display on sevenseg for each player
+    playertwoscore = gametwoplayertwo.playerscore;
+    playerthreescore = gametwoplayerthree.playerscore;
+    
+    countdownvalue = 0;
+    gametwosequencerom.address = roundcounter.value;  // set rom address to current round number
+    gametwocentralleddisplay.start = 0;
+    gametwocentralleddisplay.sequence = gametwosequencerom.sequence;  // connecting rom bit sequence to gametwocentralleddisplay module to process
+    roundcounter.upcounter = 0;
+    roundcounter.start = 0;
+    countdowntimer.start = 0;
+    inputcountdowntimer.start = 0;
+    leddisplay = 8b0;
+    
+    gametwocompareplayerone.a = gametwosequencerom.sequence;  // input a into comparator is from rom  
+    gametwocompareplayertwo.a = gametwosequencerom.sequence;
+    gametwocompareplayerthree.a = gametwosequencerom.sequence;
+    
+    gametwocompareplayerone.b = gametwoplayerone.answer;    // input b into comparator is from user input
+    gametwocompareplayertwo.b = gametwoplayertwo.answer;
+    gametwocompareplayerthree.b = gametwoplayerthree.answer;
+    
+    
+    
+    if (start) {                                     // when the game two select button is pressed
+      countdowntimer.start = 1;                      // restart countdowntimer to begin at 5
+      roundcounter.start = 1;                        // reset number of rounds played to 0.
+      gametwoplayerone.start = 1;
+      gametwoplayertwo.start = 1;
+      gametwoplayerthree.start = 1;
+      gametwostate.d = gametwostate.STARTCOUNTDOWN;  // ensure start state is countdown state.
+    }
+    
+    case (gametwostate.q) {
+    
+      gametwostate.STARTCOUNTDOWN:
+        countdownvalue = countdowntimer.value;
+        if (countdowntimer.timerdone) {          // when countdowntimer has reached 0
+          gametwostate.d = gametwostate.SHOWSEQUENCE;    // go to next state - show led sequence
+          gametwocentralleddisplay.start = 1;    // start signal to reset led display counter
+        }
+        
+      gametwostate.SHOWSEQUENCE:
+        leddisplay = gametwocentralleddisplay.leddisplay;  // display led sequence for current round
+        countdownvalue = 0;
+        if (gametwocentralleddisplay.displayfinish) {
+          gametwostate.d = gametwostate.USERINPUT;
+          inputcountdowntimer.start = 1;
+          gametwoplayerone.nextround = 1;
+          gametwoplayertwo.nextround = 1;
+          gametwoplayerthree.nextround = 1;
+        }
+        
+      gametwostate.USERINPUT:
+        countdownvalue = inputcountdowntimer.value;
+        if (inputcountdowntimer.timerdone) {
+          gametwostate.d = gametwostate.EVALUATE;    // go to EVALUATE state
+        }
+        if (gametwocompareplayerone.equal) {         // if the rom sequence and the player's input sequence are equal
+          gametwoplayerone.correct = 1;              // add one to player's score
+          gametwostate.d = gametwostate.EVALUATE;    // go to EVALUATE state
+        }
+        if (gametwocompareplayertwo.equal) {
+          gametwoplayertwo.correct = 1;
+          gametwostate.d = gametwostate.EVALUATE;    
+        }
+        if (gametwocompareplayerthree.equal) {
+          gametwoplayerthree.correct = 1;
+          gametwostate.d = gametwostate.EVALUATE;    // go to EVALUATE state
+        }
+        
+      gametwostate.EVALUATE:    // This state just signifies there's some comparison going on.
+        countdownvalue = 30;    // Nothing is actually happening in this state.
+        gametwostate.d = gametwostate.SHOWSCORE;   // Goes to next state straight away
+        countdowntimer.start = 1;                  // to reset countdowntimer so SHOWSCORE state has a finite time
+               
+        
+      gametwostate.SHOWSCORE:    // just an arbitrary number so we know which state we're at
+        countdownvalue = 0;
+        if (countdowntimer.timerdone && aluout) {      // aluout is the CMPLT result
+          countdowntimer.start = 1;
+          roundcounter.upcounter = 1;          // signal that one round has passed.
+          gametwostate.d = gametwostate.STARTCOUNTDOWN;
+        }
+     }
+  }
+}

@@ -1,0 +1,39 @@
+module inputcountdowntimer #( //THIS COUNTDOWNTIMER IS HARDCODED TO START AT 10.
+    SIZE = 4 : SIZE > 0, // Width of the output
+    DIV = 0  : DIV >= 0, // number of bits to use as divisor
+    BOTTOM = 0  : BOTTOM >= 0, // min value, 
+    
+    // direction to count, use 1 for up and 0 for down
+    UP = 0 : UP == 1 || UP == 0
+  )(
+    input clk,
+    input rst,
+    input start,
+    output timerdone,
+    output value[4]
+  ) {
+  
+  .clk(clk), .rst(rst) {
+    dff ctr[29] (#INIT(29h15ffffff));      // the first 4 (see output value) digits of this hex number is binary 1010 --> 10: our desired start count.
+  }
+  
+  const MIN_VALUE = c{BOTTOM, DIVx{1}}; // value when at minimum
+  
+  always {
+    timerdone = 0;
+    value = ctr.q[SIZE+DIV-1-:SIZE]; // set the output
+    
+    
+    if (!UP) { // when this is a down counter
+      ctr.d = ctr.q - 1; // decrease
+      if (ctr.q == MIN_VALUE) { // reached zero?
+        ctr.d = 29h15ffffff;
+        timerdone = 1;
+      }      
+    }
+    
+    if (start) {
+      ctr.d = 29h15ffffff;
+    }
+  }
+}

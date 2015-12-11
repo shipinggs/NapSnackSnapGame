@@ -1,0 +1,154 @@
+module gameonemanager (
+    input clk,  // clock
+    input rst,  // reset
+    input start,
+    input playeronebuttons[3],
+    input playertwobuttons[3],
+    input playerthreebuttons[3],
+    input aluout[8],
+    output alufn[6],
+    output alua[8],
+    output alub[8],
+    output centralsevenseg[8],
+    output playerleds[6]  // {playerone[1:0], playertwo[1:0], playerthree[1:0]}
+  ) {
+  
+  .clk(clk), .rst(rst) {
+    
+    fsm gameonestate = {STARTCOUNTDOWN, PLAYERONE, PLAYERTWO, PLAYERTHREE, PLAYERONEWIN, PLAYERTWOWIN, PLAYERTHREEWIN, ALLLOSE};
+    countdowntimer gameonecountdowntimer (#SIZE(3), #DIV(25));  // This is for the countdown stage at the start of every round
+    gameonedecreasecounter gameonedecreasecounter;     // this counter is for keeping track of the remainder
+  }
+  
+  
+  always {
+    alufn = gameonedecreasecounter.alufn;
+    alua = gameonedecreasecounter.remainder;
+    alub = gameonedecreasecounter.alub;
+    gameonedecreasecounter.aluout = aluout;
+    gameonedecreasecounter.start = 0;
+    gameonedecreasecounter.decrease = 0;
+    gameonedecreasecounter.decreaseamount = 0;
+    
+    gameonecountdowntimer.start = 0;
+    centralsevenseg = gameonedecreasecounter.remainder;
+    playerleds = 0;
+
+    
+    if (start) {                      // when the game two select button is pressed
+      gameonecountdowntimer.start = 1;       // reset the countdowntimer to 5.
+      gameonedecreasecounter.start = 1;
+      gameonestate.d = gameonestate.STARTCOUNTDOWN;
+    }
+    
+    case (gameonestate.q) {
+    
+      gameonestate.STARTCOUNTDOWN:
+        centralsevenseg = gameonecountdowntimer.value;
+        if (gameonecountdowntimer.timerdone) {
+          gameonestate.d = gameonestate.PLAYERONE;    // how does player one know it is his/her turn?
+        }
+      
+      gameonestate.PLAYERONE:
+        if (playeronebuttons[0]) {                        // if "minus one" button is pressed
+          gameonedecreasecounter.decrease = 1;            // allow counter to decrease
+          gameonedecreasecounter.decreaseamount = 2b1;    // and decrease by 1
+          gameonestate.d = gameonestate.PLAYERTWO;
+        } else if (playeronebuttons[1]) {
+          gameonedecreasecounter.decrease = 1;
+          gameonedecreasecounter.decreaseamount = 2b10;    // decrease by 2
+          gameonestate.d = gameonestate.PLAYERTWO;
+        } else if (playeronebuttons[2]) {
+          gameonedecreasecounter.decrease = 1;
+          gameonedecreasecounter.decreaseamount = 2b11;    // decrease by 3
+          gameonestate.d = gameonestate.PLAYERTWO;
+        }
+        if (gameonedecreasecounter.gameone_end) {          // if remainder is already 0,
+          gameonestate.d = gameonestate.PLAYERTHREEWIN;    // that'll mean the previous player has won
+        } else if (gameonedecreasecounter.gameone_lose) {  // else if the remainder is less than 0,
+          gameonestate.d = gameonestate.ALLLOSE;           // the previous player couldn't count from 1 to 3, and everyone loses
+        }
+        
+      gameonestate.PLAYERTWO:
+        if (playertwobuttons[0]) {
+          gameonedecreasecounter.decrease = 1;
+          gameonedecreasecounter.decreaseamount = 2b1;
+          gameonestate.d = gameonestate.PLAYERTHREE;
+        } else if (playertwobuttons[1]) {
+          gameonedecreasecounter.decrease = 1;
+          gameonedecreasecounter.decreaseamount = 2b10;
+          gameonestate.d = gameonestate.PLAYERTHREE;
+        } else if (playertwobuttons[2]) {
+          gameonedecreasecounter.decrease = 1;
+          gameonedecreasecounter.decreaseamount = 2b11;
+          gameonestate.d = gameonestate.PLAYERTHREE;
+        }
+        if (gameonedecreasecounter.gameone_end) {
+          gameonestate.d = gameonestate.PLAYERONEWIN;
+        } else if (gameonedecreasecounter.gameone_lose) {
+          gameonestate.d = gameonestate.ALLLOSE;
+        }
+        
+      gameonestate.PLAYERTHREE:
+        if (playerthreebuttons[0]) {
+          gameonedecreasecounter.decrease = 1;
+          gameonedecreasecounter.decreaseamount = 2b1;
+          gameonestate.d = gameonestate.PLAYERONE;
+        } else if (playerthreebuttons[1]) {
+          gameonedecreasecounter.decrease = 1;
+          gameonedecreasecounter.decreaseamount = 2b10;
+          gameonestate.d = gameonestate.PLAYERONE;
+        } else if (playerthreebuttons[2]) {
+          gameonedecreasecounter.decrease = 1;
+          gameonedecreasecounter.decreaseamount = 2b11;
+          gameonestate.d = gameonestate.PLAYERONE;
+        }
+        if (gameonedecreasecounter.gameone_end) {
+          gameonestate.d = gameonestate.PLAYERTWOWIN;
+        } else if (gameonedecreasecounter.gameone_lose) {
+          gameonestate.d = gameonestate.ALLLOSE;
+        }
+               
+      gameonestate.PLAYERONEWIN:
+        playerleds = 6b100101;
+        if (playeronebuttons[0] || playeronebuttons[1] || playeronebuttons[2]       // if any button is pressed
+         || playertwobuttons[0] || playertwobuttons[1] || playertwobuttons[2]
+         || playerthreebuttons[0] || playerthreebuttons[1] || playerthreebuttons[2]) {
+          gameonecountdowntimer.start = 1;                                          // reset the countdowntimer to 5.
+          gameonedecreasecounter.start = 1;                                         // reset decrease counter to 30.
+          gameonestate.d = gameonestate.STARTCOUNTDOWN;                             // start new round
+        }
+        
+      gameonestate.PLAYERTWOWIN:
+        playerleds = 6b011001;
+        if (playeronebuttons[0] || playeronebuttons[1] || playeronebuttons[2]       // if any button is pressed
+         || playertwobuttons[0] || playertwobuttons[1] || playertwobuttons[2]
+         || playerthreebuttons[0] || playerthreebuttons[1] || playerthreebuttons[2]) {
+          gameonecountdowntimer.start = 1;                                          // reset the countdowntimer to 5.
+          gameonedecreasecounter.start = 1;                                         // reset decrease counter to 30.
+          gameonestate.d = gameonestate.STARTCOUNTDOWN;                             // start new round
+        }
+      
+      gameonestate.PLAYERTHREEWIN:
+        playerleds = 6b010110;
+        if (playeronebuttons[0] || playeronebuttons[1] || playeronebuttons[2]       // if any button is pressed
+         || playertwobuttons[0] || playertwobuttons[1] || playertwobuttons[2]
+         || playerthreebuttons[0] || playerthreebuttons[1] || playerthreebuttons[2]) {
+          gameonecountdowntimer.start = 1;                                          // reset the countdowntimer to 5.
+          gameonedecreasecounter.start = 1;                                         // reset decrease counter to 30.
+          gameonestate.d = gameonestate.STARTCOUNTDOWN;                             // start new round
+        }
+        
+      gameonestate.ALLLOSE:
+        playerleds = 6b010101;
+        if (playeronebuttons[0] || playeronebuttons[1] || playeronebuttons[2]       // if any button is pressed
+         || playertwobuttons[0] || playertwobuttons[1] || playertwobuttons[2]
+         || playerthreebuttons[0] || playerthreebuttons[1] || playerthreebuttons[2]) {
+          gameonecountdowntimer.start = 1;                                          // reset the countdowntimer to 5.
+          gameonedecreasecounter.start = 1;                                         // reset decrease counter to 30.
+          gameonestate.d = gameonestate.STARTCOUNTDOWN;                             // start new round
+        }
+               
+    }    
+  }  
+}

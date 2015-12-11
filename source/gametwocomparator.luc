@@ -1,0 +1,13 @@
+module gametwocomparator (
+    input a[30],  //change number of bits accordingly
+    input b[30],
+    output equal
+  ) {
+
+  always {
+     equal = 0;
+     if (a == b) {      // if equal
+      equal = 1;        // output signal is high
+    }
+  }
+}
