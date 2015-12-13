@@ -48,10 +48,10 @@ module gamethreemanager_29 (
   localparam SHOWSCORE_gamethreestate = 2'd2;
   
   reg [1:0] M_gamethreestate_d, M_gamethreestate_q = STARTCOUNTDOWN_gamethreestate;
-  wire [3-1:0] M_roundcounter2_value;
+  wire [4-1:0] M_roundcounter2_value;
   reg [1-1:0] M_roundcounter2_upcounter;
   reg [1-1:0] M_roundcounter2_start;
-  conditionalcounter_52 roundcounter2 (
+  conditionalcounter_62 roundcounter2 (
     .clk(clk),
     .rst(rst),
     .upcounter(M_roundcounter2_upcounter),
@@ -122,17 +122,27 @@ module gamethreemanager_29 (
     .start(M_randomaccessctr_start),
     .value(M_randomaccessctr_value)
   );
+  wire [8-1:0] M_randomaccessctr2_value;
+  reg [1-1:0] M_randomaccessctr2_upcounter;
+  reg [1-1:0] M_randomaccessctr2_start;
+  conditionalcounter_66 randomaccessctr2 (
+    .clk(clk),
+    .rst(rst),
+    .upcounter(M_randomaccessctr2_upcounter),
+    .start(M_randomaccessctr2_start),
+    .value(M_randomaccessctr2_value)
+  );
   
   wire [5-1:0] M_gamethreeanswerrom_answer;
   reg [7-1:0] M_gamethreeanswerrom_address;
-  gamethreeanswerrom_67 gamethreeanswerrom (
+  gamethreeanswerrom_68 gamethreeanswerrom (
     .address(M_gamethreeanswerrom_address),
     .answer(M_gamethreeanswerrom_answer)
   );
   
   wire [8-1:0] M_gamethreenumberrom_number;
   reg [7-1:0] M_gamethreenumberrom_address;
-  gamethreenumberrom_68 gamethreenumberrom (
+  gamethreenumberrom_69 gamethreenumberrom (
     .address(M_gamethreenumberrom_address),
     .number(M_gamethreenumberrom_number)
   );
@@ -140,7 +150,7 @@ module gamethreemanager_29 (
   wire [1-1:0] M_gamethreecompareone_equal;
   reg [5-1:0] M_gamethreecompareone_romanswer;
   reg [5-1:0] M_gamethreecompareone_playerinput;
-  gamethreecomparator_69 gamethreecompareone (
+  gamethreecomparator_70 gamethreecompareone (
     .romanswer(M_gamethreecompareone_romanswer),
     .playerinput(M_gamethreecompareone_playerinput),
     .equal(M_gamethreecompareone_equal)
@@ -149,7 +159,7 @@ module gamethreemanager_29 (
   wire [1-1:0] M_gamethreecomparetwo_equal;
   reg [5-1:0] M_gamethreecomparetwo_romanswer;
   reg [5-1:0] M_gamethreecomparetwo_playerinput;
-  gamethreecomparator_69 gamethreecomparetwo (
+  gamethreecomparator_70 gamethreecomparetwo (
     .romanswer(M_gamethreecomparetwo_romanswer),
     .playerinput(M_gamethreecomparetwo_playerinput),
     .equal(M_gamethreecomparetwo_equal)
@@ -158,7 +168,7 @@ module gamethreemanager_29 (
   wire [1-1:0] M_gamethreecomparethree_equal;
   reg [5-1:0] M_gamethreecomparethree_romanswer;
   reg [5-1:0] M_gamethreecomparethree_playerinput;
-  gamethreecomparator_69 gamethreecomparethree (
+  gamethreecomparator_70 gamethreecomparethree (
     .romanswer(M_gamethreecomparethree_romanswer),
     .playerinput(M_gamethreecomparethree_playerinput),
     .equal(M_gamethreecomparethree_equal)
@@ -168,7 +178,7 @@ module gamethreemanager_29 (
     M_gamethreestate_d = M_gamethreestate_q;
     
     alufn = 6'h35;
-    alub = 8'h07;
+    alub = 8'h0b;
     alua = M_roundcounter2_value;
     primeornot = 1'h0;
     M_gamethreeplayerone_yes = playerone[0+0-:1];
@@ -179,8 +189,15 @@ module gamethreemanager_29 (
     M_gamethreeplayerthree_no = playerthree[1+0-:1];
     M_randomaccessctr_start = 1'h0;
     M_randomaccessctr_upcounter = 1'h1;
-    M_gamethreeanswerrom_address = M_randomaccessctr_value[0+6-:7];
-    M_gamethreenumberrom_address = M_randomaccessctr_value[0+6-:7];
+    M_randomaccessctr2_start = 1'h0;
+    M_randomaccessctr2_upcounter = 1'h1;
+    if (M_roundcounter2_value == 1'h0 || M_roundcounter2_value == 2'h2 || M_roundcounter2_value == 3'h4 || M_roundcounter2_value == 3'h6) begin
+      M_gamethreeanswerrom_address = M_randomaccessctr_value[0+6-:7];
+      M_gamethreenumberrom_address = M_randomaccessctr_value[0+6-:7];
+    end else begin
+      M_gamethreeanswerrom_address = M_randomaccessctr2_value[0+6-:7];
+      M_gamethreenumberrom_address = M_randomaccessctr2_value[0+6-:7];
+    end
     M_gamethreecompareone_romanswer = M_gamethreeanswerrom_answer;
     M_gamethreecomparetwo_romanswer = M_gamethreeanswerrom_answer;
     M_gamethreecomparethree_romanswer = M_gamethreeanswerrom_answer;
@@ -215,7 +232,6 @@ module gamethreemanager_29 (
     case (M_gamethreestate_q)
       STARTCOUNTDOWN_gamethreestate: begin
         primeornot = M_countdowntimer2_value;
-        M_randomaccessctr_upcounter = 1'h0;
         if (M_countdowntimer2_timerdone) begin
           M_gamethreestate_d = USERINPUT_gamethreestate;
           M_inputcountdowntimer2_start = 1'h1;
@@ -225,8 +241,12 @@ module gamethreemanager_29 (
         end
       end
       USERINPUT_gamethreestate: begin
-        M_randomaccessctr_upcounter = 1'h0;
         primeornot = M_gamethreenumberrom_number;
+        if (M_roundcounter2_value == 1'h0 || M_roundcounter2_value == 2'h2 || M_roundcounter2_value == 3'h4 || M_roundcounter2_value == 3'h6) begin
+          M_randomaccessctr_upcounter = 1'h0;
+        end else begin
+          M_randomaccessctr2_upcounter = 1'h0;
+        end
         if (M_inputcountdowntimer2_timerdone) begin
           M_countdowntimer2_start = 1'h1;
           M_gamethreestate_d = SHOWSCORE_gamethreestate;
@@ -249,7 +269,6 @@ module gamethreemanager_29 (
       end
       SHOWSCORE_gamethreestate: begin
         primeornot = 1'h0;
-        M_randomaccessctr_upcounter = 1'h1;
         if (M_countdowntimer2_timerdone && aluout) begin
           M_countdowntimer2_start = 1'h1;
           M_roundcounter2_upcounter = 1'h1;

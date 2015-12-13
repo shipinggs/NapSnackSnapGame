@@ -19,13 +19,14 @@ module gamethreemanager (
     countdowntimer countdowntimer2 (#SIZE(3), #DIV(25));  // This is for the countdown stage at the start of every round
     inputcountdowntimer inputcountdowntimer2 (#SIZE(4), #DIV(25));  // This is the timer to show how much time is left to the players
     fsm gamethreestate = {STARTCOUNTDOWN, USERINPUT, SHOWSCORE};
-    conditionalcounter roundcounter2 (#SIZE(3));
+    conditionalcounter roundcounter2 (#SIZE(4));
     
     gamethreeplayer gamethreeplayerone;  // creating an instance of player one
     gamethreeplayer gamethreeplayertwo;
     gamethreeplayer gamethreeplayerthree;    
     
     conditionalcounter randomaccessctr;
+    conditionalcounter randomaccessctr2;
     
   }
   
@@ -39,7 +40,7 @@ module gamethreemanager (
   always {
   
     alufn = 6b110101;    //CMPLT
-    alub = 8b111;
+    alub = 8b1011;
     alua = roundcounter2.value;
     primeornot = 0;
     
@@ -53,8 +54,16 @@ module gamethreemanager (
     randomaccessctr.start = 0;
     randomaccessctr.upcounter = 1;                            // let randomaccessctr run by default
     
-    gamethreeanswerrom.address = randomaccessctr.value[6:0];      //setting address as round number for now
-    gamethreenumberrom.address = randomaccessctr.value[6:0];
+    randomaccessctr2.start = 0;
+    randomaccessctr2.upcounter = 1;                            // let randomaccessctr2 run by default
+    
+    if (roundcounter2.value == 0 || roundcounter2.value == 2 || roundcounter2.value == 4 || roundcounter2.value == 6) {
+      gamethreeanswerrom.address = randomaccessctr.value[6:0];      //setting address as round number for now
+      gamethreenumberrom.address = randomaccessctr.value[6:0];
+    } else {
+      gamethreeanswerrom.address = randomaccessctr2.value[6:0];      //setting address as round number for now
+      gamethreenumberrom.address = randomaccessctr2.value[6:0];
+    }
     
     gamethreecompareone.romanswer = gamethreeanswerrom.answer;
     gamethreecomparetwo.romanswer = gamethreeanswerrom.answer;
@@ -97,7 +106,6 @@ module gamethreemanager (
     
       gamethreestate.STARTCOUNTDOWN:
         primeornot = countdowntimer2.value;
-        randomaccessctr.upcounter = 0;                      // halting randomaccessctr
         if (countdowntimer2.timerdone) {                    // when countdowntimer has reached 0
           gamethreestate.d = gamethreestate.USERINPUT;    // go to next state - show led sequence
           inputcountdowntimer2.start = 1;
@@ -107,8 +115,12 @@ module gamethreemanager (
         }
         
       gamethreestate.USERINPUT:
-        randomaccessctr.upcounter = 0;                          // halting randomaccessctr so the address stays the same for the round
         primeornot = gamethreenumberrom.number;
+        if (roundcounter2.value == 0 || roundcounter2.value == 2 || roundcounter2.value == 4 || roundcounter2.value == 6){
+          randomaccessctr.upcounter = 0;                      // halting randomaccessctr
+        } else {
+          randomaccessctr2.upcounter = 0;
+        }        
         if (inputcountdowntimer2.timerdone) {
           countdowntimer2.start = 1;
           gamethreestate.d = gamethreestate.SHOWSCORE;
@@ -132,7 +144,6 @@ module gamethreemanager (
                 
       gamethreestate.SHOWSCORE:    // just an arbitrary number so we know which state we're at
         primeornot = 0;
-        randomaccessctr.upcounter = 1;
         if (countdowntimer2.timerdone && aluout) {       // aluout is the CMPLT result
           countdowntimer2.start = 1;
           roundcounter2.upcounter = 1;          // signal that one round has passed.

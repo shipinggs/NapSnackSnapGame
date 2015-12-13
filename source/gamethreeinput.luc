@@ -9,6 +9,7 @@ module gamethreeinput #(
     input start,
     input yes,
     input no,
+    input pressnumber[4],
     output response[5]
   ) {
   
@@ -19,11 +20,15 @@ module gamethreeinput #(
   always {
     response = ctr.q[SIZE-1:0]; // set the output
     
-    if (yes) {
-      ctr.d = ctr.q + 5b1;
-    }
-    if (no) {
-      ctr.d = ctr.q + 5b10000;
+    if (pressnumber < 4b1) {
+    
+      if (yes) {
+        ctr.d = ctr.q + 5b1;
+      }
+      if (no) {
+        ctr.d = ctr.q + 5b10000;
+      }
+    
     }
     
     if (start) {

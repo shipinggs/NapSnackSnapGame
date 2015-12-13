@@ -6,41 +6,41 @@
 
 /*
    Parameters:
-     SIZE = 4
+     SIZE = 5
      DIV = 0
      TOP = 0
-     UP = 1
 */
-module conditionalcounter_74 (
+module gamethreeinput_84 (
     input clk,
     input rst,
-    input upcounter,
     input start,
-    output reg [3:0] value
+    input yes,
+    input no,
+    input [3:0] pressnumber,
+    output reg [4:0] response
   );
   
-  localparam SIZE = 3'h4;
+  localparam SIZE = 3'h5;
   localparam DIV = 1'h0;
   localparam TOP = 1'h0;
-  localparam UP = 1'h1;
   
   
-  reg [3:0] M_ctr_d, M_ctr_q = 1'h0;
-  
-  localparam MAX_VALUE = 1'h0;
+  reg [4:0] M_ctr_d, M_ctr_q = 1'h0;
   
   always @* begin
     M_ctr_d = M_ctr_q;
     
-    value = M_ctr_q[0+3-:4];
-    if (1'h1 && upcounter) begin
-      M_ctr_d = M_ctr_q + 1'h1;
-      if (1'h0 && M_ctr_q == 1'h0) begin
-        M_ctr_d = 1'h0;
+    response = M_ctr_q[0+4-:5];
+    if (pressnumber < 4'h1) begin
+      if (yes) begin
+        M_ctr_d = M_ctr_q + 5'h01;
+      end
+      if (no) begin
+        M_ctr_d = M_ctr_q + 5'h10;
       end
     end
     if (start) begin
-      M_ctr_d = 1'h0;
+      M_ctr_d = 5'h00;
     end
   end
   

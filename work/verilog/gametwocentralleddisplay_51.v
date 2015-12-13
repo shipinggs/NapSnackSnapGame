@@ -17,7 +17,7 @@ module gametwocentralleddisplay_51 (
   
   wire [4-1:0] M_leddisplayctr_value;
   reg [1-1:0] M_leddisplayctr_start;
-  leddisplaycounter_72 leddisplayctr (
+  leddisplaycounter_73 leddisplayctr (
     .clk(clk),
     .rst(rst),
     .start(M_leddisplayctr_start),

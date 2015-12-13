@@ -30,7 +30,7 @@ module gametwoplayer_53 (
   wire [4-1:0] M_answerctr_value;
   reg [1-1:0] M_answerctr_upcounter;
   reg [1-1:0] M_answerctr_start;
-  conditionalcounter_74 answerctr (
+  conditionalcounter_62 answerctr (
     .clk(clk),
     .rst(rst),
     .upcounter(M_answerctr_upcounter),
@@ -43,7 +43,7 @@ module gametwoplayer_53 (
   reg [1-1:0] M_gametwoinput_green;
   reg [1-1:0] M_gametwoinput_blue;
   reg [4-1:0] M_gametwoinput_pressnumber;
-  gametwoinput_75 gametwoinput (
+  gametwoinput_76 gametwoinput (
     .clk(clk),
     .rst(rst),
     .start(M_gametwoinput_start),

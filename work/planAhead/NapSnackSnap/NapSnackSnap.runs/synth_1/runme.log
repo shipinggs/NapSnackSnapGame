@@ -7,16 +7,16 @@ Reading design: mojo_top_0.prj
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/leddisplaycounter_72.v" into library work
-Parsing module <leddisplaycounter_72>.
-Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gametwoinput_75.v" into library work
-Parsing module <gametwoinput_75>.
-Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreeinput_83.v" into library work
-Parsing module <gamethreeinput_83>.
-Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/conditionalcounter_74.v" into library work
-Parsing module <conditionalcounter_74>.
+Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/leddisplaycounter_73.v" into library work
+Parsing module <leddisplaycounter_73>.
+Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gametwoinput_76.v" into library work
+Parsing module <gametwoinput_76>.
+Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreeinput_84.v" into library work
+Parsing module <gamethreeinput_84>.
 Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/conditionalcounter_66.v" into library work
 Parsing module <conditionalcounter_66>.
+Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/conditionalcounter_62.v" into library work
+Parsing module <conditionalcounter_62>.
 Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/pipeline_35.v" into library work
 Parsing module <pipeline_35>.
 Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/inputcountdowntimer_50.v" into library work
@@ -31,12 +31,12 @@ Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/Na
 Parsing module <gametwocentralleddisplay_51>.
 Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreeplayer_63.v" into library work
 Parsing module <gamethreeplayer_63>.
-Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreenumberrom_68.v" into library work
-Parsing module <gamethreenumberrom_68>.
-Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreecomparator_69.v" into library work
-Parsing module <gamethreecomparator_69>.
-Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreeanswerrom_67.v" into library work
-Parsing module <gamethreeanswerrom_67>.
+Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreenumberrom_69.v" into library work
+Parsing module <gamethreenumberrom_69>.
+Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreecomparator_70.v" into library work
+Parsing module <gamethreecomparator_70>.
+Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreeanswerrom_68.v" into library work
+Parsing module <gamethreeanswerrom_68>.
 Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gameonedecreasecounter_48.v" into library work
 Parsing module <gameonedecreasecounter_48>.
 Analyzing Verilog file "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/countdowntimer_47.v" into library work
@@ -94,7 +94,7 @@ Elaborating module <inputcountdowntimer_50>.
 
 Elaborating module <gametwocentralleddisplay_51>.
 
-Elaborating module <leddisplaycounter_72>.
+Elaborating module <leddisplaycounter_73>.
 
 Elaborating module <conditionalcounter_52>.
 
@@ -102,9 +102,9 @@ Elaborating module <gametwoplayer_53>.
 
 Elaborating module <conditionalcounter_66>.
 
-Elaborating module <conditionalcounter_74>.
+Elaborating module <conditionalcounter_62>.
 
-Elaborating module <gametwoinput_75>.
+Elaborating module <gametwoinput_76>.
 
 Elaborating module <gametwosequencerom_56>.
 
@@ -115,13 +115,13 @@ WARNING:HDLCompiler:1127 - "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhea
 
 Elaborating module <gamethreeplayer_63>.
 
-Elaborating module <gamethreeinput_83>.
+Elaborating module <gamethreeinput_84>.
 
-Elaborating module <gamethreeanswerrom_67>.
+Elaborating module <gamethreeanswerrom_68>.
 
-Elaborating module <gamethreenumberrom_68>.
+Elaborating module <gamethreenumberrom_69>.
 
-Elaborating module <gamethreecomparator_69>.
+Elaborating module <gamethreecomparator_70>.
 
 Elaborating module <alu8bit_30>.
 
@@ -301,15 +301,15 @@ Synthesizing Unit <gametwocentralleddisplay_51>.
 	inferred   3 Combinational logic shifter(s).
 Unit <gametwocentralleddisplay_51> synthesized.
 
-Synthesizing Unit <leddisplaycounter_72>.
-    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/leddisplaycounter_72.v".
+Synthesizing Unit <leddisplaycounter_73>.
+    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/leddisplaycounter_73.v".
     Found 29-bit register for signal <M_ctr_q>.
     Found 29-bit adder for signal <M_ctr_q[28]_GND_13_o_add_0_OUT> created at line 36.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  29 D-type flip-flop(s).
 	inferred   1 Multiplexer(s).
-Unit <leddisplaycounter_72> synthesized.
+Unit <leddisplaycounter_73> synthesized.
 
 Synthesizing Unit <conditionalcounter_52>.
     Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/conditionalcounter_52.v".
@@ -337,18 +337,18 @@ Synthesizing Unit <conditionalcounter_66>.
 	inferred   1 Multiplexer(s).
 Unit <conditionalcounter_66> synthesized.
 
-Synthesizing Unit <conditionalcounter_74>.
-    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/conditionalcounter_74.v".
+Synthesizing Unit <conditionalcounter_62>.
+    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/conditionalcounter_62.v".
     Found 4-bit register for signal <M_ctr_q>.
     Found 4-bit adder for signal <M_ctr_q[3]_GND_17_o_add_0_OUT> created at line 37.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred   4 D-type flip-flop(s).
 	inferred   1 Multiplexer(s).
-Unit <conditionalcounter_74> synthesized.
+Unit <conditionalcounter_62> synthesized.
 
-Synthesizing Unit <gametwoinput_75>.
-    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gametwoinput_75.v".
+Synthesizing Unit <gametwoinput_76>.
+    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gametwoinput_76.v".
     Found 30-bit register for signal <M_ctr_q>.
     Found 30-bit adder for signal <M_ctr_q[29]_GND_18_o_add_0_OUT> created at line 39.
     Found 30-bit adder for signal <M_ctr_q[29]_GND_18_o_add_2_OUT> created at line 42.
@@ -384,7 +384,7 @@ Synthesizing Unit <gametwoinput_75>.
 	inferred   1 Adder/Subtractor(s).
 	inferred  30 D-type flip-flop(s).
 	inferred  30 Multiplexer(s).
-Unit <gametwoinput_75> synthesized.
+Unit <gametwoinput_76> synthesized.
 
 Synthesizing Unit <gametwosequencerom_56>.
     Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gametwosequencerom_56.v".
@@ -422,10 +422,10 @@ INFO:Xst:3210 - "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackS
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 8-bit 3-to-1 multiplexer for signal <primeornot> created at line 215.
-    Found 1-bit 4-to-1 multiplexer for signal <M_countdowntimer2_start> created at line 215.
+    Found 8-bit 3-to-1 multiplexer for signal <primeornot> created at line 232.
+    Found 1-bit 4-to-1 multiplexer for signal <M_countdowntimer2_start> created at line 232.
     Summary:
-	inferred  12 Multiplexer(s).
+	inferred  15 Multiplexer(s).
 	inferred   1 Finite State Machine(s).
 Unit <gamethreemanager_29> synthesized.
 
@@ -435,43 +435,45 @@ Synthesizing Unit <gamethreeplayer_63>.
 	no macro.
 Unit <gamethreeplayer_63> synthesized.
 
-Synthesizing Unit <gamethreeinput_83>.
-    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreeinput_83.v".
+Synthesizing Unit <gamethreeinput_84>.
+    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreeinput_84.v".
     Found 5-bit register for signal <M_ctr_q>.
-    Found 5-bit adder for signal <M_ctr_q[4]_GND_24_o_add_0_OUT> created at line 34.
-    Found 5-bit adder for signal <M_ctr_q[4]_PWR_25_o_add_2_OUT> created at line 37.
+    Found 5-bit adder for signal <M_ctr_q[4]_GND_24_o_add_1_OUT> created at line 36.
+    Found 5-bit adder for signal <M_ctr_q[4]_PWR_25_o_add_3_OUT> created at line 39.
+    Found 4-bit comparator greater for signal <pressnumber[3]_GND_24_o_LessThan_1_o> created at line 34
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred   5 D-type flip-flop(s).
+	inferred   1 Comparator(s).
 	inferred   2 Multiplexer(s).
-Unit <gamethreeinput_83> synthesized.
+Unit <gamethreeinput_84> synthesized.
 
-Synthesizing Unit <gamethreeanswerrom_67>.
-    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreeanswerrom_67.v".
-    Found 10-bit adder for signal <n0006> created at line 17.
+Synthesizing Unit <gamethreeanswerrom_68>.
+    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreeanswerrom_68.v".
+    Found 10-bit adder for signal <address[6]_GND_25_o_add_1_OUT> created at line 17.
     Found 7x3-bit multiplier for signal <n0007> created at line 17.
-    Found 819-bit shifter logical right for signal <n0004> created at line 17
+    Found 1279-bit shifter logical right for signal <n0004> created at line 17
     Summary:
 	inferred   1 Multiplier(s).
 	inferred   1 Adder/Subtractor(s).
 	inferred   1 Combinational logic shifter(s).
-Unit <gamethreeanswerrom_67> synthesized.
+Unit <gamethreeanswerrom_68> synthesized.
 
-Synthesizing Unit <gamethreenumberrom_68>.
-    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreenumberrom_68.v".
+Synthesizing Unit <gamethreenumberrom_69>.
+    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreenumberrom_69.v".
     Found 10-bit adder for signal <address[6]_GND_27_o_add_0_OUT> created at line 17.
-    Found 1311-bit shifter logical right for signal <n0003> created at line 17
+    Found 2047-bit shifter logical right for signal <n0003> created at line 17
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred   1 Combinational logic shifter(s).
-Unit <gamethreenumberrom_68> synthesized.
+Unit <gamethreenumberrom_69> synthesized.
 
-Synthesizing Unit <gamethreecomparator_69>.
-    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreecomparator_69.v".
+Synthesizing Unit <gamethreecomparator_70>.
+    Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/gamethreecomparator_70.v".
     Found 5-bit comparator equal for signal <equal> created at line 17
     Summary:
 	inferred   1 Comparator(s).
-Unit <gamethreecomparator_69> synthesized.
+Unit <gamethreecomparator_70> synthesized.
 
 Synthesizing Unit <alu8bit_30>.
     Related source file is "C:/Users/Shi Ping/Desktop/NapSnackSnap/work/planAhead/NapSnackSnap/NapSnackSnap.srcs/sources_1/imports/verilog/alu8bit_30.v".
@@ -552,63 +554,65 @@ Macro Statistics
  5x4-bit multiplier                                    : 1
  7x3-bit multiplier                                    : 1
  8x8-bit multiplier                                    : 1
-# Adders/Subtractors                                   : 53
+# Adders/Subtractors                                   : 57
  10-bit adder                                          : 2
  18-bit adder                                          : 1
  20-bit adder                                          : 12
  28-bit subtractor                                     : 3
  29-bit adder                                          : 1
  29-bit subtractor                                     : 2
- 3-bit adder                                           : 2
+ 3-bit adder                                           : 1
  30-bit adder                                          : 3
- 4-bit adder                                           : 3
+ 4-bit adder                                           : 7
  4-bit subtractor                                      : 7
  5-bit adder                                           : 5
- 8-bit adder                                           : 10
+ 8-bit adder                                           : 11
  8-bit subtractor                                      : 1
  9-bit adder                                           : 1
-# Registers                                            : 64
+# Registers                                            : 68
  1-bit register                                        : 12
  18-bit register                                       : 1
  2-bit register                                        : 12
  20-bit register                                       : 12
  28-bit register                                       : 3
  29-bit register                                       : 3
- 3-bit register                                        : 3
+ 3-bit register                                        : 2
  30-bit register                                       : 3
- 4-bit register                                        : 4
+ 4-bit register                                        : 8
  5-bit register                                        : 3
- 8-bit register                                        : 8
-# Comparators                                          : 35
+ 8-bit register                                        : 9
+# Comparators                                          : 38
  30-bit comparator equal                               : 3
+ 4-bit comparator greater                              : 3
  5-bit comparator equal                                : 3
  8-bit comparator equal                                : 1
  8-bit comparator greater                              : 27
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 281
- 1-bit 2-to-1 multiplexer                              : 40
+# Multiplexers                                         : 288
+ 1-bit 2-to-1 multiplexer                              : 42
  1-bit 4-to-1 multiplexer                              : 2
  2-bit 2-to-1 multiplexer                              : 10
  24-bit 2-to-1 multiplexer                             : 1
  24-bit 4-to-1 multiplexer                             : 1
  28-bit 2-to-1 multiplexer                             : 9
  29-bit 2-to-1 multiplexer                             : 7
- 3-bit 2-to-1 multiplexer                              : 7
+ 3-bit 2-to-1 multiplexer                              : 6
  30-bit 2-to-1 multiplexer                             : 90
- 4-bit 2-to-1 multiplexer                              : 79
+ 4-bit 2-to-1 multiplexer                              : 83
  5-bit 2-to-1 multiplexer                              : 6
  6-bit 2-to-1 multiplexer                              : 1
  6-bit 4-to-1 multiplexer                              : 1
- 8-bit 2-to-1 multiplexer                              : 22
+ 7-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 23
  8-bit 3-to-1 multiplexer                              : 1
  8-bit 4-to-1 multiplexer                              : 4
 # Logic shifters                                       : 9
- 1311-bit shifter logical right                        : 1
+ 1279-bit shifter logical right                        : 1
+ 2047-bit shifter logical right                        : 1
  59-bit shifter logical right                          : 3
  8-bit shifter arithmetic right                        : 1
  8-bit shifter logical left                            : 1
  8-bit shifter logical right                           : 1
- 819-bit shifter logical right                         : 1
  959-bit shifter logical right                         : 1
 # FSMs                                                 : 3
 
@@ -628,37 +632,37 @@ Synthesizing (advanced) Unit <conditionalcounter_52>.
 The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
 Unit <conditionalcounter_52> synthesized (advanced).
 
+Synthesizing (advanced) Unit <conditionalcounter_62>.
+The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
+Unit <conditionalcounter_62> synthesized (advanced).
+
 Synthesizing (advanced) Unit <conditionalcounter_66>.
 The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
 Unit <conditionalcounter_66> synthesized (advanced).
-
-Synthesizing (advanced) Unit <conditionalcounter_74>.
-The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
-Unit <conditionalcounter_74> synthesized (advanced).
 
 Synthesizing (advanced) Unit <counter_26>.
 The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
 Unit <counter_26> synthesized (advanced).
 
-Synthesizing (advanced) Unit <gamethreeanswerrom_67>.
-	Multiplier <Mmult_n0007> in block <gamethreeanswerrom_67> and adder/subtractor <Madd_n0006_Madd> in block <gamethreeanswerrom_67> are combined into a MAC<Maddsub_n0007>.
-Unit <gamethreeanswerrom_67> synthesized (advanced).
+Synthesizing (advanced) Unit <gamethreeanswerrom_68>.
+	Multiplier <Mmult_n0007> in block <gamethreeanswerrom_68> and adder/subtractor <Madd_address[6]_GND_25_o_add_1_OUT> in block <gamethreeanswerrom_68> are combined into a MAC<Maddsub_n0007>.
+Unit <gamethreeanswerrom_68> synthesized (advanced).
 
-Synthesizing (advanced) Unit <gamethreeinput_83>.
+Synthesizing (advanced) Unit <gamethreeinput_84>.
 The following registers are absorbed into accumulator <M_ctr_q>: 1 register on signal <M_ctr_q>.
-Unit <gamethreeinput_83> synthesized (advanced).
+Unit <gamethreeinput_84> synthesized (advanced).
 
-Synthesizing (advanced) Unit <gametwoinput_75>.
+Synthesizing (advanced) Unit <gametwoinput_76>.
 The following registers are absorbed into accumulator <M_ctr_q>: 1 register on signal <M_ctr_q>.
-Unit <gametwoinput_75> synthesized (advanced).
+Unit <gametwoinput_76> synthesized (advanced).
 
 Synthesizing (advanced) Unit <gametwosequencerom_56>.
 	Multiplier <Mmult_n0007> in block <gametwosequencerom_56> and adder/subtractor <Madd_address[3]_GND_19_o_add_1_OUT> in block <gametwosequencerom_56> are combined into a MAC<Maddsub_n0007>.
 Unit <gametwosequencerom_56> synthesized (advanced).
 
-Synthesizing (advanced) Unit <leddisplaycounter_72>.
+Synthesizing (advanced) Unit <leddisplaycounter_73>.
 The following registers are absorbed into counter <M_ctr_q>: 1 register on signal <M_ctr_q>.
-Unit <leddisplaycounter_72> synthesized (advanced).
+Unit <leddisplaycounter_73> synthesized (advanced).
 
 Synthesizing (advanced) Unit <mojo_top_0>.
 INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_io_sel> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
@@ -697,7 +701,7 @@ Macro Statistics
  4x4-bit single-port distributed Read Only RAM         : 1
 # MACs                                                 : 2
  5x4-to-9-bit MAC                                      : 1
- 7x3-to-9-bit MAC                                      : 1
+ 7x3-to-10-bit MAC                                     : 1
 # Multipliers                                          : 1
  8x8-bit multiplier                                    : 1
 # Adders/Subtractors                                   : 18
@@ -709,26 +713,27 @@ Macro Statistics
  8-bit adder                                           : 1
  8-bit adder carry in                                  : 1
  8-bit subtractor                                      : 1
-# Counters                                             : 26
+# Counters                                             : 30
  18-bit up counter                                     : 1
  20-bit up counter                                     : 12
  29-bit up counter                                     : 1
- 3-bit up counter                                      : 2
- 4-bit up counter                                      : 3
- 8-bit up counter                                      : 7
+ 3-bit up counter                                      : 1
+ 4-bit up counter                                      : 7
+ 8-bit up counter                                      : 8
 # Accumulators                                         : 6
  30-bit up loadable accumulator                        : 3
  5-bit up loadable accumulator                         : 3
 # Registers                                            : 193
  Flip-Flops                                            : 193
-# Comparators                                          : 35
+# Comparators                                          : 38
  30-bit comparator equal                               : 3
+ 4-bit comparator greater                              : 3
  5-bit comparator equal                                : 3
  8-bit comparator equal                                : 1
  8-bit comparator greater                              : 27
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 262
- 1-bit 2-to-1 multiplexer                              : 40
+# Multiplexers                                         : 265
+ 1-bit 2-to-1 multiplexer                              : 42
  1-bit 4-to-1 multiplexer                              : 2
  2-bit 2-to-1 multiplexer                              : 10
  24-bit 2-to-1 multiplexer                             : 1
@@ -741,16 +746,17 @@ Macro Statistics
  5-bit 2-to-1 multiplexer                              : 3
  6-bit 2-to-1 multiplexer                              : 1
  6-bit 4-to-1 multiplexer                              : 1
+ 7-bit 2-to-1 multiplexer                              : 1
  8-bit 2-to-1 multiplexer                              : 15
  8-bit 3-to-1 multiplexer                              : 1
  8-bit 4-to-1 multiplexer                              : 4
 # Logic shifters                                       : 9
- 1311-bit shifter logical right                        : 1
+ 1279-bit shifter logical right                        : 1
+ 2047-bit shifter logical right                        : 1
  59-bit shifter logical right                          : 3
  8-bit shifter arithmetic right                        : 1
  8-bit shifter logical left                            : 1
  8-bit shifter logical right                           : 1
- 819-bit shifter logical right                         : 1
  959-bit shifter logical right                         : 1
 # FSMs                                                 : 3
 
@@ -795,6 +801,7 @@ Optimizing FSM <gamethreemanager/FSM_2> on signal <M_gamethreestate_q[1:2]> with
  10    | 10
 -------------------
 WARNING:Xst:2677 - Node <randomaccessctr/M_ctr_q_7> of sequential type is unconnected in block <gamethreemanager_29>.
+WARNING:Xst:2677 - Node <randomaccessctr2/M_ctr_q_7> of sequential type is unconnected in block <gamethreemanager_29>.
 
 Optimizing unit <mojo_top_0> ...
 
@@ -806,7 +813,7 @@ Optimizing unit <countdowntimer_47> ...
 
 Optimizing unit <gametwomanager_28> ...
 
-Optimizing unit <gametwoinput_75> ...
+Optimizing unit <gametwoinput_76> ...
 
 Optimizing unit <inputcountdowntimer_50> ...
 
@@ -821,9 +828,9 @@ WARNING:Xst:2677 - Node <alu8bit/Mmult_n0115> of sequential type is unconnected 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 37.
-FlipFlop gamethreemanager/randomaccessctr/M_ctr_q_0 has been replicated 1 time(s)
-FlipFlop gamethreemanager/randomaccessctr/M_ctr_q_1 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 39.
+FlipFlop gamethreemanager/roundcounter2/M_ctr_q_0 has been replicated 2 time(s)
+FlipFlop gamethreemanager/roundcounter2/M_ctr_q_3 has been replicated 2 time(s)
 FlipFlop gametwomanager/roundcounter/M_ctr_q_0 has been replicated 1 time(s)
 
 Final Macro Processing ...
@@ -848,8 +855,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 644
- Flip-Flops                                            : 644
+# Registers                                            : 666
+ Flip-Flops                                            : 666
 # Shift Registers                                      : 12
  2-bit shift register                                  : 12
 
@@ -875,7 +882,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 668   |
+clk                                | BUFGP                  | 690   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -886,9 +893,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 14.016ns (Maximum Frequency: 71.345MHz)
+   Minimum period: 14.457ns (Maximum Frequency: 69.169MHz)
    Minimum input arrival time before clock: 3.526ns
-   Maximum output required time after clock: 16.717ns
+   Maximum output required time after clock: 20.636ns
    Maximum combinational path delay: No path found
 
 =========================================================================

@@ -10,7 +10,7 @@
      DIV = 0
      TOP = 0
 */
-module gametwoinput_75 (
+module gametwoinput_76 (
     input clk,
     input rst,
     input start,

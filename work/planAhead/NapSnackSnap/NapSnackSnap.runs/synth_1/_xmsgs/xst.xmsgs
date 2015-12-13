@@ -101,6 +101,9 @@
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">randomaccessctr/M_ctr_q_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">gamethreemanager_29</arg>&gt;.
 </msg>
 
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">randomaccessctr2/M_ctr_q_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">gamethreemanager_29</arg>&gt;.
+</msg>
+
 <msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">alu8bit/Mmult_n0115</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">mojo_top_0</arg>&gt;.
 </msg>
 

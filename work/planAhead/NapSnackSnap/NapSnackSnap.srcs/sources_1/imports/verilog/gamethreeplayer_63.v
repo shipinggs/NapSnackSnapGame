@@ -28,16 +28,28 @@ module gamethreeplayer_63 (
     .start(M_scorectr2_start),
     .value(M_scorectr2_value)
   );
+  wire [4-1:0] M_answerctr2_value;
+  reg [1-1:0] M_answerctr2_upcounter;
+  reg [1-1:0] M_answerctr2_start;
+  conditionalcounter_62 answerctr2 (
+    .clk(clk),
+    .rst(rst),
+    .upcounter(M_answerctr2_upcounter),
+    .start(M_answerctr2_start),
+    .value(M_answerctr2_value)
+  );
   wire [5-1:0] M_gamethreeinput_response;
   reg [1-1:0] M_gamethreeinput_start;
   reg [1-1:0] M_gamethreeinput_yes;
   reg [1-1:0] M_gamethreeinput_no;
-  gamethreeinput_83 gamethreeinput (
+  reg [4-1:0] M_gamethreeinput_pressnumber;
+  gamethreeinput_84 gamethreeinput (
     .clk(clk),
     .rst(rst),
     .start(M_gamethreeinput_start),
     .yes(M_gamethreeinput_yes),
     .no(M_gamethreeinput_no),
+    .pressnumber(M_gamethreeinput_pressnumber),
     .response(M_gamethreeinput_response)
   );
   
@@ -45,18 +57,25 @@ module gamethreeplayer_63 (
     playerinput = M_gamethreeinput_response;
     M_scorectr2_start = 1'h0;
     M_scorectr2_upcounter = 1'h0;
+    M_answerctr2_start = 1'h0;
+    M_answerctr2_upcounter = 1'h0;
     M_gamethreeinput_start = 1'h0;
     M_gamethreeinput_yes = yes;
     M_gamethreeinput_no = no;
+    M_gamethreeinput_pressnumber = M_answerctr2_value;
     if (start) begin
       M_scorectr2_start = 1'h1;
     end
     if (nextround) begin
       M_gamethreeinput_start = 1'h1;
+      M_answerctr2_start = 1'h1;
     end
     if (correct) begin
       M_scorectr2_upcounter = 1'h1;
     end
     playerscore = M_scorectr2_value;
+    if (yes || no) begin
+      M_answerctr2_upcounter = 1'h1;
+    end
   end
 endmodule

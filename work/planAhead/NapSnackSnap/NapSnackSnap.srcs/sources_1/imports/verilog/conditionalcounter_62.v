@@ -7,34 +7,35 @@
 /*
    Parameters:
      SIZE = 4
-     DIV = 25
+     DIV = 0
      TOP = 0
      UP = 1
 */
-module leddisplaycounter_72 (
+module conditionalcounter_62 (
     input clk,
     input rst,
+    input upcounter,
     input start,
     output reg [3:0] value
   );
   
   localparam SIZE = 3'h4;
-  localparam DIV = 5'h19;
+  localparam DIV = 1'h0;
   localparam TOP = 1'h0;
   localparam UP = 1'h1;
   
   
-  reg [28:0] M_ctr_d, M_ctr_q = 1'h0;
+  reg [3:0] M_ctr_d, M_ctr_q = 1'h0;
   
-  localparam MAX_VALUE = 26'h1ffffff;
+  localparam MAX_VALUE = 1'h0;
   
   always @* begin
     M_ctr_d = M_ctr_q;
     
-    value = M_ctr_q[25+3-:4];
-    if (1'h1) begin
+    value = M_ctr_q[0+3-:4];
+    if (1'h1 && upcounter) begin
       M_ctr_d = M_ctr_q + 1'h1;
-      if (1'h0 && M_ctr_q == 26'h1ffffff) begin
+      if (1'h0 && M_ctr_q == 1'h0) begin
         M_ctr_d = 1'h0;
       end
     end

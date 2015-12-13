@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module gamethreecomparator_69 (
+module gamethreecomparator_70 (
     input [4:0] romanswer,
     input [4:0] playerinput,
     output reg equal

@@ -6,38 +6,40 @@
 
 /*
    Parameters:
-     SIZE = 5
-     DIV = 0
+     SIZE = 4
+     DIV = 25
      TOP = 0
+     UP = 1
 */
-module gamethreeinput_83 (
+module leddisplaycounter_73 (
     input clk,
     input rst,
     input start,
-    input yes,
-    input no,
-    output reg [4:0] response
+    output reg [3:0] value
   );
   
-  localparam SIZE = 3'h5;
-  localparam DIV = 1'h0;
+  localparam SIZE = 3'h4;
+  localparam DIV = 5'h19;
   localparam TOP = 1'h0;
+  localparam UP = 1'h1;
   
   
-  reg [4:0] M_ctr_d, M_ctr_q = 1'h0;
+  reg [28:0] M_ctr_d, M_ctr_q = 1'h0;
+  
+  localparam MAX_VALUE = 26'h1ffffff;
   
   always @* begin
     M_ctr_d = M_ctr_q;
     
-    response = M_ctr_q[0+4-:5];
-    if (yes) begin
-      M_ctr_d = M_ctr_q + 5'h01;
-    end
-    if (no) begin
-      M_ctr_d = M_ctr_q + 5'h10;
+    value = M_ctr_q[25+3-:4];
+    if (1'h1) begin
+      M_ctr_d = M_ctr_q + 1'h1;
+      if (1'h0 && M_ctr_q == 26'h1ffffff) begin
+        M_ctr_d = 1'h0;
+      end
     end
     if (start) begin
-      M_ctr_d = 5'h00;
+      M_ctr_d = 1'h0;
     end
   end
   

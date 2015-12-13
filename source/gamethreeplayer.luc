@@ -12,6 +12,7 @@ module gamethreeplayer (
   
   .clk(clk), .rst(rst) {
     conditionalcounter scorectr2;  // ponescorectr keeps track of player one's score in game two
+    conditionalcounter answerctr2 (#SIZE(4)); // poneanswerctr helps keeps track of the sequence of inputs
     gamethreeinput gamethreeinput;
   }
 
@@ -19,19 +20,29 @@ module gamethreeplayer (
     playerinput = gamethreeinput.response;
     scorectr2.start = 0;
     scorectr2.upcounter = 0;
+    answerctr2.start = 0;
+    answerctr2.upcounter = 0;
     gamethreeinput.start = 0;
     gamethreeinput.yes = yes;
     gamethreeinput.no = no;
+    gamethreeinput.pressnumber = answerctr2.value;
     
     if (start) {          // reset scores to 0
       scorectr2.start = 1;
     }
     if (nextround) {
       gamethreeinput.start = 1;
+      answerctr2.start = 1;
     }
     if (correct) {                  // if correct, up score
       scorectr2.upcounter = 1;
     }
     playerscore = scorectr2.value; 
+
+    
+    if (yes || no) {
+      answerctr2.upcounter = 1;
+    }
+    
   }
 }
