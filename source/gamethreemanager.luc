@@ -2,31 +2,31 @@ module gamethreemanager (
     input clk,  // clock
     input rst,  // reset
     input start,
-    input aluout[8],
-    output alufn[6],
-    output alua[8],
-    output alub[8],
-    output primeornot[8],      // central sevensegs
-    input playerone[2],
+    input aluout[8],            // ALU result from parent module mojo_top
+    output alufn[6],            // ALU operation in this case is CMPLT - to keep track of the number of rounds
+    output alua[8],             // current round number
+    output alub[8],             // desired number of total rounds -1
+    output primeornot[8],       // central sevensegs
+    input playerone[2],         // 6 x player "Yes" and "No" edge_detector outputs
     input playertwo[2],
     input playerthree[2],
-    output playeronescore[8],  // playerone sevenseg score
-    output playertwoscore[8],  // playertwo sevenseg score
-    output playerthreescore[8]
+    output playeronescore[8],    // playerone sevenseg score
+    output playertwoscore[8],    // playertwo sevenseg score
+    output playerthreescore[8]   // playerthree sevenseg score
   ) {
   
   .clk(clk), .rst(rst) {
-    countdowntimer countdowntimer2 (#SIZE(3), #DIV(25));  // This is for the countdown stage at the start of every round
+    countdowntimer countdowntimer2 (#SIZE(3), #DIV(25));            // This is for the countdown stage at the start of every round
     inputcountdowntimer inputcountdowntimer2 (#SIZE(4), #DIV(25));  // This is the timer to show how much time is left to the players
-    fsm gamethreestate = {STARTCOUNTDOWN, USERINPUT, SHOWSCORE};
-    conditionalcounter roundcounter2 (#SIZE(4));
+    fsm gamethreestate = {STARTCOUNTDOWN, USERINPUT, SHOWSCORE};    // This game has three states
+    conditionalcounter roundcounter2 (#SIZE(4));                    // This counter keeps track of the number of rounds
     
     gamethreeplayer gamethreeplayerone;  // creating an instance of player one
-    gamethreeplayer gamethreeplayertwo;
+    gamethreeplayer gamethreeplayertwo;  // and so on
     gamethreeplayer gamethreeplayerthree;    
     
-    conditionalcounter randomaccessctr;
-    conditionalcounter randomaccessctr2;
+    conditionalcounter randomaccessctr;   // There are two counters here to create a "random" address for accessing the rom
+    conditionalcounter randomaccessctr2;  // Will elaborate below
     
   }
   
@@ -40,11 +40,11 @@ module gamethreemanager (
   always {
   
     alufn = 6b110101;                            // CMPLT operation
-    alub = 8b111;                               // This game has 8 rounds
+    alub = 8b111;                                // This game has 8 rounds
     alua = roundcounter2.value;
     primeornot = 0;
     
-    gamethreeplayerone.yes = playerone[0];
+    gamethreeplayerone.yes = playerone[0];        // Connecting the respective buttons to the respective player modules
     gamethreeplayerone.no = playerone[1];
     gamethreeplayertwo.yes = playertwo[0];
     gamethreeplayertwo.no = playertwo[1];
@@ -52,24 +52,24 @@ module gamethreemanager (
     gamethreeplayerthree.no = playerthree[1];
   
     randomaccessctr.start = 0;
-    randomaccessctr.upcounter = 1;                            // let randomaccessctr run by default
+    randomaccessctr.upcounter = 1;                            // let randomaccessctr run by default !Important!
     
     randomaccessctr2.start = 0;
-    randomaccessctr2.upcounter = 1;                            // let randomaccessctr2 run by default
+    randomaccessctr2.upcounter = 1;                            // let randomaccessctr2 run by default !Important!
     
     if (roundcounter2.value == 0 || roundcounter2.value == 2 || roundcounter2.value == 4 || roundcounter2.value == 6) {
-      gamethreeanswerrom.address = randomaccessctr.value[6:0];      //setting address as round number for now
+      gamethreeanswerrom.address = randomaccessctr.value[6:0];      //setting address as first randomaccessctr if round value is even
       gamethreenumberrom.address = randomaccessctr.value[6:0];
     } else {
-      gamethreeanswerrom.address = randomaccessctr2.value[6:0];      //setting address as round number for now
+      gamethreeanswerrom.address = randomaccessctr2.value[6:0];      //setting address as second randomaccessctr if round value is odd
       gamethreenumberrom.address = randomaccessctr2.value[6:0];
     }
     
-    gamethreecompareone.romanswer = gamethreeanswerrom.answer;
-    gamethreecomparetwo.romanswer = gamethreeanswerrom.answer;
+    gamethreecompareone.romanswer = gamethreeanswerrom.answer;      // All the comparators for each player take one of its inputs from
+    gamethreecomparetwo.romanswer = gamethreeanswerrom.answer;      // the gamethreeanswerrom
     gamethreecomparethree.romanswer = gamethreeanswerrom.answer;
     
-    gamethreecompareone.playerinput = gamethreeplayerone.playerinput;
+    gamethreecompareone.playerinput = gamethreeplayerone.playerinput;      // The other input comes from the respective player modules
     gamethreecomparetwo.playerinput = gamethreeplayertwo.playerinput;
     gamethreecomparethree.playerinput = gamethreeplayerthree.playerinput;
     
@@ -89,24 +89,24 @@ module gamethreemanager (
     gamethreeplayertwo.nextround = 0;
     gamethreeplayerthree.nextround = 0;
     
-    playeronescore = gamethreeplayerone.playerscore;
-    playertwoscore = gamethreeplayertwo.playerscore;
+    playeronescore = gamethreeplayerone.playerscore;          // These are the 8-bit scores that will be displayed
+    playertwoscore = gamethreeplayertwo.playerscore;          // on the score sevensegs for each player in decimal form
     playerthreescore = gamethreeplayerthree.playerscore;
     
-    if (start) {                                         // when the game two select button is pressed
+    if (start) {                                          // when the game two select button is pressed
       countdowntimer2.start = 1;                          // restart countdowntimer to begin at 5
       roundcounter2.start = 1;                            // reset number of rounds played to 0.
-      gamethreeplayerone.start = 1;
+      gamethreeplayerone.start = 1;                       // reset all player modules
       gamethreeplayertwo.start = 1;
       gamethreeplayerthree.start = 1;
-      gamethreestate.d = gamethreestate.STARTCOUNTDOWN;  // ensure start state is countdown state.
+      gamethreestate.d = gamethreestate.STARTCOUNTDOWN;   // ensure start state is countdown state.
     }
     
     case (gamethreestate.q) {
     
       gamethreestate.STARTCOUNTDOWN:
         primeornot = countdowntimer2.value;
-        if (countdowntimer2.timerdone) {                    // when countdowntimer has reached 0
+        if (countdowntimer2.timerdone) {                  // when countdowntimer has reached 0
           gamethreestate.d = gamethreestate.USERINPUT;    // go to next state - show led sequence
           inputcountdowntimer2.start = 1;
           gamethreeplayerone.nextround = 1;
@@ -117,36 +117,36 @@ module gamethreemanager (
       gamethreestate.USERINPUT:
         primeornot = gamethreenumberrom.number;
         if (roundcounter2.value == 0 || roundcounter2.value == 2 || roundcounter2.value == 4 || roundcounter2.value == 6){
-          randomaccessctr.upcounter = 0;                      // halting randomaccessctr
-        } else {
-          randomaccessctr2.upcounter = 0;
-        }        
-        if (inputcountdowntimer2.timerdone) {
-          countdowntimer2.start = 1;
-          gamethreestate.d = gamethreestate.SHOWSCORE;
-        } 
-        if (gamethreecompareone.equal) {
-          gamethreeplayerone.correct = 1;
-          countdowntimer2.start = 1;
+          randomaccessctr.upcounter = 0;                      // halting one randomaccessctr so that it can be used this round
+        } else {                                              // while the other randomaccessctr remains running
+          randomaccessctr2.upcounter = 0;                     // Since the amount of time spent in this state is not constant, the counters 
+        }                                                     // run for random periods of time so the accessing addresses appear random
+        if (inputcountdowntimer2.timerdone) {                 // If time is up, continue to next state. No one wins
+          countdowntimer2.start = 1;                          
+          gamethreestate.d = gamethreestate.SHOWSCORE;  
+        }
+        if (gamethreecompareone.equal) {                      // If player one's input is equal with the rom's answer,
+          gamethreeplayerone.correct = 1;                     // Immediately add one point to his score and go to next state
+          countdowntimer2.start = 1;                          // so no one else can win.
           gamethreestate.d = gamethreestate.SHOWSCORE;
         }
-        if (gamethreecomparetwo.equal) {
+        if (gamethreecomparetwo.equal) {                      // Similar to player one logic
           gamethreeplayertwo.correct = 1;
           countdowntimer2.start = 1;
           gamethreestate.d = gamethreestate.SHOWSCORE;
         }
-        if (gamethreecomparethree.equal) {
+        if (gamethreecomparethree.equal) {                    // Similar to player one logic
           gamethreeplayerthree.correct = 1;
           countdowntimer2.start = 1;
           gamethreestate.d = gamethreestate.SHOWSCORE;
         }
           
                 
-      gamethreestate.SHOWSCORE:    // just an arbitrary number so we know which state we're at
+      gamethreestate.SHOWSCORE:                               // This state gives the players some time to view their accumulated scores
         primeornot = 0;
-        if (countdowntimer2.timerdone && aluout) {       // aluout is the CMPLT result
+        if (countdowntimer2.timerdone && aluout) {            // aluout is the CMPLT result
           countdowntimer2.start = 1;
-          roundcounter2.upcounter = 1;          // signal that one round has passed.
+          roundcounter2.upcounter = 1;                        // signal that one round has passed.
           gamethreestate.d = gamethreestate.STARTCOUNTDOWN;
         }
          

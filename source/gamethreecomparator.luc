@@ -1,4 +1,4 @@
-module gamethreecomparator (
+module gamethreecomparator (  // Simple comparator to compare if the player's input is the same as the answer stored in gamethreeanswerrom
     input romanswer[5], 
     input playerinput[5], 
     output equal
@@ -6,8 +6,8 @@ module gamethreecomparator (
 
   always {
     equal = 0;
-    if (romanswer == playerinput) {
-      equal = 1;
+    if (romanswer == playerinput) {    // If equal
+      equal = 1;                       // Output high signal
     }
   }
 }

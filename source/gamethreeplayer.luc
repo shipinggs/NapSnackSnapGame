@@ -11,8 +11,8 @@ module gamethreeplayer (
   ) {
   
   .clk(clk), .rst(rst) {
-    conditionalcounter scorectr2;  // ponescorectr keeps track of player one's score in game two
-    conditionalcounter answerctr2 (#SIZE(4)); // poneanswerctr helps keeps track of the sequence of inputs
+    conditionalcounter scorectr2;             // This keeps track of the player's score in game two
+    conditionalcounter answerctr2 (#SIZE(4)); // This keeps track of the player's sequence of inputs
     gamethreeinput gamethreeinput;
   }
 
@@ -27,20 +27,20 @@ module gamethreeplayer (
     gamethreeinput.no = no;
     gamethreeinput.pressnumber = answerctr2.value;
     
-    if (start) {          // reset scores to 0
+    if (start) {                            // If "start" signal is high, reset scores to 0. This is when the game is selected
       scorectr2.start = 1;
     }
-    if (nextround) {
+    if (nextround) {                        // If "nextround" sign is high, reset input counters. This is at the start of each round.
       gamethreeinput.start = 1;
       answerctr2.start = 1;
     }
-    if (correct) {                  // if correct, up score
+    if (correct) {                          // If correct, up player's score
       scorectr2.upcounter = 1;
     }
-    playerscore = scorectr2.value; 
+    playerscore = scorectr2.value;          // This is the output to be displayed on the player's score sevenseg
 
     
-    if (yes || no) {
+    if (yes || no) {                        // When either "yes" or "no" is pressed, increment press counter by 1.
       answerctr2.upcounter = 1;
     }
     

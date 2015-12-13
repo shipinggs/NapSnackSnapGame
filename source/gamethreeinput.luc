@@ -1,16 +1,16 @@
-module gamethreeinput #(
+module gamethreeinput #( // This module keeps a record of the player's input for game three.
     SIZE = 5 : SIZE > 0, // Width of the output
     DIV = 0  : DIV >= 0, // number of bits to use as divisor
-    TOP = 0  : TOP >= 0 // max value, 0 = none
+    TOP = 0  : TOP >= 0  // max value, 0 = none
     
   )(
     input clk,
     input rst,
-    input start,
-    input yes,
-    input no,
-    input pressnumber[4],
-    output response[5]
+    input start,            // It also has a reset "start" signal
+    input yes,              // If the player presses "Yes"
+    input no,               // Or "No"
+    input pressnumber[4],   // This is the input from a counter that keeps track of the number of times the player has pressed
+    output response[5]      // This is the output to the gamethreecomparator
   ) {
   
   .clk(clk), .rst(rst) {
@@ -20,19 +20,19 @@ module gamethreeinput #(
   always {
     response = ctr.q[SIZE-1:0]; // set the output
     
-    if (pressnumber < 4b1) {
+    if (pressnumber < 4b1) {    // If the player has not pressed once,
     
-      if (yes) {
-        ctr.d = ctr.q + 5b1;
+      if (yes) {                 // If he pressed "yes",
+        ctr.d = ctr.q + 5b1;     // His input record will be a 5b1
       }
-      if (no) {
-        ctr.d = ctr.q + 5b10000;
+      if (no) {                  // If he pressed "no",
+        ctr.d = ctr.q + 5b10000; // His input record will be a 5b10000
       }
     
     }
     
     if (start) {
-      ctr.d = 5b0;
+      ctr.d = 5b0;               // Initialize at 0.
     }
   }
 }

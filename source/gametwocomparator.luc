@@ -1,4 +1,4 @@
-module gametwocomparator (
+module gametwocomparator (  // Simple comparator for Game Two
     input a[30],  //change number of bits accordingly
     input b[30],
     output equal

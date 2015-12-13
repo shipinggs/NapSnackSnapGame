@@ -1,6 +1,6 @@
 module gamethreenumberrom (
-    input address[7],  // ROM address. 3 bit because at most 7 rounds.
-    output number[8]   // ROM output
+    input address[7],  // ROM address.This is the same address as the gamethreeanswerrom.
+    output number[8]   // ROM output. This is the question - Is the number shown prime or not?
   ) {
  
   const PRIMEORNOTDATA = {8b10,8b11,8b101,8b111,8b1011,8b1101,
@@ -15,8 +15,8 @@ module gamethreenumberrom (
                           8b1111111,131,137,139,149,151,
                           157,163,167,173,179,181,
                           191,193,197,199,211,223,
-                          227,229,233,239,241,251,
-                          8b1011011,171,169,129,8b1101111,8b1101001,
+                          227,229,233,239,241,251,                     // All numbers till this point are prime
+                          8b1011011,171,169,129,8b1101111,8b1101001,   // All numbers below this point and inclusive of this line are not prime
                           8b1011101,221,213,217,219,237,
                           243,159,133,8b1111011,187,201,
                           8b1011011,171,169,129,8b1101111,8b1101001,

@@ -1,4 +1,5 @@
-module gameonedecreasecounter #(
+module gameonedecreasecounter #(        // This decrease counter is made for Game One: Subtraction from 30.
+
     SIZE = 8 : SIZE > 0, // Width of the output
     DIV = 0  : DIV >= 0, // number of bits to use as divisor
     BOTTOM = 0  : BOTTOM >= 0, // max value, 0 = none
@@ -8,15 +9,15 @@ module gameonedecreasecounter #(
   )(
     input clk,
     input rst,
-    input start,
-    input decrease,
-    input decreaseamount[2],
-    input aluout[8],
-    output alub[8],
-    output alufn[6],
-    output gameone_end,
-    output gameone_lose,
-    output remainder[8]
+    input start,              // It also has a reset "start" signal
+    input decrease,           // Counter only decreases when given a high "decrease" signal
+    input decreaseamount[2],  // This tells the counter how much to decrease by
+    input aluout[8],          // The result of the subtraction
+    output alub[8],           // Input B of subtraction. Input A is always gameonedecreasecounter.remainder
+    output alufn[6],          
+    output gameone_end,       // This lets the parent module "gameonemanager" know if someone has won
+    output gameone_lose,      // or no one has won (due to someone not being able to count from 3 to 0...)
+    output remainder[8]       // This is the counter's ctr.q value
   ) {
   
   .clk(clk), .rst(rst) {
@@ -26,7 +27,7 @@ module gameonedecreasecounter #(
   const MIN_VALUE = c{BOTTOM, DIVx{1}}; // value when maxed out
   
   always {
-    alufn=6b000001;
+    alufn=6b000001;      // SUBTRACTION operation
     alub = 0;
     gameone_end = 0;
     gameone_lose = 0;
@@ -36,16 +37,16 @@ module gameonedecreasecounter #(
       ctr.d = 8b11110;    // restart counter to 30 when game one select button is pressed
     }
     
-    if (!UP) { // when this is a down counter
+    if (!UP) {                    // when this is a down counter
       if (decrease) {
-        alub = decreaseamount;
-        ctr.d = aluout; // decrease
+        alub = decreaseamount;    // decrease by this decreaseamount
+        ctr.d = aluout;           // ALU calculates subtraction result for counter
       }
-      if (ctr.q == MIN_VALUE) { // reached zero?
-        gameone_end = 1; // end state signal
+      if (ctr.q == MIN_VALUE) {   // reached zero?
+        gameone_end = 1;          // end state signal
       }
-      if (ctr.q > 8b11110) {
-        gameone_lose = 1; // lose state signal
+      if (ctr.q > 8b11110) {      // if the remainder is more than 30 (i.e. overflow past zero)
+        gameone_lose = 1;         // lose state signal. Nobody wins.
       }
     } 
   }

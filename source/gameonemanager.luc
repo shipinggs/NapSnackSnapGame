@@ -2,15 +2,15 @@ module gameonemanager (
     input clk,  // clock
     input rst,  // reset
     input start,
-    input aluout[8],
-    output alufn[6],
-    output alua[8],
+    input aluout[8],              // ALU result from parent module mojo_top
+    output alufn[6],              // to tell parent module which ALU operation to use. In this case, it is SUBTRACTION.
+    output alua[8],           
     output alub[8],
-    input playeronebuttons[3],
+    input playeronebuttons[3],    //edge_detector outputs for all 9 player buttons  
     input playertwobuttons[3],
     input playerthreebuttons[3],
-    output centralsevenseg[8],
-    output playerleds[6]  // {playerone[5:4], playertwo[3:2], playerthree[1:0]}
+    output centralsevenseg[8],    // 8-bit number to be displayed on the central sevensegs in decimal
+    output playerleds[6]          // {playerone[5:4], playertwo[3:2], playerthree[1:0]}
   ) {
   
   .clk(clk), .rst(rst) {
@@ -22,7 +22,7 @@ module gameonemanager (
   
   
   always {
-    alufn = gameonedecreasecounter.alufn;
+    alufn = gameonedecreasecounter.alufn;        // Connections to ALU module at parent module
     alua = gameonedecreasecounter.remainder;
     alub = gameonedecreasecounter.alub;
     gameonedecreasecounter.aluout = aluout;
@@ -35,21 +35,22 @@ module gameonemanager (
     playerleds = 0;
 
     
-    if (start) {                      // when the game two select button is pressed
-      gameonecountdowntimer.start = 1;       // reset the countdowntimer to 5.
-      gameonedecreasecounter.start = 1;
-      gameonestate.d = gameonestate.STARTCOUNTDOWN;
+    if (start) {                                     // when the game two select button is pressed
+      gameonecountdowntimer.start = 1;               // reset the countdowntimer to 5.
+      gameonedecreasecounter.start = 1;              // reset the gameonedecreasecounter to initialize at 30.  
+      gameonestate.d = gameonestate.STARTCOUNTDOWN;  // go to countdown state to prepare players
     }
     
     case (gameonestate.q) {
     
       gameonestate.STARTCOUNTDOWN:
-        centralsevenseg = gameonecountdowntimer.value;
+        centralsevenseg = gameonecountdowntimer.value;  // show countdowntimer value on the central sevensegs
         if (gameonecountdowntimer.timerdone) {
-          gameonestate.d = gameonestate.PLAYERONE;    // how does player one know it is his/her turn?
+          gameonestate.d = gameonestate.PLAYERONE;      // once timer is down, it becomes player one's turn
         }
       
       gameonestate.PLAYERONE:
+        playerleds = 6b100000;                            // so player one knows that it is his/her turn.
         if (playeronebuttons[0]) {                        // if "minus one" button is pressed
           gameonedecreasecounter.decrease = 1;            // allow counter to decrease
           gameonedecreasecounter.decreaseamount = 2b1;    // and decrease by 1
@@ -70,7 +71,8 @@ module gameonemanager (
         }
         
       gameonestate.PLAYERTWO:
-        if (playertwobuttons[0]) {
+        playerleds = 6b001000;                              // so player two knows it is his/her turn.
+        if (playertwobuttons[0]) {                          // similar logic to player one
           gameonedecreasecounter.decrease = 1;
           gameonedecreasecounter.decreaseamount = 2b1;
           gameonestate.d = gameonestate.PLAYERTHREE;
@@ -90,7 +92,8 @@ module gameonemanager (
         }
         
       gameonestate.PLAYERTHREE:
-        if (playerthreebuttons[0]) {
+        playerleds = 6b000010;                              // so player three knows it is his/her turn.
+        if (playerthreebuttons[0]) {                        // similar logic to player one
           gameonedecreasecounter.decrease = 1;
           gameonedecreasecounter.decreaseamount = 2b1;
           gameonestate.d = gameonestate.PLAYERONE;
@@ -110,7 +113,7 @@ module gameonemanager (
         }
                
       gameonestate.PLAYERONEWIN:
-        playerleds = 6b100101;
+        playerleds = 6b100101;                                                      // leds to show who won
         if (playeronebuttons[0] || playeronebuttons[1] || playeronebuttons[2]       // if any button is pressed
          || playertwobuttons[0] || playertwobuttons[1] || playertwobuttons[2]
          || playerthreebuttons[0] || playerthreebuttons[1] || playerthreebuttons[2]) {
@@ -120,7 +123,7 @@ module gameonemanager (
         }
         
       gameonestate.PLAYERTWOWIN:
-        playerleds = 6b011001;
+        playerleds = 6b011001;                                                      // leds to show who won
         if (playeronebuttons[0] || playeronebuttons[1] || playeronebuttons[2]       // if any button is pressed
          || playertwobuttons[0] || playertwobuttons[1] || playertwobuttons[2]
          || playerthreebuttons[0] || playerthreebuttons[1] || playerthreebuttons[2]) {
@@ -130,7 +133,7 @@ module gameonemanager (
         }
       
       gameonestate.PLAYERTHREEWIN:
-        playerleds = 6b010110;
+        playerleds = 6b010110;                                                      // leds to show who won
         if (playeronebuttons[0] || playeronebuttons[1] || playeronebuttons[2]       // if any button is pressed
          || playertwobuttons[0] || playertwobuttons[1] || playertwobuttons[2]
          || playerthreebuttons[0] || playerthreebuttons[1] || playerthreebuttons[2]) {
@@ -140,7 +143,7 @@ module gameonemanager (
         }
         
       gameonestate.ALLLOSE:
-        playerleds = 6b010101;
+        playerleds = 6b010101;                                                      // leds to show the last person couldn't count
         if (playeronebuttons[0] || playeronebuttons[1] || playeronebuttons[2]       // if any button is pressed
          || playertwobuttons[0] || playertwobuttons[1] || playertwobuttons[2]
          || playerthreebuttons[0] || playerthreebuttons[1] || playerthreebuttons[2]) {

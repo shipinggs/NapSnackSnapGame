@@ -2,9 +2,9 @@ module gametwocentralleddisplay (
     input clk,  // clock
     input rst,  // reset
     input sequence[30],
-    input start,  // start signal to force led sequence display to restart. Ensures it always starts at the correct first light
-    output leddisplay[3],
-    output displayfinish
+    input start,          // "start" signal to force led sequence display to restart. Ensures it always starts at the correct first light
+    output leddisplay[3], // This 3-bit output lets parent module know which led to light up at that clock cycle
+    output displayfinish  // This signal allows parent module to know that the led sequence has finished displaying
   ) {
 
   .clk(clk), .rst(rst) {
@@ -16,14 +16,14 @@ module gametwocentralleddisplay (
     leddisplay = 0;
     leddisplayctr.start = 0;
     
-    if (start) {                          // force led sequence display to restart.
+    if (start) {                          // For led sequence display to restart.
       leddisplayctr.start = 1;
     }
     
     case (leddisplayctr.value) {
     
       10:
-        displayfinish = 1;  // to signal end of sequence
+        displayfinish = 1;  // to signal end of sequence. It is under case "10" because 10 is the maximum number of blinks set.
         
       default:
         if (sequence[leddisplayctr.value]) {      // R pointer

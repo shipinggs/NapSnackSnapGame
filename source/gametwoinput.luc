@@ -6,12 +6,12 @@ module gametwoinput #(
   )(
     input clk,
     input rst,
-    input start,
-    input red,
+    input start,           // "start" signal to reset player's input
+    input red,             // red, green, blue button inputs
     input green,
     input blue,
-    input pressnumber[4],
-    output response[30]
+    input pressnumber[4],  // This is the input from a counter that keeps track of the number of times the player has pressed a button
+    output response[30]    // 30-bit response to encode a 10-blink sequence
   ) {
   
   .clk(clk), .rst(rst) {
@@ -19,52 +19,52 @@ module gametwoinput #(
   }
     
   always {
-    response = ctr.q[SIZE-1:0]; // set the output
+    response = ctr.q[SIZE-1:0];   // set the output
     
     case (pressnumber) {          // at every next press, the pointers should shift left by 1
     
-      0:
+      0:                                            // At case 0, i.e. no presses made yet.
         if (red) {
-          ctr.d = ctr.q + 30b1;
+          ctr.d = ctr.q + 30b1;                     // If red is pressed, add LSB by 1
         }
         if (green) {
-          ctr.d = ctr.q + 30b10000000000;
+          ctr.d = ctr.q + 30b10000000000;           // If green is pressed, add LSB for GREEN (10-bits left displacement of 10) by 1
         }
         if (blue) {
-          ctr.d = ctr.q + 30b100000000000000000000; // change
+          ctr.d = ctr.q + 30b100000000000000000000; // If blue is pressed, add LSB for BLUE (another 10-bits left displacement of 10) by 1
         }
 
-      1:
-        if (red) {
-          ctr.d = ctr.q + 30b10;
+      1:                                            // At the next press,
+        if (red) {                                  
+          ctr.d = ctr.q + 30b10;                    // If red is pressed, we now add bit 1 by 1
         }
         if (green) {
-          ctr.d = ctr.q + 30b100000000000;
+          ctr.d = ctr.q + 30b100000000000;          // If green is pressed, we now add GREEN's bit 1 by 1
         }
         if (blue) {
-          ctr.d = ctr.q + 30b1000000000000000000000; // change
+          ctr.d = ctr.q + 30b1000000000000000000000; // If blue is pressed, we now add BLUE's bit 1 by 1
         }
 
       2:
-        if (red) {
-          ctr.d = ctr.q + 30b100;
+        if (red) {  
+          ctr.d = ctr.q + 30b100;                       // We now add RED's bit 2 by 1
         }
         if (green) {
-          ctr.d = ctr.q + 30b1000000000000;
+          ctr.d = ctr.q + 30b1000000000000;             // add GREEN's bit 2 by 1
         }
         if (blue) {
-          ctr.d = ctr.q + 30b10000000000000000000000; // change
+          ctr.d = ctr.q + 30b10000000000000000000000;   // add BLUE's bit 2 by 1
         }
 
       3:
         if (red) {
-          ctr.d = ctr.q + 30b1000;
-        }
+          ctr.d = ctr.q + 30b1000;                      // and so on
+        } 
         if (green) {
           ctr.d = ctr.q + 30b10000000000000;
         }
         if (blue) {
-          ctr.d = ctr.q + 30b100000000000000000000000; // change
+          ctr.d = ctr.q + 30b100000000000000000000000; 
         }
 
       4: 
@@ -75,7 +75,7 @@ module gametwoinput #(
           ctr.d = ctr.q + 30b100000000000000;
         }
         if (blue) {
-          ctr.d = ctr.q + 30b1000000000000000000000000; // change
+          ctr.d = ctr.q + 30b1000000000000000000000000; 
         }
 
       5:
@@ -86,7 +86,7 @@ module gametwoinput #(
           ctr.d = ctr.q + 30b1000000000000000;
         }
         if (blue) {
-          ctr.d = ctr.q + 30b10000000000000000000000000; // change
+          ctr.d = ctr.q + 30b10000000000000000000000000; 
         }
       
       6:
@@ -97,7 +97,7 @@ module gametwoinput #(
           ctr.d = ctr.q + 30b10000000000000000;
         }
         if (blue) {
-          ctr.d = ctr.q + 30b100000000000000000000000000; // change
+          ctr.d = ctr.q + 30b100000000000000000000000000; 
         }
 
       7:
@@ -108,7 +108,7 @@ module gametwoinput #(
           ctr.d = ctr.q + 30b100000000000000000;
         }
         if (blue) {
-          ctr.d = ctr.q + 30b1000000000000000000000000000; // change
+          ctr.d = ctr.q + 30b1000000000000000000000000000; 
         }
 
       8:
@@ -119,10 +119,10 @@ module gametwoinput #(
           ctr.d = ctr.q + 30b1000000000000000000;
         }
         if (blue) {
-          ctr.d = ctr.q + 30b10000000000000000000000000000; // change
+          ctr.d = ctr.q + 30b10000000000000000000000000000;
         }
 
-      9:
+      9:                                                // Case 9 because maximum number of relevant presses is 10.
         if (red) {
           ctr.d = ctr.q + 30b1000000000;
         }
@@ -130,13 +130,13 @@ module gametwoinput #(
           ctr.d = ctr.q + 30b10000000000000000000;
         }
         if (blue) {
-          ctr.d = ctr.q + 30b100000000000000000000000000000; // change
+          ctr.d = ctr.q + 30b100000000000000000000000000000; 
         }
 
     }
     
     if (start) {
-      ctr.d = 30b0;
+      ctr.d = 30b0;            // if "start" signal given upon start of next round, reset input tracker to 30b0. Clean slate.
     }
   }
 }
