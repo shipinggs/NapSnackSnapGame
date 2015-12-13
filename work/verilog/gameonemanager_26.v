@@ -91,6 +91,7 @@ module gameonemanager_26 (
         end
       end
       PLAYERONE_gameonestate: begin
+        playerleds = 6'h20;
         if (playeronebuttons[0+0-:1]) begin
           M_gameonedecreasecounter_decrease = 1'h1;
           M_gameonedecreasecounter_decreaseamount = 2'h1;
@@ -117,6 +118,7 @@ module gameonemanager_26 (
         end
       end
       PLAYERTWO_gameonestate: begin
+        playerleds = 6'h08;
         if (playertwobuttons[0+0-:1]) begin
           M_gameonedecreasecounter_decrease = 1'h1;
           M_gameonedecreasecounter_decreaseamount = 2'h1;
@@ -143,6 +145,7 @@ module gameonemanager_26 (
         end
       end
       PLAYERTHREE_gameonestate: begin
+        playerleds = 6'h02;
         if (playerthreebuttons[0+0-:1]) begin
           M_gameonedecreasecounter_decrease = 1'h1;
           M_gameonedecreasecounter_decreaseamount = 2'h1;

@@ -1,4 +1,4 @@
-module inputcountdowntimer #( //THIS COUNTDOWNTIMER IS HARDCODED TO START AT 10.
+module inputcountdowntimer #( //THIS COUNTDOWNTIMER IS DESIGNED TO START AT 10 AND WORK AT A CERTAIN RATE.
     SIZE = 4 : SIZE > 0, // Width of the output
     DIV = 0  : DIV >= 0, // number of bits to use as divisor
     BOTTOM = 0  : BOTTOM >= 0, // min value, 
@@ -8,13 +8,14 @@ module inputcountdowntimer #( //THIS COUNTDOWNTIMER IS HARDCODED TO START AT 10.
   )(
     input clk,
     input rst,
-    input start,
-    output timerdone,
-    output value[4]
+    input start,        // This timer also has a "start" signal that allows the timer to reset when signal is high
+    output timerdone,   // When timerdone is high, it tells the parent module the countdown is finished
+    output value[4]     // This is the binary number that is to be shown on the central sevensegs in decimal during the countdown
   ) {
   
   .clk(clk), .rst(rst) {
-    dff ctr[29] (#INIT(29h15ffffff));      // the first 4 (see output value) digits of this hex number is binary 1010 --> 10: our desired start count.
+    dff ctr[29] (#INIT(29h15ffffff));   // the first 4 (see output value) digits of this hex number is 
+                                        // binary 1010 --> 10: our desired start count.
   }
   
   const MIN_VALUE = c{BOTTOM, DIVx{1}}; // value when at minimum
@@ -24,16 +25,16 @@ module inputcountdowntimer #( //THIS COUNTDOWNTIMER IS HARDCODED TO START AT 10.
     value = ctr.q[SIZE+DIV-1-:SIZE]; // set the output
     
     
-    if (!UP) { // when this is a down counter
-      ctr.d = ctr.q - 1; // decrease
+    if (!UP) {                  // when this is a down counter
+      ctr.d = ctr.q - 1;        // decrease by 1
       if (ctr.q == MIN_VALUE) { // reached zero?
         ctr.d = 29h15ffffff;
-        timerdone = 1;
+        timerdone = 1;          // tell parent module gametwomanager countdown is done
       }      
     }
     
     if (start) {
-      ctr.d = 29h15ffffff;
+      ctr.d = 29h15ffffff;      // When "start" signal is high, reset countdowntimer to 10
     }
   }
 }

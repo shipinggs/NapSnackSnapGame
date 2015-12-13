@@ -1,19 +1,18 @@
 module mojo_top (
-    input clk,              // 50MHz clock
-    input rst_n,            // reset button (active low)
-    output io_led [3][8],   // LEDs on IO Shield
-    input gameselectbuttons[3],
-    input playeronebuttons[3],
+    input clk,                     // 50MHz clock
+    input rst_n,                   // reset button (active low)
+    input gameselectbuttons[3],    // For selecting which game to play (NAP, SNAP, or SNACK?)
+    input playeronebuttons[3],     // 9 x player button inputs
     input playertwobuttons[3],
     input playerthreebuttons[3],
-    output centralleds[3],
-    output centralsevensegzero[8],  // Right-most central sevenseg
-    output centralsevensegone[8],
-    output centralsevensegtwo[8],
-    output playeronescore[8],
-    output playertwoscore[8],
-    output playerthreescore[8],
-    output playerleds[6]
+    output centralleds[3],         // For the central RGB leds
+    output centralsevensegzero[8], // Right-most central sevenseg
+    output centralsevensegone[8],  // Middle central sevenseg
+    output centralsevensegtwo[8],  // Left-most central sevenseg
+    output playeronescore[8],      // Player one score sevenseg
+    output playertwoscore[8],      // Player two score sevenseg
+    output playerthreescore[8],    // Player three score sevenseg
+    output playerleds[6]           // For displaying Red or Green led for each player
   ) {
   
   sig rst;                  // reset signal
@@ -27,7 +26,7 @@ module mojo_top (
     button_conditioner bconeone;        // oneone represents player one button one (RED)
     button_conditioner bconetwo;        // onetwo represents player one button two (GREEN)
     button_conditioner bconethree;      // onethree represents player one button three (BLUE)
-    button_conditioner bctwoone;
+    button_conditioner bctwoone;        // and so on
     button_conditioner bctwotwo;
     button_conditioner bctwothree;
     button_conditioner bcthreeone;
@@ -53,25 +52,24 @@ module mojo_top (
   }
   
   .clk(clk), .rst(rst) {
-    //counter ctr_sevensegdisplay (#SIZE(2), #DIV(16)); // this counter is set up for the sevenseg display solely
-    fsm gameselectstate = {IDLE, NAP, SNACK, SNAP};
+    fsm gameselectstate = {IDLE, NAP, SNACK, SNAP};  // 4 MAIN states at mojo_top: START(IDLE), GAMEONE, GAMETWO, GAMETHREE
     
-    gameonemanager gameonemanager;    
-    gametwomanager gametwomanager;
-    gamethreemanager gamethreemanager;
+    gameonemanager gameonemanager;                   // instantiating gameonemanager for managing game one processes  
+    gametwomanager gametwomanager;                   // and similarly for game two
+    gamethreemanager gamethreemanager;               // and game three
   }
   
-  alu8bit alu8bit;                        // ALU MODULE
+  alu8bit alu8bit;                                    // ALU MODULE
 
-  decimaltosevenseg decimaltosevenseg;                  // for central sevenseg display
-  decimaltosevenseg playeronedecimaltosevenseg;         // for player one score sevenseg
-  decimaltosevenseg playertwodecimaltosevenseg;         // and so on
+  decimaltosevenseg decimaltosevenseg;                // for central sevenseg display
+  decimaltosevenseg playeronedecimaltosevenseg;       // for player one score sevenseg
+  decimaltosevenseg playertwodecimaltosevenseg;       // and so on
   decimaltosevenseg playerthreedecimaltosevenseg;
   
-  sevenseg sevensegzero;                                // for central sevenseg display
+  sevenseg sevensegzero;                              // for central sevenseg display
   sevenseg sevensegone;
   sevenseg sevensegtwo;
-  sevenseg playeronescoresevenseg;
+  sevenseg playeronescoresevenseg;                    // for player score sevenseg displays
   sevenseg playertwoscoresevenseg;
   sevenseg playerthreescoresevenseg;
   
@@ -79,7 +77,7 @@ module mojo_top (
     reset_cond.in = ~rst_n; // input raw inverted reset signal
     rst = reset_cond.out;   // conditioned reset
     
-    centralleds = 3b0;
+    centralleds = 3b0;      // Turn central RGB leds off by default.
     
     alu8bit.alufn = 0;
     alu8bit.a = 0;
@@ -154,29 +152,26 @@ module mojo_top (
     bcgameselectthree.in = gameselectbuttons[2];
     edgameselectthree.in = bcgameselectthree.out;
     
-    decimaltosevenseg.a = 0; // default seven seg is 0000.
+    decimaltosevenseg.a = 0;              // default seven seg is 0000.
     playeronedecimaltosevenseg.a = 0;
     playertwodecimaltosevenseg.a = 0;
     playerthreedecimaltosevenseg.a = 0;
     
-    playerleds = 6b0;
-
-    io_led = 3x{{8b0}};    // turn LEDs off by default.
-
+    playerleds = 6b0;                     // Turn player R/G leds off by default
     
-    if (edgameselectone.out) {                                  // this button will be changed to the gameselectbuttons. add BC and ED.
-      gameselectstate.d = gameselectstate.NAP;
+    if (edgameselectone.out) {                           // This button will be changed to the gameselectbuttons. add BC and ED.
+      gameselectstate.d = gameselectstate.NAP;           // Change current game to NAP (Game One)
       gameonemanager.start = 1;
     }
     
-    if (edgameselectthree.out) {                                // ADD HERE other state select buttons
-      gameselectstate.d = gameselectstate.SNACK;                // Change current game to SNACK.
-      gametwomanager.start = 1;                                 // initialize game two. Restart game two's counter
+    if (edgameselectthree.out) {                         // ADD HERE other state select buttons
+      gameselectstate.d = gameselectstate.SNACK;         // Change current game to SNACK (Game Two)
+      gametwomanager.start = 1;                          // initialize game two. Restart game two's counter
     }
     
-    if (edgameselecttwo.out) {                                  // ADD HERE other state select buttons
-      gameselectstate.d = gameselectstate.SNAP;                 // Change current game to SNACK.
-      gamethreemanager.start = 1;                               // initialize game three. Restart game three's counter
+    if (edgameselecttwo.out) {                           // ADD HERE other state select buttons
+      gameselectstate.d = gameselectstate.SNAP;          // Change current game to SNAP (Game Three)
+      gamethreemanager.start = 1;                        // initialize game three. Restart game three's counter
     }
     
     case(gameselectstate.q){
@@ -185,8 +180,8 @@ module mojo_top (
         alu8bit.alufn = gameonemanager.alufn;                        // SUB operation
         alu8bit.a = gameonemanager.alua;                             // if gameselectstate is in NAP, set alu inputs to be from gameonemanager
         alu8bit.b = gameonemanager.alub;
-        playerleds[1:0] = gameonemanager.playerleds[1:0];
-        playerleds[3:2] = gameonemanager.playerleds[3:2];
+        playerleds[1:0] = gameonemanager.playerleds[1:0];            // Connecting appropriate outputs for game to mojo_top
+        playerleds[3:2] = gameonemanager.playerleds[3:2];            // No need to show player scores for game one
         playerleds[5:4] = gameonemanager.playerleds[5:4];
         decimaltosevenseg.a = gameonemanager.centralsevenseg;
       
@@ -201,7 +196,7 @@ module mojo_top (
         centralleds = gametwomanager.leddisplay;
 
       gameselectstate.SNAP:
-        alu8bit.alufn = gamethreemanager.alufn;
+        alu8bit.alufn = gamethreemanager.alufn;                      // CMPLT operation
         alu8bit.a = gamethreemanager.alua;
         alu8bit.b = gamethreemanager.alub;
         playerthreedecimaltosevenseg.a = gamethreemanager.playerthreescore;
@@ -217,18 +212,18 @@ module mojo_top (
     sevensegtwo.char = decimaltosevenseg.out2;
     
     playeronescoresevenseg.char = playeronedecimaltosevenseg.out0;      // only out0 is needed
-    playertwoscoresevenseg.char = playertwodecimaltosevenseg.out0;      // since player scores are only 0-8.
+    playertwoscoresevenseg.char = playertwodecimaltosevenseg.out0;      // since player scores are only 0-8 (8 rounds for games two and three)
     playerthreescoresevenseg.char = playerthreedecimaltosevenseg.out0;    
     
-    centralsevensegzero = ~sevensegzero.segs;  // this is for right-most external central sevenseg
-    centralsevensegone = ~sevensegone.segs;
-    centralsevensegtwo = ~sevensegtwo.segs;
+    centralsevensegzero = ~sevensegzero.segs;            // this is for right-most central sevenseg
+    centralsevensegone = ~sevensegone.segs;              // middle central sevenseg
+    centralsevensegtwo = ~sevensegtwo.segs;              // left-most central sevenseg
     
-    playeronescore = ~playeronescoresevenseg.segs;            // player scores sevenseg outputs
+    playeronescore = ~playeronescoresevenseg.segs;       // player scores sevenseg outputs
     playertwoscore = ~playertwoscoresevenseg.segs;
     playerthreescore = ~playerthreescoresevenseg.segs;
     
-    if (gameselectstate.q == gameselectstate.NAP) {            // NAP game should not show player scores
+    if (gameselectstate.q == gameselectstate.NAP) {      // NAP game should not show player scores
       playeronescore = ~8b0;
       playertwoscore = ~8b0;
       playerthreescore = ~8b0;

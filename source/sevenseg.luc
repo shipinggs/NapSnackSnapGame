@@ -1,5 +1,5 @@
-module sevenseg (
-    input char[4],    
+module sevenseg (      // This module takes in a 4-bit number encoding a single digit (0-9) and
+    input char[4],     // outputs 7-bits for the sevenseg display    
     output segs[7]
   ) {
 

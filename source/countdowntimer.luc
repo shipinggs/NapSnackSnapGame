@@ -1,4 +1,4 @@
-module countdowntimer #(  // THIS COUNTDOWNTIMER IS HARDCODED TO START AT 5 AND TO WORK AT A CERTAIN RATE.
+module countdowntimer #(  // THIS COUNTDOWNTIMER IS DESIGNED TO START AT 5 AND TO WORK AT A CERTAIN RATE.
 
     SIZE = 3 : SIZE > 0, // Width of the output
     DIV = 0  : DIV >= 0, // number of bits to use as divisor

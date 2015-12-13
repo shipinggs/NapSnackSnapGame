@@ -1,4 +1,4 @@
-module leddisplaycounter #(
+module leddisplaycounter #(  // This counter is for determining the rate of showing the LED blink sequence
     SIZE = 8 : SIZE > 0, // Width of the output
     DIV = 0  : DIV >= 0, // number of bits to use as divisor
     TOP = 0  : TOP >= 0, // max value, 0 = none
@@ -8,7 +8,7 @@ module leddisplaycounter #(
   )(
     input clk,
     input rst,
-    input start,
+    input start,    
     output value[SIZE]
   ) {
   
@@ -21,15 +21,15 @@ module leddisplaycounter #(
   always {
     value = ctr.q[SIZE+DIV-1-:SIZE]; // set the output
     
-    if (UP) { // when this is an up counter
-      ctr.d = ctr.q + 1; // increase
+    if (UP) {                               // when this is an up counter
+      ctr.d = ctr.q + 1;                    // increase by 1
       if (TOP != 0 && ctr.q == MAX_VALUE) { // reached the top?
-        ctr.d = 0; // reset
+        ctr.d = 0;                          // reset
       }
     } 
     
     if (start) {
-      ctr.d = 0;  // reset on start
+      ctr.d = 0;                            // reset on start
     }
   }
 }

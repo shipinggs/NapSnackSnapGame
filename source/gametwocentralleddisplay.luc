@@ -8,8 +8,8 @@ module gametwocentralleddisplay (
   ) {
 
   .clk(clk), .rst(rst) {
-    leddisplaycounter leddisplayctr (#SIZE(4), #DIV(25)); // this counter is for displaying the led sequence question.
-  }                                                       // change size accordingly!
+    leddisplaycounter leddisplayctr (#SIZE(4), #DIV(25)); // this counter is for determining the rate of displaying the led sequence.
+  }                                                       // change size accordingly! Size 4 because we set sequence to maximum of 10 blinks.
 
   always {
     displayfinish = 0;

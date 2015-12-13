@@ -7,7 +7,6 @@
 module mojo_top_0 (
     input clk,
     input rst_n,
-    output reg [23:0] io_led,
     input [2:0] gameselectbuttons,
     input [2:0] playeronebuttons,
     input [2:0] playertwobuttons,
@@ -456,7 +455,6 @@ module mojo_top_0 (
     M_playertwodecimaltosevenseg_a = 1'h0;
     M_playerthreedecimaltosevenseg_a = 1'h0;
     playerleds = 6'h00;
-    io_led = 24'h000000;
     if (M_edgameselectone_out) begin
       M_gameselectstate_d = NAP_gameselectstate;
       M_gameonemanager_start = 1'h1;

@@ -1,6 +1,6 @@
 module gametwosequencerom (
-    input address[4],  // ROM address. 3 bit because at most 7 rounds.
-    output sequence[30]   // ROM output
+    input address[4],     // ROM address. It doesn't have to be 4 bits. It can be bigger to store more sequence patterns.
+    output sequence[30]   // ROM output: 30-bit number that encodes the sequence of LED blinks shown on central LEDs
   ) {
  
   const SEQUENCEDATA = {30b000001010100000010000000000010,30b000000001000001010010000010100,
@@ -12,7 +12,6 @@ module gametwosequencerom (
                         30b000001010100001000100001001000,30b000000001000000101010000101000,
                         30b000000001000000010010000010100,30b000001000000000010100000000101};  // GBRGR. RGRGB
                            
- 
   always {
     sequence = SEQUENCEDATA[address];
   }

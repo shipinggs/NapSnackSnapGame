@@ -2,18 +2,18 @@ module gametwoplayer (
     input clk,  // clock
     input rst,  // reset
     input correct,
-    input start,        // signal to show start of game two
-    input nextround,    // signal to show start at next round
-    input playerbuttons[3],
-    output playerscore[8],
-    output answer[30]
+    input start,            // signal to show start of game two
+    input nextround,        // signal to show start at next round
+    input playerbuttons[3], // The RGB button inputs (through edge_detectors and button_conditioners) for the player
+    output playerscore[8],  // The player's accumulated score for the game
+    output answer[30]       // The player's answer for that round
   ) {
   
   .clk(clk), .rst(rst) {
-    conditionalcounter scorectr;  // ponescorectr keeps track of player one's score in game two
-    conditionalcounter answerctr (#SIZE(4)); // poneanswerctr helps keeps track of the sequence of inputs
+    conditionalcounter scorectr;             // This keeps track of the player's score in game two
+    conditionalcounter answerctr (#SIZE(4)); // This keeps track of the player's sequence of inputs/ number of presses made already
     
-    gametwoinput gametwoinput;
+    gametwoinput gametwoinput;               // Sequence tracking module for the player's answer
   }
   
   always {
@@ -30,23 +30,23 @@ module gametwoplayer (
     scorectr.upcounter = 0;
     answerctr.upcounter = 0;
     
-    if (start) {          // reset scores to 0
+    if (start) {                        // reset scores to 0 when "start" signal is high
       scorectr.start = 1;
     }
 
-    if (nextround) {      // reset ctr for input to 0 and reset input response at the start of each input round
+    if (nextround) {                    // reset ctr for input to 0 and reset input response at the start of each input round
       answerctr.start = 1;
       gametwoinput.start = 1;
     }
     
-    if (correct) {                  // if correct, up score
+    if (correct) {                      // if correct, up player's score by 1
       scorectr.upcounter = 1;
     }
-    playerscore = scorectr.value; 
+    playerscore = scorectr.value;       // Output the player's current accumulated score.
     
-    if (playerbuttons[0]) {
-      answerctr.upcounter = 1;
-    }
+    if (playerbuttons[0]) {             // If any button of the player is pressed,
+      answerctr.upcounter = 1;          // Increment answerctr by 1.
+    }                                   // This keeps track of the number of presses the player has made
     
     if (playerbuttons[1]) {
       answerctr.upcounter = 1;
