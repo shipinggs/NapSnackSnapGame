@@ -2,15 +2,15 @@ module gameonemanager (
     input clk,  // clock
     input rst,  // reset
     input start,
-    input playeronebuttons[3],
-    input playertwobuttons[3],
-    input playerthreebuttons[3],
     input aluout[8],
     output alufn[6],
     output alua[8],
     output alub[8],
+    input playeronebuttons[3],
+    input playertwobuttons[3],
+    input playerthreebuttons[3],
     output centralsevenseg[8],
-    output playerleds[6]  // {playerone[1:0], playertwo[1:0], playerthree[1:0]}
+    output playerleds[6]  // {playerone[5:4], playertwo[3:2], playerthree[1:0]}
   ) {
   
   .clk(clk), .rst(rst) {

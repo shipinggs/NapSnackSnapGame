@@ -39,8 +39,8 @@ module gamethreemanager (
   
   always {
   
-    alufn = 6b110101;    //CMPLT
-    alub = 8b1011;
+    alufn = 6b110101;                            // CMPLT operation
+    alub = 8b111;                               // This game has 8 rounds
     alua = roundcounter2.value;
     primeornot = 0;
     

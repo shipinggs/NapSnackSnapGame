@@ -37,7 +37,7 @@ module gametwomanager (
 
   always {
  
-    alufn = 6b110101;                            // CMPLT operation
+    alufn = 6b110101;                                // CMPLT operation
     alub = 8b111;                                    // The game has 8 rounds.
     alua = roundcounter.value;
     

@@ -8,23 +8,23 @@ Target Device  : xc6slx9
 Target Package : tqg144
 Target Speed   : -2
 Mapper Version : spartan6 -- $Revision: 1.55 $
-Mapped Date    : Fri Dec 11 21:20:45 2015
+Mapped Date    : Sun Dec 13 14:59:47 2015
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    0
 Slice Logic Utilization:
-  Number of Slice Registers:                   678 out of  11,440    5%
-    Number used as Flip Flops:                 678
+  Number of Slice Registers:                   660 out of  11,440    5%
+    Number used as Flip Flops:                 660
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                      1,673 out of   5,720   29%
-    Number used as logic:                    1,643 out of   5,720   28%
-      Number using O6 output only:           1,076
-      Number using O5 output only:             286
-      Number using O5 and O6:                  281
+  Number of Slice LUTs:                      1,710 out of   5,720   29%
+    Number used as logic:                    1,681 out of   5,720   29%
+      Number using O6 output only:           1,119
+      Number using O5 output only:             271
+      Number using O5 and O6:                  291
       Number used as ROM:                        0
     Number used as Memory:                       8 out of   1,440    1%
       Number used as Dual Port RAM:              0
@@ -33,21 +33,21 @@ Slice Logic Utilization:
         Number using O6 output only:             4
         Number using O5 output only:             0
         Number using O5 and O6:                  4
-    Number used exclusively as route-thrus:     22
+    Number used exclusively as route-thrus:     21
       Number with same-slice register load:      1
-      Number with same-slice carry load:        21
+      Number with same-slice carry load:        20
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   542 out of   1,430   37%
-  Number of MUXCYs used:                       672 out of   2,860   23%
-  Number of LUT Flip Flop pairs used:        1,680
-    Number with an unused Flip Flop:         1,039 out of   1,680   61%
-    Number with an unused LUT:                   7 out of   1,680    1%
-    Number of fully used LUT-FF pairs:         634 out of   1,680   37%
+  Number of occupied Slices:                   559 out of   1,430   39%
+  Number of MUXCYs used:                       652 out of   2,860   22%
+  Number of LUT Flip Flop pairs used:        1,712
+    Number with an unused Flip Flop:         1,078 out of   1,712   62%
+    Number with an unused LUT:                   2 out of   1,712    1%
+    Number of fully used LUT-FF pairs:         632 out of   1,712   36%
     Number of unique control sets:              40
     Number of slice register sites lost
-      to control set restrictions:             118 out of  11,440    1%
+      to control set restrictions:             128 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -56,8 +56,8 @@ Slice Logic Distribution:
   over-mapped for a non-slice resource or if Placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                        53 out of     102   51%
-    Number of LOCed IOBs:                       53 out of      53  100%
+  Number of bonded IOBs:                        95 out of     102   93%
+    Number of LOCed IOBs:                       77 out of      95   81%
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                         0 out of      32    0%
@@ -84,11 +84,11 @@ Specific Feature Utilization:
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                4.38
+Average Fanout of Non-Clock Nets:                4.41
 
-Peak Memory Usage:  441 MB
-Total REAL time to MAP completion:  34 secs 
-Total CPU time to MAP completion (all processors):   34 secs 
+Peak Memory Usage:  442 MB
+Total REAL time to MAP completion:  40 secs 
+Total CPU time to MAP completion (all processors):   40 secs 
 
 Table of Contents
 -----------------
@@ -127,11 +127,14 @@ INFO:Pack:1720 - Initializing voltage to 1.140 Volts. (default - Range: 1.140 to
    1.260 Volts)
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
+INFO:Place:834 - Only a subset of IOs are locked. Out of 95 IOs, 77 are locked
+   and 18 are not locked. If you would like to print the names of these IOs,
+   please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
 INFO:Pack:1650 - Map created a placed design.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-  93 block(s) optimized away
+  92 block(s) optimized away
 
 Section 5 - Removed Logic
 -------------------------
@@ -190,8 +193,6 @@ GND 		bctwotwo/XST_GND
 VCC 		bctwotwo/XST_VCC
 GND 		bctwotwo/sync/XST_GND
 VCC 		bctwotwo/sync/XST_VCC
-GND 		ctr_sevensegdisplay/XST_GND
-VCC 		ctr_sevensegdisplay/XST_VCC
 GND 		gameonemanager/gameonecountdowntimer/XST_GND
 VCC 		gameonemanager/gameonecountdowntimer/XST_VCC
 GND 		gamethreemanager/countdowntimer2/XST_GND
@@ -209,6 +210,7 @@ GND 		gamethreemanager/randomaccessctr/XST_GND
 VCC 		gamethreemanager/randomaccessctr/XST_VCC
 GND 		gamethreemanager/randomaccessctr2/XST_GND
 VCC 		gamethreemanager/randomaccessctr2/XST_VCC
+VCC 		gametwomanager/XST_VCC
 GND 		gametwomanager/countdowntimer/XST_GND
 VCC 		gametwomanager/countdowntimer/XST_VCC
 GND 		gametwomanager/gametwocentralleddisplay/leddisplayctr/XST_GND
@@ -245,6 +247,30 @@ Section 6 - IOB Properties
 | centralleds[0]                     | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | centralleds[1]                     | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | centralleds[2]                     | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegone[0]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegone[1]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegone[2]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegone[3]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegone[4]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegone[5]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegone[6]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegone[7]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegtwo[0]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegtwo[1]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegtwo[2]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegtwo[3]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegtwo[4]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegtwo[5]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegtwo[6]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegtwo[7]              | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegzero[0]             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegzero[1]             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegzero[2]             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegzero[3]             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegzero[4]             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegzero[5]             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegzero[6]             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| centralsevensegzero[7]             | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | clk                                | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
 | gameselectbuttons[0]               | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | gameselectbuttons[1]               | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
@@ -273,27 +299,45 @@ Section 6 - IOB Properties
 | io_led[21]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | io_led[22]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | io_led[23]                         | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_seg[0]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_seg[1]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_seg[2]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_seg[3]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_seg[4]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_seg[5]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_seg[6]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_seg[7]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_sel[0]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_sel[1]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_sel[2]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
-| io_sel[3]                          | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerleds[0]                      | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerleds[1]                      | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerleds[2]                      | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerleds[3]                      | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerleds[4]                      | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerleds[5]                      | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | playeronebuttons[0]                | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | playeronebuttons[1]                | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | playeronebuttons[2]                | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
+| playeronescore[0]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playeronescore[1]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playeronescore[2]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playeronescore[3]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playeronescore[4]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playeronescore[5]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playeronescore[6]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playeronescore[7]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | playerthreebuttons[0]              | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | playerthreebuttons[1]              | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | playerthreebuttons[2]              | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
+| playerthreescore[0]                | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerthreescore[1]                | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerthreescore[2]                | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerthreescore[3]                | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerthreescore[4]                | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerthreescore[5]                | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerthreescore[6]                | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playerthreescore[7]                | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | playertwobuttons[0]                | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | playertwobuttons[1]                | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
 | playertwobuttons[2]                | IOB              | INPUT     | LVTTL                |       |          |      |              | PULLDOWN |          |
+| playertwoscore[0]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playertwoscore[1]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playertwoscore[2]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playertwoscore[3]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playertwoscore[4]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playertwoscore[5]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playertwoscore[6]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
+| playertwoscore[7]                  | IOB              | OUTPUT    | LVTTL                |       | 12       | SLOW |              |          |          |
 | rst_n                              | IOB              | INPUT     | LVTTL                |       |          |      |              |          |          |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 

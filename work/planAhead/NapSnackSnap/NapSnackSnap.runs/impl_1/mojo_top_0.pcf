@@ -1,62 +1,395 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Dec 11 21:21:17 2015
+// Written by: Map P.20131013 on Sun Dec 13 15:00:26 2015
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "playeronescore[0]" LOCATE = SITE "P16" LEVEL 1;
+COMP "playeronescore[1]" LOCATE = SITE "P17" LEVEL 1;
+COMP "playeronescore[2]" LOCATE = SITE "P21" LEVEL 1;
+COMP "playeronescore[3]" LOCATE = SITE "P22" LEVEL 1;
+COMP "playeronescore[4]" LOCATE = SITE "P23" LEVEL 1;
+COMP "playeronescore[5]" LOCATE = SITE "P24" LEVEL 1;
+COMP "playeronescore[6]" LOCATE = SITE "P26" LEVEL 1;
+COMP "playeronescore[7]" LOCATE = SITE "P27" LEVEL 1;
 COMP "clk" LOCATE = SITE "P56" LEVEL 1;
-COMP "gameselectbuttons[0]" LOCATE = SITE "P142" LEVEL 1;
-COMP "gameselectbuttons[1]" LOCATE = SITE "P140" LEVEL 1;
-COMP "gameselectbuttons[2]" LOCATE = SITE "P138" LEVEL 1;
+COMP "playertwoscore[0]" LOCATE = SITE "P29" LEVEL 1;
+COMP "playertwoscore[1]" LOCATE = SITE "P30" LEVEL 1;
+COMP "playertwoscore[2]" LOCATE = SITE "P32" LEVEL 1;
+COMP "playertwoscore[3]" LOCATE = SITE "P33" LEVEL 1;
+COMP "playertwoscore[4]" LOCATE = SITE "P34" LEVEL 1;
+COMP "playertwoscore[5]" LOCATE = SITE "P35" LEVEL 1;
+COMP "playertwoscore[6]" LOCATE = SITE "P40" LEVEL 1;
+COMP "playertwoscore[7]" LOCATE = SITE "P41" LEVEL 1;
+COMP "gameselectbuttons[0]" LOCATE = SITE "P120" LEVEL 1;
+COMP "gameselectbuttons[1]" LOCATE = SITE "P121" LEVEL 1;
+COMP "gameselectbuttons[2]" LOCATE = SITE "P118" LEVEL 1;
 COMP "rst_n" LOCATE = SITE "P38" LEVEL 1;
 COMP "io_led[0]" LOCATE = SITE "P97" LEVEL 1;
 COMP "io_led[1]" LOCATE = SITE "P98" LEVEL 1;
 COMP "io_led[2]" LOCATE = SITE "P94" LEVEL 1;
 COMP "io_led[3]" LOCATE = SITE "P95" LEVEL 1;
-COMP "io_led[4]" LOCATE = SITE "P92" LEVEL 1;
-COMP "io_led[5]" LOCATE = SITE "P93" LEVEL 1;
-COMP "io_led[6]" LOCATE = SITE "P87" LEVEL 1;
-COMP "io_led[7]" LOCATE = SITE "P88" LEVEL 1;
-COMP "io_led[8]" LOCATE = SITE "P84" LEVEL 1;
-COMP "io_led[9]" LOCATE = SITE "P85" LEVEL 1;
-COMP "io_seg[0]" LOCATE = SITE "P5" LEVEL 1;
-COMP "io_seg[1]" LOCATE = SITE "P8" LEVEL 1;
-COMP "io_seg[2]" LOCATE = SITE "P144" LEVEL 1;
-COMP "io_seg[3]" LOCATE = SITE "P143" LEVEL 1;
-COMP "io_seg[4]" LOCATE = SITE "P2" LEVEL 1;
-COMP "io_seg[5]" LOCATE = SITE "P6" LEVEL 1;
-COMP "io_seg[6]" LOCATE = SITE "P1" LEVEL 1;
-COMP "io_seg[7]" LOCATE = SITE "P141" LEVEL 1;
-COMP "io_sel[0]" LOCATE = SITE "P9" LEVEL 1;
-COMP "io_sel[1]" LOCATE = SITE "P10" LEVEL 1;
-COMP "io_sel[2]" LOCATE = SITE "P7" LEVEL 1;
-COMP "io_sel[3]" LOCATE = SITE "P12" LEVEL 1;
-COMP "playerthreebuttons[0]" LOCATE = SITE "P134" LEVEL 1;
-COMP "playerthreebuttons[1]" LOCATE = SITE "P133" LEVEL 1;
-COMP "playerthreebuttons[2]" LOCATE = SITE "P137" LEVEL 1;
-COMP "io_led[10]" LOCATE = SITE "P82" LEVEL 1;
-COMP "io_led[11]" LOCATE = SITE "P83" LEVEL 1;
-COMP "io_led[20]" LOCATE = SITE "P22" LEVEL 1;
-COMP "io_led[12]" LOCATE = SITE "P80" LEVEL 1;
-COMP "io_led[21]" LOCATE = SITE "P23" LEVEL 1;
+COMP "centralsevensegone[0]" LOCATE = SITE "P137" LEVEL 1;
+COMP "centralsevensegone[1]" LOCATE = SITE "P138" LEVEL 1;
+COMP "centralsevensegone[2]" LOCATE = SITE "P139" LEVEL 1;
+COMP "centralsevensegone[3]" LOCATE = SITE "P140" LEVEL 1;
+COMP "centralsevensegone[4]" LOCATE = SITE "P141" LEVEL 1;
+COMP "centralsevensegone[5]" LOCATE = SITE "P142" LEVEL 1;
+COMP "centralsevensegone[6]" LOCATE = SITE "P143" LEVEL 1;
+COMP "centralsevensegone[7]" LOCATE = SITE "P144" LEVEL 1;
+COMP "centralsevensegtwo[0]" LOCATE = SITE "P1" LEVEL 1;
+COMP "centralsevensegtwo[1]" LOCATE = SITE "P2" LEVEL 1;
+COMP "centralsevensegtwo[2]" LOCATE = SITE "P5" LEVEL 1;
+COMP "centralsevensegtwo[3]" LOCATE = SITE "P6" LEVEL 1;
+COMP "centralsevensegtwo[4]" LOCATE = SITE "P7" LEVEL 1;
+COMP "centralsevensegtwo[5]" LOCATE = SITE "P8" LEVEL 1;
+COMP "centralsevensegtwo[6]" LOCATE = SITE "P9" LEVEL 1;
+COMP "centralsevensegtwo[7]" LOCATE = SITE "P10" LEVEL 1;
+COMP "playerleds[0]" LOCATE = SITE "P116" LEVEL 1;
+COMP "playerleds[1]" LOCATE = SITE "P117" LEVEL 1;
+COMP "playerleds[2]" LOCATE = SITE "P114" LEVEL 1;
+COMP "playerleds[3]" LOCATE = SITE "P115" LEVEL 1;
+COMP "playerleds[4]" LOCATE = SITE "P111" LEVEL 1;
+COMP "playerleds[5]" LOCATE = SITE "P112" LEVEL 1;
+COMP "playerthreebuttons[0]" LOCATE = SITE "P78" LEVEL 1;
+COMP "playerthreebuttons[1]" LOCATE = SITE "P79" LEVEL 1;
+COMP "playerthreebuttons[2]" LOCATE = SITE "P80" LEVEL 1;
+COMP "playerthreescore[0]" LOCATE = SITE "P82" LEVEL 1;
+COMP "playerthreescore[1]" LOCATE = SITE "P83" LEVEL 1;
+COMP "playerthreescore[2]" LOCATE = SITE "P84" LEVEL 1;
+COMP "playerthreescore[3]" LOCATE = SITE "P85" LEVEL 1;
+COMP "playerthreescore[4]" LOCATE = SITE "P87" LEVEL 1;
+COMP "playerthreescore[5]" LOCATE = SITE "P88" LEVEL 1;
+COMP "playerthreescore[6]" LOCATE = SITE "P92" LEVEL 1;
+COMP "playerthreescore[7]" LOCATE = SITE "P93" LEVEL 1;
 COMP "io_led[13]" LOCATE = SITE "P81" LEVEL 1;
-COMP "io_led[22]" LOCATE = SITE "P24" LEVEL 1;
-COMP "io_led[14]" LOCATE = SITE "P11" LEVEL 1;
-COMP "io_led[23]" LOCATE = SITE "P26" LEVEL 1;
-COMP "io_led[15]" LOCATE = SITE "P14" LEVEL 1;
 COMP "io_led[16]" LOCATE = SITE "P15" LEVEL 1;
-COMP "io_led[17]" LOCATE = SITE "P16" LEVEL 1;
-COMP "io_led[18]" LOCATE = SITE "P17" LEVEL 1;
-COMP "io_led[19]" LOCATE = SITE "P21" LEVEL 1;
-COMP "centralleds[0]" LOCATE = SITE "P57" LEVEL 1;
-COMP "centralleds[1]" LOCATE = SITE "P58" LEVEL 1;
-COMP "centralleds[2]" LOCATE = SITE "P66" LEVEL 1;
-COMP "playertwobuttons[0]" LOCATE = SITE "P126" LEVEL 1;
-COMP "playertwobuttons[1]" LOCATE = SITE "P131" LEVEL 1;
-COMP "playertwobuttons[2]" LOCATE = SITE "P132" LEVEL 1;
-COMP "playeronebuttons[0]" LOCATE = SITE "P124" LEVEL 1;
-COMP "playeronebuttons[1]" LOCATE = SITE "P123" LEVEL 1;
-COMP "playeronebuttons[2]" LOCATE = SITE "P127" LEVEL 1;
-TIMEGRP clk = BEL "M_gameselectstate_q_0" BEL "M_gameselectstate_q_1" BEL
+COMP "centralleds[0]" LOCATE = SITE "P11" LEVEL 1;
+COMP "centralleds[1]" LOCATE = SITE "P12" LEVEL 1;
+COMP "centralleds[2]" LOCATE = SITE "P14" LEVEL 1;
+COMP "playertwobuttons[0]" LOCATE = SITE "P67" LEVEL 1;
+COMP "playertwobuttons[1]" LOCATE = SITE "P74" LEVEL 1;
+COMP "playertwobuttons[2]" LOCATE = SITE "P75" LEVEL 1;
+COMP "centralsevensegzero[0]" LOCATE = SITE "P123" LEVEL 1;
+COMP "centralsevensegzero[1]" LOCATE = SITE "P124" LEVEL 1;
+COMP "centralsevensegzero[2]" LOCATE = SITE "P126" LEVEL 1;
+COMP "centralsevensegzero[3]" LOCATE = SITE "P127" LEVEL 1;
+COMP "centralsevensegzero[4]" LOCATE = SITE "P131" LEVEL 1;
+COMP "centralsevensegzero[5]" LOCATE = SITE "P132" LEVEL 1;
+COMP "centralsevensegzero[6]" LOCATE = SITE "P133" LEVEL 1;
+COMP "centralsevensegzero[7]" LOCATE = SITE "P134" LEVEL 1;
+COMP "playeronebuttons[0]" LOCATE = SITE "P57" LEVEL 1;
+COMP "playeronebuttons[1]" LOCATE = SITE "P58" LEVEL 1;
+COMP "playeronebuttons[2]" LOCATE = SITE "P66" LEVEL 1;
+TIMEGRP clk = BEL "bctwotwo/M_ctr_q_0" BEL "bctwotwo/M_ctr_q_1" BEL
+        "bctwotwo/M_ctr_q_2" BEL "bctwotwo/M_ctr_q_3" BEL "bctwotwo/M_ctr_q_4"
+        BEL "bctwotwo/M_ctr_q_5" BEL "bctwotwo/M_ctr_q_6" BEL
+        "bctwotwo/M_ctr_q_7" BEL "bctwotwo/M_ctr_q_8" BEL "bctwotwo/M_ctr_q_9"
+        BEL "bctwotwo/M_ctr_q_10" BEL "bctwotwo/M_ctr_q_11" BEL
+        "bctwotwo/M_ctr_q_12" BEL "bctwotwo/M_ctr_q_13" BEL
+        "bctwotwo/M_ctr_q_14" BEL "bctwotwo/M_ctr_q_15" BEL
+        "bctwotwo/M_ctr_q_16" BEL "bctwotwo/M_ctr_q_17" BEL
+        "bctwotwo/M_ctr_q_18" BEL "bctwotwo/M_ctr_q_19" BEL
+        "bctwotwo/sync/M_pipe_q_1" BEL "bctwotwo/sync/Mshreg_M_pipe_q_1" BEL
+        "edonethree/M_last_q" BEL "edtwothree/M_last_q" BEL "clk_BUFGP/BUFG"
+        BEL "reset_cond/M_stage_q_3" BEL "reset_cond/M_stage_q_2" BEL
+        "reset_cond/M_stage_q_1" BEL "reset_cond/M_stage_q_0" BEL
+        "bcthreetwo/M_ctr_q_0" BEL "bcthreetwo/M_ctr_q_1" BEL
+        "bcthreetwo/M_ctr_q_2" BEL "bcthreetwo/M_ctr_q_3" BEL
+        "bcthreetwo/M_ctr_q_4" BEL "bcthreetwo/M_ctr_q_5" BEL
+        "bcthreetwo/M_ctr_q_6" BEL "bcthreetwo/M_ctr_q_7" BEL
+        "bcthreetwo/M_ctr_q_8" BEL "bcthreetwo/M_ctr_q_9" BEL
+        "bcthreetwo/M_ctr_q_10" BEL "bcthreetwo/M_ctr_q_11" BEL
+        "bcthreetwo/M_ctr_q_12" BEL "bcthreetwo/M_ctr_q_13" BEL
+        "bcthreetwo/M_ctr_q_14" BEL "bcthreetwo/M_ctr_q_15" BEL
+        "bcthreetwo/M_ctr_q_16" BEL "bcthreetwo/M_ctr_q_17" BEL
+        "bcthreetwo/M_ctr_q_18" BEL "bcthreetwo/M_ctr_q_19" BEL
+        "bcthreetwo/sync/M_pipe_q_1" BEL "bcthreetwo/sync/Mshreg_M_pipe_q_1"
+        BEL "bconetwo/M_ctr_q_0" BEL "bconetwo/M_ctr_q_1" BEL
+        "bconetwo/M_ctr_q_2" BEL "bconetwo/M_ctr_q_3" BEL "bconetwo/M_ctr_q_4"
+        BEL "bconetwo/M_ctr_q_5" BEL "bconetwo/M_ctr_q_6" BEL
+        "bconetwo/M_ctr_q_7" BEL "bconetwo/M_ctr_q_8" BEL "bconetwo/M_ctr_q_9"
+        BEL "bconetwo/M_ctr_q_10" BEL "bconetwo/M_ctr_q_11" BEL
+        "bconetwo/M_ctr_q_12" BEL "bconetwo/M_ctr_q_13" BEL
+        "bconetwo/M_ctr_q_14" BEL "bconetwo/M_ctr_q_15" BEL
+        "bconetwo/M_ctr_q_16" BEL "bconetwo/M_ctr_q_17" BEL
+        "bconetwo/M_ctr_q_18" BEL "bconetwo/M_ctr_q_19" BEL
+        "bconetwo/sync/M_pipe_q_1" BEL "bconetwo/sync/Mshreg_M_pipe_q_1" BEL
+        "bconethree/M_ctr_q_0" BEL "bconethree/M_ctr_q_1" BEL
+        "bconethree/M_ctr_q_2" BEL "bconethree/M_ctr_q_3" BEL
+        "bconethree/M_ctr_q_4" BEL "bconethree/M_ctr_q_5" BEL
+        "bconethree/M_ctr_q_6" BEL "bconethree/M_ctr_q_7" BEL
+        "bconethree/M_ctr_q_8" BEL "bconethree/M_ctr_q_9" BEL
+        "bconethree/M_ctr_q_10" BEL "bconethree/M_ctr_q_11" BEL
+        "bconethree/M_ctr_q_12" BEL "bconethree/M_ctr_q_13" BEL
+        "bconethree/M_ctr_q_14" BEL "bconethree/M_ctr_q_15" BEL
+        "bconethree/M_ctr_q_16" BEL "bconethree/M_ctr_q_17" BEL
+        "bconethree/M_ctr_q_18" BEL "bconethree/M_ctr_q_19" BEL
+        "bconethree/sync/M_pipe_q_1" BEL "bconethree/sync/Mshreg_M_pipe_q_1"
+        BEL "bctwothree/M_ctr_q_0" BEL "bctwothree/M_ctr_q_1" BEL
+        "bctwothree/M_ctr_q_2" BEL "bctwothree/M_ctr_q_3" BEL
+        "bctwothree/M_ctr_q_4" BEL "bctwothree/M_ctr_q_5" BEL
+        "bctwothree/M_ctr_q_6" BEL "bctwothree/M_ctr_q_7" BEL
+        "bctwothree/M_ctr_q_8" BEL "bctwothree/M_ctr_q_9" BEL
+        "bctwothree/M_ctr_q_10" BEL "bctwothree/M_ctr_q_11" BEL
+        "bctwothree/M_ctr_q_12" BEL "bctwothree/M_ctr_q_13" BEL
+        "bctwothree/M_ctr_q_14" BEL "bctwothree/M_ctr_q_15" BEL
+        "bctwothree/M_ctr_q_16" BEL "bctwothree/M_ctr_q_17" BEL
+        "bctwothree/M_ctr_q_18" BEL "bctwothree/M_ctr_q_19" BEL
+        "bctwothree/sync/M_pipe_q_1" BEL "bctwothree/sync/Mshreg_M_pipe_q_1"
+        BEL "edtwoone/M_last_q" BEL "bcgameselectthree/M_ctr_q_0" BEL
+        "bcgameselectthree/M_ctr_q_1" BEL "bcgameselectthree/M_ctr_q_2" BEL
+        "bcgameselectthree/M_ctr_q_3" BEL "bcgameselectthree/M_ctr_q_4" BEL
+        "bcgameselectthree/M_ctr_q_5" BEL "bcgameselectthree/M_ctr_q_6" BEL
+        "bcgameselectthree/M_ctr_q_7" BEL "bcgameselectthree/M_ctr_q_8" BEL
+        "bcgameselectthree/M_ctr_q_9" BEL "bcgameselectthree/M_ctr_q_10" BEL
+        "bcgameselectthree/M_ctr_q_11" BEL "bcgameselectthree/M_ctr_q_12" BEL
+        "bcgameselectthree/M_ctr_q_13" BEL "bcgameselectthree/M_ctr_q_14" BEL
+        "bcgameselectthree/M_ctr_q_15" BEL "bcgameselectthree/M_ctr_q_16" BEL
+        "bcgameselectthree/M_ctr_q_17" BEL "bcgameselectthree/M_ctr_q_18" BEL
+        "bcgameselectthree/M_ctr_q_19" BEL "bcgameselectthree/sync/M_pipe_q_1"
+        BEL "bcgameselectthree/sync/Mshreg_M_pipe_q_1" BEL
+        "bcgameselecttwo/M_ctr_q_0" BEL "bcgameselecttwo/M_ctr_q_1" BEL
+        "bcgameselecttwo/M_ctr_q_2" BEL "bcgameselecttwo/M_ctr_q_3" BEL
+        "bcgameselecttwo/M_ctr_q_4" BEL "bcgameselecttwo/M_ctr_q_5" BEL
+        "bcgameselecttwo/M_ctr_q_6" BEL "bcgameselecttwo/M_ctr_q_7" BEL
+        "bcgameselecttwo/M_ctr_q_8" BEL "bcgameselecttwo/M_ctr_q_9" BEL
+        "bcgameselecttwo/M_ctr_q_10" BEL "bcgameselecttwo/M_ctr_q_11" BEL
+        "bcgameselecttwo/M_ctr_q_12" BEL "bcgameselecttwo/M_ctr_q_13" BEL
+        "bcgameselecttwo/M_ctr_q_14" BEL "bcgameselecttwo/M_ctr_q_15" BEL
+        "bcgameselecttwo/M_ctr_q_16" BEL "bcgameselecttwo/M_ctr_q_17" BEL
+        "bcgameselecttwo/M_ctr_q_18" BEL "bcgameselecttwo/M_ctr_q_19" BEL
+        "bcgameselecttwo/sync/M_pipe_q_1" BEL
+        "bcgameselecttwo/sync/Mshreg_M_pipe_q_1" BEL "M_gameselectstate_q_0"
+        BEL "M_gameselectstate_q_1" BEL "edoneone/M_last_q" BEL
+        "edthreethree/M_last_q" BEL "edthreeone/M_last_q" BEL
+        "bcthreethree/M_ctr_q_0" BEL "bcthreethree/M_ctr_q_1" BEL
+        "bcthreethree/M_ctr_q_2" BEL "bcthreethree/M_ctr_q_3" BEL
+        "bcthreethree/M_ctr_q_4" BEL "bcthreethree/M_ctr_q_5" BEL
+        "bcthreethree/M_ctr_q_6" BEL "bcthreethree/M_ctr_q_7" BEL
+        "bcthreethree/M_ctr_q_8" BEL "bcthreethree/M_ctr_q_9" BEL
+        "bcthreethree/M_ctr_q_10" BEL "bcthreethree/M_ctr_q_11" BEL
+        "bcthreethree/M_ctr_q_12" BEL "bcthreethree/M_ctr_q_13" BEL
+        "bcthreethree/M_ctr_q_14" BEL "bcthreethree/M_ctr_q_15" BEL
+        "bcthreethree/M_ctr_q_16" BEL "bcthreethree/M_ctr_q_17" BEL
+        "bcthreethree/M_ctr_q_18" BEL "bcthreethree/M_ctr_q_19" BEL
+        "bcthreethree/sync/M_pipe_q_1" BEL
+        "bcthreethree/sync/Mshreg_M_pipe_q_1" BEL "edgameselectone/M_last_q"
+        BEL "bctwoone/M_ctr_q_0" BEL "bctwoone/M_ctr_q_1" BEL
+        "bctwoone/M_ctr_q_2" BEL "bctwoone/M_ctr_q_3" BEL "bctwoone/M_ctr_q_4"
+        BEL "bctwoone/M_ctr_q_5" BEL "bctwoone/M_ctr_q_6" BEL
+        "bctwoone/M_ctr_q_7" BEL "bctwoone/M_ctr_q_8" BEL "bctwoone/M_ctr_q_9"
+        BEL "bctwoone/M_ctr_q_10" BEL "bctwoone/M_ctr_q_11" BEL
+        "bctwoone/M_ctr_q_12" BEL "bctwoone/M_ctr_q_13" BEL
+        "bctwoone/M_ctr_q_14" BEL "bctwoone/M_ctr_q_15" BEL
+        "bctwoone/M_ctr_q_16" BEL "bctwoone/M_ctr_q_17" BEL
+        "bctwoone/M_ctr_q_18" BEL "bctwoone/M_ctr_q_19" BEL
+        "bctwoone/sync/M_pipe_q_1" BEL "bctwoone/sync/Mshreg_M_pipe_q_1" BEL
+        "gameonemanager/M_gameonestate_q_FSM_FFd3" BEL
+        "gameonemanager/M_gameonestate_q_FSM_FFd4" BEL
+        "gameonemanager/M_gameonestate_q_FSM_FFd2" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_27" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_26" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_25" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_24" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_23" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_22" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_21" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_20" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_19" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_18" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_17" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_16" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_15" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_14" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_13" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_12" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_11" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_10" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_9" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_8" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_7" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_6" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_5" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_4" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_3" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_2" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_1" BEL
+        "gameonemanager/gameonecountdowntimer/M_ctr_q_0" BEL
+        "gameonemanager/gameonedecreasecounter/M_ctr_q_7" BEL
+        "gameonemanager/gameonedecreasecounter/M_ctr_q_6" BEL
+        "gameonemanager/gameonedecreasecounter/M_ctr_q_5" BEL
+        "gameonemanager/gameonedecreasecounter/M_ctr_q_4" BEL
+        "gameonemanager/gameonedecreasecounter/M_ctr_q_3" BEL
+        "gameonemanager/gameonedecreasecounter/M_ctr_q_2" BEL
+        "gameonemanager/gameonedecreasecounter/M_ctr_q_1" BEL
+        "gameonemanager/gameonedecreasecounter/M_ctr_q_0" BEL
+        "bcthreeone/M_ctr_q_0" BEL "bcthreeone/M_ctr_q_1" BEL
+        "bcthreeone/M_ctr_q_2" BEL "bcthreeone/M_ctr_q_3" BEL
+        "bcthreeone/M_ctr_q_4" BEL "bcthreeone/M_ctr_q_5" BEL
+        "bcthreeone/M_ctr_q_6" BEL "bcthreeone/M_ctr_q_7" BEL
+        "bcthreeone/M_ctr_q_8" BEL "bcthreeone/M_ctr_q_9" BEL
+        "bcthreeone/M_ctr_q_10" BEL "bcthreeone/M_ctr_q_11" BEL
+        "bcthreeone/M_ctr_q_12" BEL "bcthreeone/M_ctr_q_13" BEL
+        "bcthreeone/M_ctr_q_14" BEL "bcthreeone/M_ctr_q_15" BEL
+        "bcthreeone/M_ctr_q_16" BEL "bcthreeone/M_ctr_q_17" BEL
+        "bcthreeone/M_ctr_q_18" BEL "bcthreeone/M_ctr_q_19" BEL
+        "bcthreeone/sync/M_pipe_q_1" BEL "bcthreeone/sync/Mshreg_M_pipe_q_1"
+        BEL "edtwotwo/M_last_q" BEL "bconeone/M_ctr_q_0" BEL
+        "bconeone/M_ctr_q_1" BEL "bconeone/M_ctr_q_2" BEL "bconeone/M_ctr_q_3"
+        BEL "bconeone/M_ctr_q_4" BEL "bconeone/M_ctr_q_5" BEL
+        "bconeone/M_ctr_q_6" BEL "bconeone/M_ctr_q_7" BEL "bconeone/M_ctr_q_8"
+        BEL "bconeone/M_ctr_q_9" BEL "bconeone/M_ctr_q_10" BEL
+        "bconeone/M_ctr_q_11" BEL "bconeone/M_ctr_q_12" BEL
+        "bconeone/M_ctr_q_13" BEL "bconeone/M_ctr_q_14" BEL
+        "bconeone/M_ctr_q_15" BEL "bconeone/M_ctr_q_16" BEL
+        "bconeone/M_ctr_q_17" BEL "bconeone/M_ctr_q_18" BEL
+        "bconeone/M_ctr_q_19" BEL "bconeone/sync/M_pipe_q_1" BEL
+        "bconeone/sync/Mshreg_M_pipe_q_1" BEL "bcgameselectone/M_ctr_q_0" BEL
+        "bcgameselectone/M_ctr_q_1" BEL "bcgameselectone/M_ctr_q_2" BEL
+        "bcgameselectone/M_ctr_q_3" BEL "bcgameselectone/M_ctr_q_4" BEL
+        "bcgameselectone/M_ctr_q_5" BEL "bcgameselectone/M_ctr_q_6" BEL
+        "bcgameselectone/M_ctr_q_7" BEL "bcgameselectone/M_ctr_q_8" BEL
+        "bcgameselectone/M_ctr_q_9" BEL "bcgameselectone/M_ctr_q_10" BEL
+        "bcgameselectone/M_ctr_q_11" BEL "bcgameselectone/M_ctr_q_12" BEL
+        "bcgameselectone/M_ctr_q_13" BEL "bcgameselectone/M_ctr_q_14" BEL
+        "bcgameselectone/M_ctr_q_15" BEL "bcgameselectone/M_ctr_q_16" BEL
+        "bcgameselectone/M_ctr_q_17" BEL "bcgameselectone/M_ctr_q_18" BEL
+        "bcgameselectone/M_ctr_q_19" BEL "bcgameselectone/sync/M_pipe_q_1" BEL
+        "bcgameselectone/sync/Mshreg_M_pipe_q_1" BEL
+        "edgameselectthree/M_last_q" BEL
+        "gamethreemanager/M_gamethreestate_q_FSM_FFd1" BEL
+        "gamethreemanager/M_gamethreestate_q_FSM_FFd2" BEL
+        "gamethreemanager/roundcounter2/M_ctr_q_3" BEL
+        "gamethreemanager/roundcounter2/M_ctr_q_2" BEL
+        "gamethreemanager/roundcounter2/M_ctr_q_1" BEL
+        "gamethreemanager/roundcounter2/M_ctr_q_0" BEL
+        "gamethreemanager/roundcounter2/M_ctr_q_0_1" BEL
+        "gamethreemanager/roundcounter2/M_ctr_q_3_1" BEL
+        "gamethreemanager/roundcounter2/M_ctr_q_0_2" BEL
+        "gamethreemanager/roundcounter2/M_ctr_q_3_2" BEL
+        "gamethreemanager/randomaccessctr2/M_ctr_q_6" BEL
+        "gamethreemanager/randomaccessctr2/M_ctr_q_5" BEL
+        "gamethreemanager/randomaccessctr2/M_ctr_q_4" BEL
+        "gamethreemanager/randomaccessctr2/M_ctr_q_3" BEL
+        "gamethreemanager/randomaccessctr2/M_ctr_q_2" BEL
+        "gamethreemanager/randomaccessctr2/M_ctr_q_1" BEL
+        "gamethreemanager/randomaccessctr2/M_ctr_q_0" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_0" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_1" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_2" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_3" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_4" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_5" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_6" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_7" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_8" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_9" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_10" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_11" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_12" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_13" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_14" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_15" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_16" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_17" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_18" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_19" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_20" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_21" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_22" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_23" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_24" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_25" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_26" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_27" BEL
+        "gamethreemanager/inputcountdowntimer2/M_ctr_q_28" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_0" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_1" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_2" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_3" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_4" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_5" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_6" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_7" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_8" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_9" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_10" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_11" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_12" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_13" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_14" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_15" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_16" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_17" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_18" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_19" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_20" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_21" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_22" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_23" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_24" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_25" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_26" BEL
+        "gamethreemanager/countdowntimer2/M_ctr_q_27" BEL
+        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_4" BEL
+        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_3" BEL
+        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_2" BEL
+        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_1" BEL
+        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_0" BEL
+        "gamethreemanager/gamethreeplayertwo/answerctr2/M_ctr_q_3" BEL
+        "gamethreemanager/gamethreeplayertwo/answerctr2/M_ctr_q_2" BEL
+        "gamethreemanager/gamethreeplayertwo/answerctr2/M_ctr_q_1" BEL
+        "gamethreemanager/gamethreeplayertwo/answerctr2/M_ctr_q_0" BEL
+        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_7" BEL
+        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_6" BEL
+        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_5" BEL
+        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_4" BEL
+        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_3" BEL
+        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_2" BEL
+        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_1" BEL
+        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_0" BEL
+        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_7" BEL
+        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_6" BEL
+        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_5" BEL
+        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_4" BEL
+        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_3" BEL
+        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_2" BEL
+        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_1" BEL
+        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_0" BEL
+        "gamethreemanager/gamethreeplayerone/answerctr2/M_ctr_q_3" BEL
+        "gamethreemanager/gamethreeplayerone/answerctr2/M_ctr_q_2" BEL
+        "gamethreemanager/gamethreeplayerone/answerctr2/M_ctr_q_1" BEL
+        "gamethreemanager/gamethreeplayerone/answerctr2/M_ctr_q_0" BEL
+        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_4" BEL
+        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_3" BEL
+        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_2" BEL
+        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_1" BEL
+        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_0" BEL
+        "gamethreemanager/randomaccessctr/M_ctr_q_6" BEL
+        "gamethreemanager/randomaccessctr/M_ctr_q_5" BEL
+        "gamethreemanager/randomaccessctr/M_ctr_q_4" BEL
+        "gamethreemanager/randomaccessctr/M_ctr_q_3" BEL
+        "gamethreemanager/randomaccessctr/M_ctr_q_2" BEL
+        "gamethreemanager/randomaccessctr/M_ctr_q_1" BEL
+        "gamethreemanager/randomaccessctr/M_ctr_q_0" BEL
+        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_7" BEL
+        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_6" BEL
+        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_5" BEL
+        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_4" BEL
+        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_3" BEL
+        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_2" BEL
+        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_1" BEL
+        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_0" BEL
+        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_4" BEL
+        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_3" BEL
+        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_2" BEL
+        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_1" BEL
+        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_0" BEL
+        "gamethreemanager/gamethreeplayerthree/answerctr2/M_ctr_q_3" BEL
+        "gamethreemanager/gamethreeplayerthree/answerctr2/M_ctr_q_2" BEL
+        "gamethreemanager/gamethreeplayerthree/answerctr2/M_ctr_q_1" BEL
+        "gamethreemanager/gamethreeplayerthree/answerctr2/M_ctr_q_0" BEL
+        "edonetwo/M_last_q" BEL "edthreetwo/M_last_q" BEL
         "gametwomanager/M_gametwostate_q_FSM_FFd1" BEL
         "gametwomanager/M_gametwostate_q_FSM_FFd3" BEL
         "gametwomanager/M_gametwostate_q_FSM_FFd2" BEL
@@ -224,8 +557,8 @@ TIMEGRP clk = BEL "M_gameselectstate_q_0" BEL "M_gameselectstate_q_1" BEL
         "gametwomanager/gametwoplayerone/gametwoinput/M_ctr_q_0" BEL
         "gametwomanager/gametwoplayerone/answerctr/M_ctr_q_3" BEL
         "gametwomanager/gametwoplayerone/answerctr/M_ctr_q_2" BEL
-        "gametwomanager/gametwoplayerone/answerctr/M_ctr_q_1" BEL
         "gametwomanager/gametwoplayerone/answerctr/M_ctr_q_0" BEL
+        "gametwomanager/gametwoplayerone/answerctr/M_ctr_q_1" BEL
         "gametwomanager/gametwoplayerone/scorectr/M_ctr_q_7" BEL
         "gametwomanager/gametwoplayerone/scorectr/M_ctr_q_6" BEL
         "gametwomanager/gametwoplayerone/scorectr/M_ctr_q_5" BEL
@@ -274,329 +607,9 @@ TIMEGRP clk = BEL "M_gameselectstate_q_0" BEL "M_gameselectstate_q_1" BEL
         "gametwomanager/gametwoplayerthree/gametwoinput/M_ctr_q_0" BEL
         "gametwomanager/gametwoplayerthree/answerctr/M_ctr_q_3" BEL
         "gametwomanager/gametwoplayerthree/answerctr/M_ctr_q_2" BEL
-        "gametwomanager/gametwoplayerthree/answerctr/M_ctr_q_1" BEL
         "gametwomanager/gametwoplayerthree/answerctr/M_ctr_q_0" BEL
-        "clk_BUFGP/BUFG" BEL "edthreetwo/M_last_q" BEL "edonethree/M_last_q"
-        BEL "edthreeone/M_last_q" BEL "reset_cond/M_stage_q_3" BEL
-        "reset_cond/M_stage_q_2" BEL "reset_cond/M_stage_q_1" BEL
-        "reset_cond/M_stage_q_0" BEL "edgameselectthree/M_last_q" BEL
-        "edtwotwo/M_last_q" BEL "edthreethree/M_last_q" BEL
-        "edtwoone/M_last_q" BEL "edtwothree/M_last_q" BEL
-        "edgameselecttwo/M_last_q" BEL "ctr_sevensegdisplay/M_ctr_q_0" BEL
-        "ctr_sevensegdisplay/M_ctr_q_1" BEL "ctr_sevensegdisplay/M_ctr_q_2"
-        BEL "ctr_sevensegdisplay/M_ctr_q_3" BEL
-        "ctr_sevensegdisplay/M_ctr_q_4" BEL "ctr_sevensegdisplay/M_ctr_q_5"
-        BEL "ctr_sevensegdisplay/M_ctr_q_6" BEL
-        "ctr_sevensegdisplay/M_ctr_q_7" BEL "ctr_sevensegdisplay/M_ctr_q_8"
-        BEL "ctr_sevensegdisplay/M_ctr_q_9" BEL
-        "ctr_sevensegdisplay/M_ctr_q_10" BEL "ctr_sevensegdisplay/M_ctr_q_11"
-        BEL "ctr_sevensegdisplay/M_ctr_q_12" BEL
-        "ctr_sevensegdisplay/M_ctr_q_13" BEL "ctr_sevensegdisplay/M_ctr_q_14"
-        BEL "ctr_sevensegdisplay/M_ctr_q_15" BEL
-        "ctr_sevensegdisplay/M_ctr_q_16" BEL "ctr_sevensegdisplay/M_ctr_q_17"
-        BEL "edgameselectone/M_last_q" BEL "edonetwo/M_last_q" BEL
-        "edoneone/M_last_q" BEL "bcgameselectone/M_ctr_q_0" BEL
-        "bcgameselectone/M_ctr_q_1" BEL "bcgameselectone/M_ctr_q_2" BEL
-        "bcgameselectone/M_ctr_q_3" BEL "bcgameselectone/M_ctr_q_4" BEL
-        "bcgameselectone/M_ctr_q_5" BEL "bcgameselectone/M_ctr_q_6" BEL
-        "bcgameselectone/M_ctr_q_7" BEL "bcgameselectone/M_ctr_q_8" BEL
-        "bcgameselectone/M_ctr_q_9" BEL "bcgameselectone/M_ctr_q_10" BEL
-        "bcgameselectone/M_ctr_q_11" BEL "bcgameselectone/M_ctr_q_12" BEL
-        "bcgameselectone/M_ctr_q_13" BEL "bcgameselectone/M_ctr_q_14" BEL
-        "bcgameselectone/M_ctr_q_15" BEL "bcgameselectone/M_ctr_q_16" BEL
-        "bcgameselectone/M_ctr_q_17" BEL "bcgameselectone/M_ctr_q_18" BEL
-        "bcgameselectone/M_ctr_q_19" BEL "bcgameselectone/sync/M_pipe_q_1" BEL
-        "bcgameselectone/sync/Mshreg_M_pipe_q_1" BEL "bctwotwo/M_ctr_q_0" BEL
-        "bctwotwo/M_ctr_q_1" BEL "bctwotwo/M_ctr_q_2" BEL "bctwotwo/M_ctr_q_3"
-        BEL "bctwotwo/M_ctr_q_4" BEL "bctwotwo/M_ctr_q_5" BEL
-        "bctwotwo/M_ctr_q_6" BEL "bctwotwo/M_ctr_q_7" BEL "bctwotwo/M_ctr_q_8"
-        BEL "bctwotwo/M_ctr_q_9" BEL "bctwotwo/M_ctr_q_10" BEL
-        "bctwotwo/M_ctr_q_11" BEL "bctwotwo/M_ctr_q_12" BEL
-        "bctwotwo/M_ctr_q_13" BEL "bctwotwo/M_ctr_q_14" BEL
-        "bctwotwo/M_ctr_q_15" BEL "bctwotwo/M_ctr_q_16" BEL
-        "bctwotwo/M_ctr_q_17" BEL "bctwotwo/M_ctr_q_18" BEL
-        "bctwotwo/M_ctr_q_19" BEL "bctwotwo/sync/M_pipe_q_1" BEL
-        "bctwotwo/sync/Mshreg_M_pipe_q_1" BEL
-        "gameonemanager/M_gameonestate_q_FSM_FFd3" BEL
-        "gameonemanager/M_gameonestate_q_FSM_FFd4" BEL
-        "gameonemanager/M_gameonestate_q_FSM_FFd2" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_27" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_26" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_25" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_24" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_23" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_22" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_21" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_20" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_19" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_18" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_17" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_16" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_15" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_14" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_13" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_12" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_11" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_10" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_9" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_8" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_7" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_6" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_5" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_4" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_3" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_2" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_1" BEL
-        "gameonemanager/gameonecountdowntimer/M_ctr_q_0" BEL
-        "gameonemanager/gameonedecreasecounter/M_ctr_q_7" BEL
-        "gameonemanager/gameonedecreasecounter/M_ctr_q_6" BEL
-        "gameonemanager/gameonedecreasecounter/M_ctr_q_5" BEL
-        "gameonemanager/gameonedecreasecounter/M_ctr_q_4" BEL
-        "gameonemanager/gameonedecreasecounter/M_ctr_q_3" BEL
-        "gameonemanager/gameonedecreasecounter/M_ctr_q_2" BEL
-        "gameonemanager/gameonedecreasecounter/M_ctr_q_1" BEL
-        "gameonemanager/gameonedecreasecounter/M_ctr_q_0" BEL
-        "bctwothree/M_ctr_q_0" BEL "bctwothree/M_ctr_q_1" BEL
-        "bctwothree/M_ctr_q_2" BEL "bctwothree/M_ctr_q_3" BEL
-        "bctwothree/M_ctr_q_4" BEL "bctwothree/M_ctr_q_5" BEL
-        "bctwothree/M_ctr_q_6" BEL "bctwothree/M_ctr_q_7" BEL
-        "bctwothree/M_ctr_q_8" BEL "bctwothree/M_ctr_q_9" BEL
-        "bctwothree/M_ctr_q_10" BEL "bctwothree/M_ctr_q_11" BEL
-        "bctwothree/M_ctr_q_12" BEL "bctwothree/M_ctr_q_13" BEL
-        "bctwothree/M_ctr_q_14" BEL "bctwothree/M_ctr_q_15" BEL
-        "bctwothree/M_ctr_q_16" BEL "bctwothree/M_ctr_q_17" BEL
-        "bctwothree/M_ctr_q_18" BEL "bctwothree/M_ctr_q_19" BEL
-        "bctwothree/sync/M_pipe_q_1" BEL "bctwothree/sync/Mshreg_M_pipe_q_1"
-        BEL "bctwoone/M_ctr_q_0" BEL "bctwoone/M_ctr_q_1" BEL
-        "bctwoone/M_ctr_q_2" BEL "bctwoone/M_ctr_q_3" BEL "bctwoone/M_ctr_q_4"
-        BEL "bctwoone/M_ctr_q_5" BEL "bctwoone/M_ctr_q_6" BEL
-        "bctwoone/M_ctr_q_7" BEL "bctwoone/M_ctr_q_8" BEL "bctwoone/M_ctr_q_9"
-        BEL "bctwoone/M_ctr_q_10" BEL "bctwoone/M_ctr_q_11" BEL
-        "bctwoone/M_ctr_q_12" BEL "bctwoone/M_ctr_q_13" BEL
-        "bctwoone/M_ctr_q_14" BEL "bctwoone/M_ctr_q_15" BEL
-        "bctwoone/M_ctr_q_16" BEL "bctwoone/M_ctr_q_17" BEL
-        "bctwoone/M_ctr_q_18" BEL "bctwoone/M_ctr_q_19" BEL
-        "bctwoone/sync/M_pipe_q_1" BEL "bctwoone/sync/Mshreg_M_pipe_q_1" BEL
-        "bconetwo/M_ctr_q_0" BEL "bconetwo/M_ctr_q_1" BEL "bconetwo/M_ctr_q_2"
-        BEL "bconetwo/M_ctr_q_3" BEL "bconetwo/M_ctr_q_4" BEL
-        "bconetwo/M_ctr_q_5" BEL "bconetwo/M_ctr_q_6" BEL "bconetwo/M_ctr_q_7"
-        BEL "bconetwo/M_ctr_q_8" BEL "bconetwo/M_ctr_q_9" BEL
-        "bconetwo/M_ctr_q_10" BEL "bconetwo/M_ctr_q_11" BEL
-        "bconetwo/M_ctr_q_12" BEL "bconetwo/M_ctr_q_13" BEL
-        "bconetwo/M_ctr_q_14" BEL "bconetwo/M_ctr_q_15" BEL
-        "bconetwo/M_ctr_q_16" BEL "bconetwo/M_ctr_q_17" BEL
-        "bconetwo/M_ctr_q_18" BEL "bconetwo/M_ctr_q_19" BEL
-        "bconetwo/sync/M_pipe_q_1" BEL "bconetwo/sync/Mshreg_M_pipe_q_1" BEL
-        "bconeone/M_ctr_q_0" BEL "bconeone/M_ctr_q_1" BEL "bconeone/M_ctr_q_2"
-        BEL "bconeone/M_ctr_q_3" BEL "bconeone/M_ctr_q_4" BEL
-        "bconeone/M_ctr_q_5" BEL "bconeone/M_ctr_q_6" BEL "bconeone/M_ctr_q_7"
-        BEL "bconeone/M_ctr_q_8" BEL "bconeone/M_ctr_q_9" BEL
-        "bconeone/M_ctr_q_10" BEL "bconeone/M_ctr_q_11" BEL
-        "bconeone/M_ctr_q_12" BEL "bconeone/M_ctr_q_13" BEL
-        "bconeone/M_ctr_q_14" BEL "bconeone/M_ctr_q_15" BEL
-        "bconeone/M_ctr_q_16" BEL "bconeone/M_ctr_q_17" BEL
-        "bconeone/M_ctr_q_18" BEL "bconeone/M_ctr_q_19" BEL
-        "bconeone/sync/M_pipe_q_1" BEL "bconeone/sync/Mshreg_M_pipe_q_1" BEL
-        "bcthreetwo/M_ctr_q_0" BEL "bcthreetwo/M_ctr_q_1" BEL
-        "bcthreetwo/M_ctr_q_2" BEL "bcthreetwo/M_ctr_q_3" BEL
-        "bcthreetwo/M_ctr_q_4" BEL "bcthreetwo/M_ctr_q_5" BEL
-        "bcthreetwo/M_ctr_q_6" BEL "bcthreetwo/M_ctr_q_7" BEL
-        "bcthreetwo/M_ctr_q_8" BEL "bcthreetwo/M_ctr_q_9" BEL
-        "bcthreetwo/M_ctr_q_10" BEL "bcthreetwo/M_ctr_q_11" BEL
-        "bcthreetwo/M_ctr_q_12" BEL "bcthreetwo/M_ctr_q_13" BEL
-        "bcthreetwo/M_ctr_q_14" BEL "bcthreetwo/M_ctr_q_15" BEL
-        "bcthreetwo/M_ctr_q_16" BEL "bcthreetwo/M_ctr_q_17" BEL
-        "bcthreetwo/M_ctr_q_18" BEL "bcthreetwo/M_ctr_q_19" BEL
-        "bcthreetwo/sync/M_pipe_q_1" BEL "bcthreetwo/sync/Mshreg_M_pipe_q_1"
-        BEL "bconethree/M_ctr_q_0" BEL "bconethree/M_ctr_q_1" BEL
-        "bconethree/M_ctr_q_2" BEL "bconethree/M_ctr_q_3" BEL
-        "bconethree/M_ctr_q_4" BEL "bconethree/M_ctr_q_5" BEL
-        "bconethree/M_ctr_q_6" BEL "bconethree/M_ctr_q_7" BEL
-        "bconethree/M_ctr_q_8" BEL "bconethree/M_ctr_q_9" BEL
-        "bconethree/M_ctr_q_10" BEL "bconethree/M_ctr_q_11" BEL
-        "bconethree/M_ctr_q_12" BEL "bconethree/M_ctr_q_13" BEL
-        "bconethree/M_ctr_q_14" BEL "bconethree/M_ctr_q_15" BEL
-        "bconethree/M_ctr_q_16" BEL "bconethree/M_ctr_q_17" BEL
-        "bconethree/M_ctr_q_18" BEL "bconethree/M_ctr_q_19" BEL
-        "bconethree/sync/M_pipe_q_1" BEL "bconethree/sync/Mshreg_M_pipe_q_1"
-        BEL "bcthreeone/M_ctr_q_0" BEL "bcthreeone/M_ctr_q_1" BEL
-        "bcthreeone/M_ctr_q_2" BEL "bcthreeone/M_ctr_q_3" BEL
-        "bcthreeone/M_ctr_q_4" BEL "bcthreeone/M_ctr_q_5" BEL
-        "bcthreeone/M_ctr_q_6" BEL "bcthreeone/M_ctr_q_7" BEL
-        "bcthreeone/M_ctr_q_8" BEL "bcthreeone/M_ctr_q_9" BEL
-        "bcthreeone/M_ctr_q_10" BEL "bcthreeone/M_ctr_q_11" BEL
-        "bcthreeone/M_ctr_q_12" BEL "bcthreeone/M_ctr_q_13" BEL
-        "bcthreeone/M_ctr_q_14" BEL "bcthreeone/M_ctr_q_15" BEL
-        "bcthreeone/M_ctr_q_16" BEL "bcthreeone/M_ctr_q_17" BEL
-        "bcthreeone/M_ctr_q_18" BEL "bcthreeone/M_ctr_q_19" BEL
-        "bcthreeone/sync/M_pipe_q_1" BEL "bcthreeone/sync/Mshreg_M_pipe_q_1"
-        BEL "bcgameselecttwo/M_ctr_q_0" BEL "bcgameselecttwo/M_ctr_q_1" BEL
-        "bcgameselecttwo/M_ctr_q_2" BEL "bcgameselecttwo/M_ctr_q_3" BEL
-        "bcgameselecttwo/M_ctr_q_4" BEL "bcgameselecttwo/M_ctr_q_5" BEL
-        "bcgameselecttwo/M_ctr_q_6" BEL "bcgameselecttwo/M_ctr_q_7" BEL
-        "bcgameselecttwo/M_ctr_q_8" BEL "bcgameselecttwo/M_ctr_q_9" BEL
-        "bcgameselecttwo/M_ctr_q_10" BEL "bcgameselecttwo/M_ctr_q_11" BEL
-        "bcgameselecttwo/M_ctr_q_12" BEL "bcgameselecttwo/M_ctr_q_13" BEL
-        "bcgameselecttwo/M_ctr_q_14" BEL "bcgameselecttwo/M_ctr_q_15" BEL
-        "bcgameselecttwo/M_ctr_q_16" BEL "bcgameselecttwo/M_ctr_q_17" BEL
-        "bcgameselecttwo/M_ctr_q_18" BEL "bcgameselecttwo/M_ctr_q_19" BEL
-        "bcgameselecttwo/sync/M_pipe_q_1" BEL
-        "bcgameselecttwo/sync/Mshreg_M_pipe_q_1" BEL "bcthreethree/M_ctr_q_0"
-        BEL "bcthreethree/M_ctr_q_1" BEL "bcthreethree/M_ctr_q_2" BEL
-        "bcthreethree/M_ctr_q_3" BEL "bcthreethree/M_ctr_q_4" BEL
-        "bcthreethree/M_ctr_q_5" BEL "bcthreethree/M_ctr_q_6" BEL
-        "bcthreethree/M_ctr_q_7" BEL "bcthreethree/M_ctr_q_8" BEL
-        "bcthreethree/M_ctr_q_9" BEL "bcthreethree/M_ctr_q_10" BEL
-        "bcthreethree/M_ctr_q_11" BEL "bcthreethree/M_ctr_q_12" BEL
-        "bcthreethree/M_ctr_q_13" BEL "bcthreethree/M_ctr_q_14" BEL
-        "bcthreethree/M_ctr_q_15" BEL "bcthreethree/M_ctr_q_16" BEL
-        "bcthreethree/M_ctr_q_17" BEL "bcthreethree/M_ctr_q_18" BEL
-        "bcthreethree/M_ctr_q_19" BEL "bcthreethree/sync/M_pipe_q_1" BEL
-        "bcthreethree/sync/Mshreg_M_pipe_q_1" BEL
-        "bcgameselectthree/M_ctr_q_0" BEL "bcgameselectthree/M_ctr_q_1" BEL
-        "bcgameselectthree/M_ctr_q_2" BEL "bcgameselectthree/M_ctr_q_3" BEL
-        "bcgameselectthree/M_ctr_q_4" BEL "bcgameselectthree/M_ctr_q_5" BEL
-        "bcgameselectthree/M_ctr_q_6" BEL "bcgameselectthree/M_ctr_q_7" BEL
-        "bcgameselectthree/M_ctr_q_8" BEL "bcgameselectthree/M_ctr_q_9" BEL
-        "bcgameselectthree/M_ctr_q_10" BEL "bcgameselectthree/M_ctr_q_11" BEL
-        "bcgameselectthree/M_ctr_q_12" BEL "bcgameselectthree/M_ctr_q_13" BEL
-        "bcgameselectthree/M_ctr_q_14" BEL "bcgameselectthree/M_ctr_q_15" BEL
-        "bcgameselectthree/M_ctr_q_16" BEL "bcgameselectthree/M_ctr_q_17" BEL
-        "bcgameselectthree/M_ctr_q_18" BEL "bcgameselectthree/M_ctr_q_19" BEL
-        "bcgameselectthree/sync/M_pipe_q_1" BEL
-        "bcgameselectthree/sync/Mshreg_M_pipe_q_1" BEL
-        "gamethreemanager/M_gamethreestate_q_FSM_FFd1" BEL
-        "gamethreemanager/M_gamethreestate_q_FSM_FFd2" BEL
-        "gamethreemanager/roundcounter2/M_ctr_q_3" BEL
-        "gamethreemanager/roundcounter2/M_ctr_q_2" BEL
-        "gamethreemanager/roundcounter2/M_ctr_q_1" BEL
-        "gamethreemanager/roundcounter2/M_ctr_q_0" BEL
-        "gamethreemanager/roundcounter2/M_ctr_q_0_1" BEL
-        "gamethreemanager/roundcounter2/M_ctr_q_3_1" BEL
-        "gamethreemanager/roundcounter2/M_ctr_q_0_2" BEL
-        "gamethreemanager/roundcounter2/M_ctr_q_3_2" BEL
-        "gamethreemanager/randomaccessctr2/M_ctr_q_6" BEL
-        "gamethreemanager/randomaccessctr2/M_ctr_q_5" BEL
-        "gamethreemanager/randomaccessctr2/M_ctr_q_4" BEL
-        "gamethreemanager/randomaccessctr2/M_ctr_q_3" BEL
-        "gamethreemanager/randomaccessctr2/M_ctr_q_2" BEL
-        "gamethreemanager/randomaccessctr2/M_ctr_q_1" BEL
-        "gamethreemanager/randomaccessctr2/M_ctr_q_0" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_0" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_1" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_2" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_3" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_4" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_5" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_6" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_7" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_8" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_9" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_10" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_11" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_12" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_13" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_14" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_15" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_16" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_17" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_18" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_19" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_20" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_21" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_22" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_23" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_24" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_25" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_26" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_27" BEL
-        "gamethreemanager/inputcountdowntimer2/M_ctr_q_28" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_0" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_1" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_2" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_3" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_4" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_5" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_6" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_7" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_8" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_9" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_10" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_11" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_12" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_13" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_14" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_15" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_16" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_17" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_18" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_19" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_20" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_21" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_22" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_23" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_24" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_25" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_26" BEL
-        "gamethreemanager/countdowntimer2/M_ctr_q_27" BEL
-        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_4" BEL
-        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_3" BEL
-        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_2" BEL
-        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_1" BEL
-        "gamethreemanager/gamethreeplayertwo/gamethreeinput/M_ctr_q_0" BEL
-        "gamethreemanager/gamethreeplayertwo/answerctr2/M_ctr_q_3" BEL
-        "gamethreemanager/gamethreeplayertwo/answerctr2/M_ctr_q_2" BEL
-        "gamethreemanager/gamethreeplayertwo/answerctr2/M_ctr_q_1" BEL
-        "gamethreemanager/gamethreeplayertwo/answerctr2/M_ctr_q_0" BEL
-        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_7" BEL
-        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_6" BEL
-        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_5" BEL
-        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_4" BEL
-        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_3" BEL
-        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_2" BEL
-        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_1" BEL
-        "gamethreemanager/gamethreeplayertwo/scorectr2/M_ctr_q_0" BEL
-        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_7" BEL
-        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_6" BEL
-        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_5" BEL
-        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_4" BEL
-        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_3" BEL
-        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_2" BEL
-        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_1" BEL
-        "gamethreemanager/gamethreeplayerone/scorectr2/M_ctr_q_0" BEL
-        "gamethreemanager/gamethreeplayerone/answerctr2/M_ctr_q_3" BEL
-        "gamethreemanager/gamethreeplayerone/answerctr2/M_ctr_q_2" BEL
-        "gamethreemanager/gamethreeplayerone/answerctr2/M_ctr_q_1" BEL
-        "gamethreemanager/gamethreeplayerone/answerctr2/M_ctr_q_0" BEL
-        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_4" BEL
-        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_3" BEL
-        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_2" BEL
-        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_1" BEL
-        "gamethreemanager/gamethreeplayerone/gamethreeinput/M_ctr_q_0" BEL
-        "gamethreemanager/randomaccessctr/M_ctr_q_6" BEL
-        "gamethreemanager/randomaccessctr/M_ctr_q_5" BEL
-        "gamethreemanager/randomaccessctr/M_ctr_q_4" BEL
-        "gamethreemanager/randomaccessctr/M_ctr_q_3" BEL
-        "gamethreemanager/randomaccessctr/M_ctr_q_2" BEL
-        "gamethreemanager/randomaccessctr/M_ctr_q_1" BEL
-        "gamethreemanager/randomaccessctr/M_ctr_q_0" BEL
-        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_7" BEL
-        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_6" BEL
-        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_5" BEL
-        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_4" BEL
-        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_3" BEL
-        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_2" BEL
-        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_1" BEL
-        "gamethreemanager/gamethreeplayerthree/scorectr2/M_ctr_q_0" BEL
-        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_4" BEL
-        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_3" BEL
-        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_2" BEL
-        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_1" BEL
-        "gamethreemanager/gamethreeplayerthree/gamethreeinput/M_ctr_q_0" BEL
-        "gamethreemanager/gamethreeplayerthree/answerctr2/M_ctr_q_3" BEL
-        "gamethreemanager/gamethreeplayerthree/answerctr2/M_ctr_q_2" BEL
-        "gamethreemanager/gamethreeplayerthree/answerctr2/M_ctr_q_1" BEL
-        "gamethreemanager/gamethreeplayerthree/answerctr2/M_ctr_q_0";
+        "gametwomanager/gametwoplayerthree/answerctr/M_ctr_q_1" BEL
+        "edgameselecttwo/M_last_q";
 TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
 SCHEMATIC END;
 

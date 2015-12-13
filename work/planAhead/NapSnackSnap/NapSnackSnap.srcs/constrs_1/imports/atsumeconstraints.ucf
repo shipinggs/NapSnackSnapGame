@@ -1,19 +1,80 @@
-NET "playeronebuttons<0>" LOC = P124 | IOSTANDARD = LVTTL | PULLDOWN;
-NET "playeronebuttons<1>" LOC = P123 | IOSTANDARD = LVTTL | PULLDOWN;
-NET "playeronebuttons<2>" LOC = P127 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playeronebuttons<0>" LOC = P57 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playeronebuttons<1>" LOC = P58 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playeronebuttons<2>" LOC = P66 | IOSTANDARD = LVTTL | PULLDOWN;
 
-NET "playertwobuttons<0>" LOC = P126 | IOSTANDARD = LVTTL | PULLDOWN;
-NET "playertwobuttons<1>" LOC = P131 | IOSTANDARD = LVTTL | PULLDOWN;
-NET "playertwobuttons<2>" LOC = P132 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playertwobuttons<0>" LOC = P67 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playertwobuttons<1>" LOC = P74 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playertwobuttons<2>" LOC = P75 | IOSTANDARD = LVTTL | PULLDOWN;
 
-NET "playerthreebuttons<0>" LOC = P134 | IOSTANDARD = LVTTL | PULLDOWN;
-NET "playerthreebuttons<1>" LOC = P133 | IOSTANDARD = LVTTL | PULLDOWN;
-NET "playerthreebuttons<2>" LOC = P137 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playerthreebuttons<0>" LOC = P78 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playerthreebuttons<1>" LOC = P79 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "playerthreebuttons<2>" LOC = P80 | IOSTANDARD = LVTTL | PULLDOWN;
 
-NET "centralleds<0>" LOC = P57 | IOSTANDARD = LVTTL;
-NET "centralleds<1>" LOC = P58 | IOSTANDARD = LVTTL;
-NET "centralleds<2>" LOC = P66 | IOSTANDARD = LVTTL;
+NET "centralleds<0>" LOC = P11 | IOSTANDARD = LVTTL;
+NET "centralleds<1>" LOC = P12 | IOSTANDARD = LVTTL;
+NET "centralleds<2>" LOC = P14 | IOSTANDARD = LVTTL;
 
-NET "gameselectbuttons<0>" LOC = P142 | IOSTANDARD = LVTTL | PULLDOWN;
-NET "gameselectbuttons<1>" LOC = P140 | IOSTANDARD = LVTTL | PULLDOWN;
-NET "gameselectbuttons<2>" LOC = P138 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "gameselectbuttons<0>" LOC = P120 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "gameselectbuttons<1>" LOC = P121 | IOSTANDARD = LVTTL | PULLDOWN;
+NET "gameselectbuttons<2>" LOC = P118 | IOSTANDARD = LVTTL | PULLDOWN;
+
+NET "centralsevensegzero<0>" LOC = P123 | IOSTANDARD = LVTTL;
+NET "centralsevensegzero<1>" LOC = P124 | IOSTANDARD = LVTTL;
+NET "centralsevensegzero<2>" LOC = P126 | IOSTANDARD = LVTTL;
+NET "centralsevensegzero<3>" LOC = P127 | IOSTANDARD = LVTTL;
+NET "centralsevensegzero<4>" LOC = P131 | IOSTANDARD = LVTTL;
+NET "centralsevensegzero<5>" LOC = P132 | IOSTANDARD = LVTTL;
+NET "centralsevensegzero<6>" LOC = P133 | IOSTANDARD = LVTTL;
+NET "centralsevensegzero<7>" LOC = P134 | IOSTANDARD = LVTTL;
+
+NET "centralsevensegone<0>" LOC = P137 | IOSTANDARD = LVTTL;
+NET "centralsevensegone<1>" LOC = P138 | IOSTANDARD = LVTTL;
+NET "centralsevensegone<2>" LOC = P139 | IOSTANDARD = LVTTL;
+NET "centralsevensegone<3>" LOC = P140 | IOSTANDARD = LVTTL;
+NET "centralsevensegone<4>" LOC = P141 | IOSTANDARD = LVTTL;
+NET "centralsevensegone<5>" LOC = P142 | IOSTANDARD = LVTTL;
+NET "centralsevensegone<6>" LOC = P143 | IOSTANDARD = LVTTL;
+NET "centralsevensegone<7>" LOC = P144 | IOSTANDARD = LVTTL;
+
+NET "centralsevensegtwo<0>" LOC = P1 | IOSTANDARD = LVTTL;
+NET "centralsevensegtwo<1>" LOC = P2 | IOSTANDARD = LVTTL;
+NET "centralsevensegtwo<2>" LOC = P5 | IOSTANDARD = LVTTL;
+NET "centralsevensegtwo<3>" LOC = P6 | IOSTANDARD = LVTTL;
+NET "centralsevensegtwo<4>" LOC = P7 | IOSTANDARD = LVTTL;
+NET "centralsevensegtwo<5>" LOC = P8 | IOSTANDARD = LVTTL;
+NET "centralsevensegtwo<6>" LOC = P9 | IOSTANDARD = LVTTL;
+NET "centralsevensegtwo<7>" LOC = P10 | IOSTANDARD = LVTTL;
+
+NET "playerthreescore<0>"  LOC = P82 | IOSTANDARD = LVTTL;
+NET "playerthreescore<1>"  LOC = P83 | IOSTANDARD = LVTTL;
+NET "playerthreescore<2>" LOC = P84 | IOSTANDARD = LVTTL;
+NET "playerthreescore<3>" LOC = P85 | IOSTANDARD = LVTTL;
+NET "playerthreescore<4>" LOC = P87 | IOSTANDARD = LVTTL;
+NET "playerthreescore<5>" LOC = P88 | IOSTANDARD = LVTTL;
+NET "playerthreescore<6>" LOC = P92 | IOSTANDARD = LVTTL;
+NET "playerthreescore<7>" LOC = P93 | IOSTANDARD = LVTTL;
+
+NET "playertwoscore<0>" LOC = P29 | IOSTANDARD = LVTTL;
+NET "playertwoscore<1>" LOC = P30 | IOSTANDARD = LVTTL;
+NET "playertwoscore<2>" LOC = P32 | IOSTANDARD = LVTTL;
+NET "playertwoscore<3>" LOC = P33 | IOSTANDARD = LVTTL;
+NET "playertwoscore<4>" LOC = P34 | IOSTANDARD = LVTTL;
+NET "playertwoscore<5>" LOC = P35 | IOSTANDARD = LVTTL;
+NET "playertwoscore<6>" LOC = P40 | IOSTANDARD = LVTTL;
+NET "playertwoscore<7>" LOC = P41 | IOSTANDARD = LVTTL;
+
+NET "playeronescore<0>" LOC = P16 | IOSTANDARD = LVTTL;
+NET "playeronescore<1>" LOC = P17 | IOSTANDARD = LVTTL;
+NET "playeronescore<2>" LOC = P21 | IOSTANDARD = LVTTL;
+NET "playeronescore<3>" LOC = P22 | IOSTANDARD = LVTTL;
+NET "playeronescore<4>" LOC = P23 | IOSTANDARD = LVTTL;
+NET "playeronescore<5>" LOC = P24 | IOSTANDARD = LVTTL;
+NET "playeronescore<6>" LOC = P26 | IOSTANDARD = LVTTL;
+NET "playeronescore<7>" LOC = P27 | IOSTANDARD = LVTTL;
+
+NET "playerleds<0>" LOC = P116 | IOSTANDARD = LVTTL;
+NET "playerleds<1>" LOC = P117 | IOSTANDARD = LVTTL;
+NET "playerleds<2>" LOC = P114 | IOSTANDARD = LVTTL;
+NET "playerleds<3>" LOC = P115 | IOSTANDARD = LVTTL;
+NET "playerleds<4>" LOC = P111 | IOSTANDARD = LVTTL;
+NET "playerleds<5>" LOC = P112 | IOSTANDARD = LVTTL;
